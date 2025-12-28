@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ruoff Agent Sales Coach</title>
+    <title>Ultimate Realtor Sales Coach</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -179,21 +179,21 @@ textarea::placeholder {
 }
 
 .ai-tool-wrapper label {
-    @apply block text-lg font-semibold mb-3 text-[#00A89D];
+    @apply block text-lg font-semibold mb-3 text-[#f59e0b];
 }
 
 .ai-tool-wrapper select,
 .ai-tool-wrapper input[type="text"],
 .ai-tool-wrapper textarea {
-    @apply w-full p-4 rounded-xl border-2 border-[#00A89D] bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-4 focus:ring-[#F15A29]/50 focus:border-[#F15A29] transition-all;
+    @apply w-full p-4 rounded-xl border-2 border-[#f59e0b] bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-4 focus:ring-[#F15A29]/50 focus:border-[#F15A29] transition-all;
 }
 
 .ai-tool-wrapper .generate-btn {
-    @apply w-full bg-gradient-to-r from-[#00A89D] to-[#F15A29] text-white py-5 rounded-full hover:opacity-90 transition-all font-bold text-xl shadow-2xl mt-8;
+    @apply w-full bg-gradient-to-r from-[#f59e0b] to-[#7c3aed] text-white py-5 rounded-full hover:opacity-90 transition-all font-bold text-xl shadow-2xl mt-8;
 }
 
 .ai-tool-wrapper .copy-btn {
-    @apply bg-[#002B5C] hover:bg-[#002B5C]/80 text-white px-8 py-4 rounded-full font-bold transition-all shadow-md;
+    @apply bg-[#1e3a8a] hover:bg-[#1e3a8a]/80 text-white px-8 py-4 rounded-full font-bold transition-all shadow-md;
 }
 
 .ai-tool-wrapper .loading-spinner {
@@ -201,18 +201,85 @@ textarea::placeholder {
 }
 
 .ai-tool-wrapper .loading-spinner i {
-    @apply fas fa-spinner fa-spin text-6xl text-[#00A89D];
+    @apply fas fa-spinner fa-spin text-6xl text-[#f59e0b];
 }
 
 .ai-tool-output {
     @apply bg-white dark:bg-gray-800 p-10 rounded-3xl shadow-inner border border-gray-200 dark:border-gray-700 min-h-96;
+}
+/* Realtor Tool – Distinct Color Scheme */
+/* Realtor Tool – Darkened, Premium Background */
+header,
+#sidebar {
+    background: linear-gradient(to bottom, #001f3f, #003366) !important;
+}
+
+body {
+    background: linear-gradient(to bottom, #0a1422, #1a2332) !important;
+}
+
+.card {
+    background-color: #1e293b !important;
+    border: 1px solid #334155 !important;
+}
+
+/* Buttons – Gold to Purple gradient */
+.generate-btn,
+button.bg-gradient-to-r {
+    background: linear-gradient(to right, #f59e0b, #7c3aed) !important;
+}
+
+/* Labels & Accents – Gold */
+label,
+.text-[#00A89D] {
+    color: #f59e0b !important;
+}
+/* Borders – Gold */
+.border-[#00A89D] {
+    border-color: #f59e0b !important;
+}
+/* Focus rings – Purple */
+.focus\\:ring-[#F15A29] {
+    --tw-ring-color: #7c3aed80;
+}
+
+/* Header text – Light */
+h1, h2, h3 {
+    color: #e0e7ff !important;
+}
+
+/* Sidebar hover */
+.sidebar-group:hover {
+    background-color: #3b82f6 !important;
+}
+/* Fix faint modal titles in dark mode */
+#modal-title,
+#db-modal-title,
+#referral-modal-title {
+    color: #002B5C !important; /* Navy in light mode */
+}
+
+.dark #modal-title,
+.dark #db-modal-title,
+.dark #referral-modal-title {
+    color: #F15A29 !important; /* Orange in dark mode — high contrast */
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5); /* Optional: subtle shadow for extra pop */
+}
+
+/* Also make the helper text visible */
+.modal-header p {
+    color: #4b5563 !important; /* Gray-600 */
+}
+
+.dark .modal-header p {
+    color: #d1d5db !important; /* Gray-300 */
 }
     </style>
 </head>
 <body class="bg-gradient-to-br from-gray-100 to-white dark:from-gray-900 dark:to-gray-800 text-gray-900 dark:text-gray-100 min-h-screen font-sans">
                 <header class="bg-gradient-to-r from-[#002B5C] to-[#00A89D] text-white py-6 shadow-2xl">
     <div class="max-w-7xl mx-auto px-6">
-        <h1 class="text-4xl md:text-5xl font-bold text-center mb-10">Ruoff Agent Sales Coach</h1>
+        <h1 class="text-4xl md:text-5xl font-bold text-center mb-10">Ultimate Realtor Sales Coach</h1>
         
         <div class="max-w-2xl mx-auto mb-6">
             <div class="relative">
@@ -227,7 +294,7 @@ textarea::placeholder {
                 <p id="persistent-quote" class="text-2xl md:text-3xl font-medium italic text-white mb-8 drop-shadow-lg">
                     "Loading inspiration..."
                 </p>
-                <button onclick="generateQuote()" class="bg-gradient-to-r from-[#00A89D] to-[#F15A29] text-white px-12 py-5 rounded-full hover:opacity-90 transition-opacity font-bold text-xl shadow-2xl">
+                <button onclick="generateQuote()" class="bg-gradient-to-r from-[#f59e0b] to-[#7c3aed] text-white px-12 py-5 rounded-full hover:opacity-90 transition-opacity font-bold text-xl shadow-2xl">
                     Get Inspired – New Quote
                 </button>
             </div>
@@ -239,17 +306,26 @@ textarea::placeholder {
              <aside id="sidebar" class="fixed left-[-300px] top-0 bottom-0 w-72 bg-gradient-to-b from-[#002B5C] to-[#00A89D] text-white overflow-y-auto transition-left duration-300 ease-in-out z-50 shadow-2xl rounded-r-xl md:left-0 md:w-64 lg:w-72">
         <ul class="p-6 space-y-3">
             <li class="sidebar-group">A.I. Tools</li>
-            <li><a href="#sales-script" class="block py-3 px-6 hover:bg-[#F15A29]/20 rounded-lg transition-colors flex items-center">
-    <i class="fas fa-comment-dots mr-3"></i> Sales Script Generator
+     <li><a href="#listing-description" class="block py-3 px-6 hover:bg-[#F15A29]/20 rounded-lg transition-colors flex items-center">
+    <i class="fas fa-pen-fancy mr-3"></i> Listing Description Generator
+</a></li>
+<li><a href="#open-house" class="block py-3 px-6 hover:bg-[#F15A29]/20 rounded-lg transition-colors flex items-center">
+    <i class="fas fa-pen-fancy mr-3"></i> Open House Script and Strategy Generator
+</a></li>
+<li><a href="#consultation" class="block py-3 px-6 hover:bg-[#F15A29]/20 rounded-lg transition-colors flex items-center">
+    <i class="fas fa-share-alt mr-3"></i> Buyer/Seller Consulation Prep Kit
 </a></li>
 <li><a href="#social-post" class="block py-3 px-6 hover:bg-[#F15A29]/20 rounded-lg transition-colors flex items-center">
     <i class="fas fa-share-alt mr-3"></i> Social Media Post Creator
 </a></li>            
-<li><a href="#underwriting-search" class="block py-3 px-6 hover:bg-[#F15A29]/20 rounded-lg transition-colors flex items-center">
-    <i class="fas fa-search-dollar mr-3"></i> Underwriting Guideline Search
-</a></li>
           <li><a href="#blog" class="block py-3 px-6 hover:bg-[#F15A29]/20 rounded-lg transition-colors flex items-center">
     <i class="fas fa-pen-fancy mr-3"></i> Blog Creator
+</a></li>
+<li><a href="#sales-script" class="block py-3 px-6 hover:bg-[#F15A29]/20 rounded-lg transition-colors flex items-center">
+    <i class="fas fa-comment-dots mr-3"></i> Sales Script Generator
+</a></li>
+<li><a href="#underwriting-search" class="block py-3 px-6 hover:bg-[#F15A29]/20 rounded-lg transition-colors flex items-center">
+    <i class="fas fa-search-dollar mr-3"></i> Underwriting Guideline Search
 </a></li>
             <li><a href="#ai-chat" class="block py-3 px-6 hover:bg-[#F15A29]/20 rounded-lg transition-colors flex items-center">
     <i class="fas fa-robot mr-3"></i> AI Chat Assistant
@@ -274,7 +350,7 @@ textarea::placeholder {
     <!-- AI Chat Assistant - Persistent on every page -->
 <div class="fixed bottom-4 right-4 z-50">
     <button onclick="showSection('ai-chat')" 
-            class="bg-gradient-to-r from-[#00A89D] to-[#F15A29] text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-all text-2xl">
+            class="bg-gradient-to-r from-[#f59e0b] to-[#7c3aed] text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-all text-2xl">
         <i class="fas fa-robot"></i>
     </button>
 </div>
@@ -284,7 +360,7 @@ textarea::placeholder {
     <!-- pt-48 = tight but comfortable spacing below fixed quote bar -->
     <!-- pt-64 gives breathing room below the fixed quote bar -->
                  <section id="mindset-motivation" class="card bg-white dark:bg-gray-800 pt-6 pb-12 px-8 rounded-3xl shadow-xl animate-fade-in hidden">
-            <h2 class="text-3xl font-bold mb-6 text-[#F15A29]">Mindset & Motivation</h2>
+            <h2 class="text-3xl font-bold mb-6 text-[#7c3aed]">Mindset & Motivation</h2>
             <p class="mb-4">Build resilience and stay fired up with principles, quotes, stats, and tips.</p>
             <div class="accordion">
                 <button onclick="toggleAccordion(this)" class="w-full text-left text-xl font-semibold py-4 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">Core Pillars & Tips <i class="fas fa-chevron-down"></i></button>
@@ -597,7 +673,7 @@ textarea::placeholder {
             
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
     <div class="p-6 bg-gradient-to-br from-[#00A89D]/20 to-[#F15A29]/20 rounded-2xl shadow-md">
-        <h3 class="text-xl font-semibold mb-4 flex items-center"><i class="fas fa-chart-bar mr-2 text-[#00A89D]"></i>Success Stats</h3>
+        <h3 class="text-xl font-semibold mb-4 flex items-center"><i class="fas fa-chart-bar mr-2 text-[#f59e0b]"></i>Success Stats</h3>
         <ul class="space-y-3">
             <li>67% forget lender in 18 months without follow-up.</li>
             <li>12% LOs follow up after year, but 89% clients would reuse if contacted.</li>
@@ -612,7 +688,7 @@ textarea::placeholder {
         </ul>
     </div>
     <div class="p-6 bg-gradient-to-br from-[#F15A29]/20 to-[#00A89D]/20 rounded-2xl shadow-md">
-        <h3 class="text-xl font-semibold mb-4 flex items-center"><i class="fas fa-lightbulb mr-2 text-[#F15A29]"></i>Motivational Tips</h3>
+        <h3 class="text-xl font-semibold mb-4 flex items-center"><i class="fas fa-lightbulb mr-2 text-[#7c3aed]"></i>Motivational Tips</h3>
         <ul class="space-y-3">
             <li>Small consistent actions compound into results.</li>
             <li>Turn obstacles into opportunities; hustle beats talent.</li>
@@ -641,7 +717,7 @@ textarea::placeholder {
         </section>
                 
         <section id="planning" class="card bg-white dark:bg-gray-800 pt-6 pb-12 px-8 rounded-3xl shadow-xl animate-fade-in hidden">
-    <h2 class="text-3xl font-bold mb-6 text-[#F15A29]">Business Planning – Your Personalized 2026 Success Roadmap</h2>
+    <h2 class="text-3xl font-bold mb-6 text-[#7c3aed]">Business Planning – Your Personalized 2026 Success Roadmap</h2>
     <p class="mb-8 text-lg">Create a fully customized, actionable 2026 business plan as a realtor. Choose your primary growth focus, enter your current numbers (all fields optional — smart defaults fill the rest), and get an AI-powered plan built on proven strategies used by top-producing agents.</p>
 
     <!-- Plan Style Selection -->
@@ -654,7 +730,7 @@ textarea::placeholder {
                     <input type="radio" name="plan-style" value="Referral Mastery" checked class="mr-3">
                     <strong>Referral Mastery</strong><br>70%+ from partners (lenders, title, inspectors, etc.)
                 </label>
-                <label class="bg-gradient-to-br from-[#00A89D] to-[#F15A29] text-white p-6 rounded-2xl cursor-pointer shadow-lg hover:shadow-xl transition-all">
+                <label class="bg-gradient-to-br from-[#f59e0b] to-[#7c3aed] text-white p-6 rounded-2xl cursor-pointer shadow-lg hover:shadow-xl transition-all">
                     <input type="radio" name="plan-style" value="Database Dominance" class="mr-3">
                     <strong>Database Dominance</strong><br>Past clients, sphere, home anniversary touches
                 </label>
@@ -675,35 +751,35 @@ textarea::placeholder {
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div class="space-y-4">
                     <label>Target Gross Commission Income (GCI) ($)</label>
-                    <input type="number" id="target-income" placeholder="e.g., 300000" class="w-full p-4 rounded-xl border-2 border-[#00A89D] bg-white dark:bg-gray-800">
+                    <input type="number" id="target-income" placeholder="e.g., 300000" class="w-full p-4 rounded-xl border-2 border-[#f59e0b] bg-white dark:bg-gray-800">
 
                     <label>Average Commission per Side ($)</label>
-                    <input type="number" id="avg-commission" placeholder="e.g., 9000" class="w-full p-4 rounded-xl border-2 border-[#00A89D] bg-white dark:bg-gray-800">
+                    <input type="number" id="avg-commission" placeholder="e.g., 9000" class="w-full p-4 rounded-xl border-2 border-[#f59e0b] bg-white dark:bg-gray-800">
 
                     <label>Target Closed Sides (if no income goal)</label>
-                    <input type="number" id="target-sides" placeholder="e.g., 60" class="w-full p-4 rounded-xl border-2 border-[#00A89D] bg-white dark:bg-gray-800">
+                    <input type="number" id="target-sides" placeholder="e.g., 60" class="w-full p-4 rounded-xl border-2 border-[#f59e0b] bg-white dark:bg-gray-800">
 
                     <label>Average Sale Price ($)</label>
-                    <input type="number" id="avg-price" placeholder="e.g., 450000" class="w-full p-4 rounded-xl border-2 border-[#00A89D] bg-white dark:bg-gray-800">
+                    <input type="number" id="avg-price" placeholder="e.g., 450000" class="w-full p-4 rounded-xl border-2 border-[#f59e0b] bg-white dark:bg-gray-800">
                 </div>
 
                 <div class="space-y-4">
                     <label>Lead-to-Close Ratio (%)</label>
-                    <input type="number" id="close-ratio" placeholder="e.g., 10" class="w-full p-4 rounded-xl border-2 border-[#00A89D] bg-white dark:bg-gray-800">
+                    <input type="number" id="close-ratio" placeholder="e.g., 10" class="w-full p-4 rounded-xl border-2 border-[#f59e0b] bg-white dark:bg-gray-800">
 
                     <label>Current Active Referral Partners</label>
-                    <input type="number" id="current-partners" placeholder="e.g., 25" class="w-full p-4 rounded-xl border-2 border-[#00A89D] bg-white dark:bg-gray-800">
+                    <input type="number" id="current-partners" placeholder="e.g., 25" class="w-full p-4 rounded-xl border-2 border-[#f59e0b] bg-white dark:bg-gray-800">
 
                     <label>New Partners to Add in 2026</label>
-                    <input type="number" id="new-partners" placeholder="e.g., 20" class="w-full p-4 rounded-xl border-2 border-[#00A89D] bg-white dark:bg-gray-800">
+                    <input type="number" id="new-partners" placeholder="e.g., 20" class="w-full p-4 rounded-xl border-2 border-[#f59e0b] bg-white dark:bg-gray-800">
 
                     <label>Database Size (Past Clients + Sphere)</label>
-                    <input type="number" id="database-size" placeholder="e.g., 800" class="w-full p-4 rounded-xl border-2 border-[#00A89D] bg-white dark:bg-gray-800">
+                    <input type="number" id="database-size" placeholder="e.g., 800" class="w-full p-4 rounded-xl border-2 border-[#f59e0b] bg-white dark:bg-gray-800">
                 </div>
             </div>
 
             <div class="text-center mt-8">
-                <button onclick="generatePlan()" class="bg-gradient-to-r from-[#00A89D] to-[#F15A29] text-white px-12 py-5 rounded-full font-bold text-2xl shadow-2xl hover:opacity-90 transition-all">
+                <button onclick="generatePlan()" class="bg-gradient-to-r from-[#f59e0b] to-[#7c3aed] text-white px-12 py-5 rounded-full font-bold text-2xl shadow-2xl hover:opacity-90 transition-all">
                     Generate My Custom 2026 Business Plan
                 </button>
             </div>
@@ -741,7 +817,7 @@ textarea::placeholder {
         // Show loading snapshot
         document.getElementById('custom-plan').innerHTML = `
             <div class="bg-gray-50 dark:bg-gray-900 p-10 rounded-3xl text-center">
-                <h3 class="text-3xl font-bold mb-8 text-[#F15A29]">Building Your Custom 2026 Plan...</h3>
+                <h3 class="text-3xl font-bold mb-8 text-[#7c3aed]">Building Your Custom 2026 Plan...</h3>
                 <p class="text-xl mb-6">Quick snapshot while the full plan generates:</p>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-lg">
                     <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow">
@@ -808,7 +884,7 @@ Make it encouraging, realistic, and packed with proven realtor tactics. Emphasiz
                     ${marked.parse(plan)}
                 </div>
                 <div class="text-center mt-8">
-                    <button onclick="copyBusinessPlan()" class="bg-[#002B5C] hover:bg-[#002B5C]/80 text-white px-10 py-4 rounded-full font-bold shadow-lg">
+                    <button onclick="copyBusinessPlan()" class="bg-[#1e3a8a] hover:bg-[#1e3a8a]/80 text-white px-10 py-4 rounded-full font-bold shadow-lg">
                         📋 Copy Full Plan to Clipboard
                     </button>
                 </div>
@@ -835,7 +911,7 @@ Make it encouraging, realistic, and packed with proven realtor tactics. Emphasiz
             <div class="overflow-x-auto">
                 <table class="w-full text-left border-collapse">
                     <thead>
-                        <tr class="bg-[#002B5C] text-white">
+                        <tr class="bg-[#1e3a8a] text-white">
                             <th class="p-4">Activity</th>
                             <th class="p-4">Target (Top Producer)</th>
                             <th class="p-4">Why It Drives Results</th>
@@ -887,11 +963,11 @@ Make it encouraging, realistic, and packed with proven realtor tactics. Emphasiz
         <button onclick="toggleAccordion(this)" class="w-full text-left text-xl font-semibold py-4 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">Recommended Resources & Tools <i class="fas fa-chevron-down"></i></button>
         <div class="accordion-content">
             <ul class="space-y-4 text-lg">
-                <li><a href="https://www.tomferry.com/business-plan/" target="_blank" class="text-[#00A89D] underline hover:text-[#F15A29]">Tom Ferry 2026 Business Plan Template</a></li>
-                <li><a href="https://www.brianbuffini.com/" target="_blank" class="text-[#00A89D] underline hover:text-[#F15A29]">Buffini & Company – Referral Mastery Training</a></li>
-                <li><a href="https://www.labcoatagents.com/" target="_blank" class="text-[#00A89D] underline hover:text-[#F15A29]">Lab Coat Agents – Marketing & Systems</a></li>
-                <li><a href="https://www.keepingscore.com/" target="_blank" class="text-[#00A89D] underline hover:text-[#F15A29]">Keeping Current Matters – Market Content</a></li>
-                <li><a href="https://www.realestatebc.com/" target="_blank" class="text-[#00A89D] underline hover:text-[#F15A29]">Real Estate Business Coaching (Mike Ferry)</a></li>
+                <li><a href="https://www.tomferry.com/business-plan/" target="_blank" class="text-[#f59e0b] underline hover:text-[#7c3aed]">Tom Ferry 2026 Business Plan Template</a></li>
+                <li><a href="https://www.brianbuffini.com/" target="_blank" class="text-[#f59e0b] underline hover:text-[#7c3aed]">Buffini & Company – Referral Mastery Training</a></li>
+                <li><a href="https://www.labcoatagents.com/" target="_blank" class="text-[#f59e0b] underline hover:text-[#7c3aed]">Lab Coat Agents – Marketing & Systems</a></li>
+                <li><a href="https://www.keepingscore.com/" target="_blank" class="text-[#f59e0b] underline hover:text-[#7c3aed]">Keeping Current Matters – Market Content</a></li>
+                <li><a href="https://www.realestatebc.com/" target="_blank" class="text-[#f59e0b] underline hover:text-[#7c3aed]">Real Estate Business Coaching (Mike Ferry)</a></li>
             </ul>
         </div>
     </div>
@@ -903,19 +979,19 @@ Make it encouraging, realistic, and packed with proven realtor tactics. Emphasiz
 </section>
               
         <section id="prospecting" class="card bg-white dark:bg-gray-800 pt-6 pb-12 px-8 rounded-3xl shadow-xl animate-fade-in hidden">
-            <h2 class="text-3xl font-bold mb-6 text-[#F15A29]">Prospecting Tools</h2>
+            <h2 class="text-3xl font-bold mb-6 text-[#7c3aed]">Prospecting Tools</h2>
             <p class="mb-4">Make time for prospecting consistently to build your pipeline.</p>
             <h3 class="text-2xl font-semibold mb-4">Time Blocking Generator</h3>
             <form id="time-block-form" class="space-y-4">
-                <label class="block text-lg">Frequency: <select id="frequency" class="p-3 rounded-lg border border-[#00A89D] bg-white dark:bg-gray-800 w-full focus:ring-[#F15A29]">
+                <label class="block text-lg">Frequency: <select id="frequency" class="p-3 rounded-lg border border-[#f59e0b] bg-white dark:bg-gray-800 w-full focus:ring-[#F15A29]">
                     <option>Daily</option><option>Weekly</option><option>Monthly</option><option>Quarterly</option><option>Yearly</option>
                 </select></label>
-                <button type="button" onclick="generateTimeBlock()" class="bg-gradient-to-r from-[#00A89D] to-[#F15A29] text-white px-6 py-3 rounded-full hover:opacity-90 w-full font-semibold">Generate Full List</button>
+                <button type="button" onclick="generateTimeBlock()" class="bg-gradient-to-r from-[#f59e0b] to-[#7c3aed] text-white px-6 py-3 rounded-full hover:opacity-90 w-full font-semibold">Generate Full List</button>
                 <button type="button" onclick="cycleActivities()" class="bg-gradient-to-r from-[#F15A29] to-[#00A89D] text-white px-6 py-3 rounded-full hover:opacity-90 w-full font-semibold">Cycle New Ideas (Random 5-10)</button>
             </form>
             <div id="time-block-output" class="mt-6 p-6 bg-gradient-to-br from-[#002B5C]/10 to-[#00A89D]/10 rounded-2xl shadow-inner"></div>
             <div class="mt-6 p-6 bg-gradient-to-br from-[#F15A29]/10 to-[#00A89D]/10 rounded-2xl shadow-md">
-                <h3 class="text-xl font-semibold mb-4 flex items-center"><i class="fas fa-clock mr-2 text-[#F15A29]"></i>Time Blocking Tips & Strategies</h3>
+                <h3 class="text-xl font-semibold mb-4 flex items-center"><i class="fas fa-clock mr-2 text-[#7c3aed]"></i>Time Blocking Tips & Strategies</h3>
                 <ul class="list-disc pl-6 space-y-2">
                     <li>Do prospecting early in the day to ensure it happens.</li>
                     <li>Block smaller windows when you can in the event an emergency comes up and you need to shift it to a new part of your day.</li>
@@ -929,42 +1005,42 @@ Make it encouraging, realistic, and packed with proven realtor tactics. Emphasiz
         <!-- MAIN SOCIAL MEDIA TIPS PAGE -->
 <!-- MAIN SOCIAL MEDIA TIPS PAGE -->
 <section id="social" class="card bg-white dark:bg-gray-800 pt-6 pb-12 px-8 rounded-3xl shadow-xl animate-fade-in hidden">
-    <h2 class="text-3xl font-bold mb-8 text-[#F15A29]">Social Media Strategy for Realtors</h2>
+    <h2 class="text-3xl font-bold mb-8 text-[#7c3aed]">Social Media Strategy for Realtors</h2>
     <p class="text-lg mb-12 leading-relaxed">Build genuine relationships, grow your reach organically, and turn followers into clients & referral partners — without ever being salesy. Build strong personal connections by sharing your passions, hobbies, family, pets, vacations, and interests in life.</p>
 
     <!-- Content Pillars – Visual Boxes -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-        <div onclick="openModal('Personal')" class="cursor-pointer bg-gradient-to-br from-[#002B5C]/10 to-[#00A89D]/10 p-8 rounded-2xl border border-[#00A89D]/30 text-center shadow-md hover:shadow-xl hover:scale-105 transition-all">
-            <h3 class="text-2xl font-bold mb-3 text-[#002B5C] dark:text-[#00A89D]">Personal</h3>
+        <div onclick="openModal('Personal')" class="cursor-pointer bg-gradient-to-br from-[#002B5C]/10 to-[#00A89D]/10 p-8 rounded-2xl border border-[#f59e0b]/30 text-center shadow-md hover:shadow-xl hover:scale-105 transition-all">
+            <h3 class="text-2xl font-bold mb-3 text-[#002B5C] dark:text-[#f59e0b]">Personal</h3>
             <p class="text-gray-700 dark:text-gray-300">Behind-the-scenes, hobbies, family (with permission)</p>
         </div>
-        <div onclick="openModal('Local')" class="cursor-pointer bg-gradient-to-br from-[#002B5C]/10 to-[#00A89D]/10 p-8 rounded-2xl border border-[#00A89D]/30 text-center shadow-md hover:shadow-xl hover:scale-105 transition-all">
-            <h3 class="text-2xl font-bold mb-3 text-[#002B5C] dark:text-[#00A89D]">Local</h3>
+        <div onclick="openModal('Local')" class="cursor-pointer bg-gradient-to-br from-[#002B5C]/10 to-[#00A89D]/10 p-8 rounded-2xl border border-[#f59e0b]/30 text-center shadow-md hover:shadow-xl hover:scale-105 transition-all">
+            <h3 class="text-2xl font-bold mb-3 text-[#002B5C] dark:text-[#f59e0b]">Local</h3>
             <p class="text-gray-700 dark:text-gray-300">Community events, spotlights, neighborhood insights</p>
         </div>
-        <div onclick="openModal('Educational')" class="cursor-pointer bg-gradient-to-br from-[#002B5C]/10 to-[#00A89D]/10 p-8 rounded-2xl border border-[#00A89D]/30 text-center shadow-md hover:shadow-xl hover:scale-105 transition-all">
-            <h3 class="text-2xl font-bold mb-3 text-[#002B5C] dark:text-[#00A89D]">Educational</h3>
+        <div onclick="openModal('Educational')" class="cursor-pointer bg-gradient-to-br from-[#002B5C]/10 to-[#00A89D]/10 p-8 rounded-2xl border border-[#f59e0b]/30 text-center shadow-md hover:shadow-xl hover:scale-105 transition-all">
+            <h3 class="text-2xl font-bold mb-3 text-[#002B5C] dark:text-[#f59e0b]">Educational</h3>
             <p class="text-gray-700 dark:text-gray-300">Buying/selling tips, market insights, home prep advice</p>
         </div>
-        <div onclick="openModal('Client Wins')" class="cursor-pointer bg-gradient-to-br from-[#002B5C]/10 to-[#00A89D]/10 p-8 rounded-2xl border border-[#00A89D]/30 text-center shadow-md hover:shadow-xl hover:scale-105 transition-all">
-            <h3 class="text-2xl font-bold mb-3 text-[#002B5C] dark:text-[#00A89D]">Client Wins</h3>
+        <div onclick="openModal('Client Wins')" class="cursor-pointer bg-gradient-to-br from-[#002B5C]/10 to-[#00A89D]/10 p-8 rounded-2xl border border-[#f59e0b]/30 text-center shadow-md hover:shadow-xl hover:scale-105 transition-all">
+            <h3 class="text-2xl font-bold mb-3 text-[#002B5C] dark:text-[#f59e0b]">Client Wins</h3>
             <p class="text-gray-700 dark:text-gray-300">Just listed/sold, happy closing stories, testimonials</p>
         </div>
-        <div onclick="openModal('Value')" class="cursor-pointer bg-gradient-to-br from-[#002B5C]/10 to-[#00A89D]/10 p-8 rounded-2xl border border-[#00A89D]/30 text-center shadow-md hover:shadow-xl hover:scale-105 transition-all">
-            <h3 class="text-2xl font-bold mb-3 text-[#002B5C] dark:text-[#00A89D]">Value</h3>
+        <div onclick="openModal('Value')" class="cursor-pointer bg-gradient-to-br from-[#002B5C]/10 to-[#00A89D]/10 p-8 rounded-2xl border border-[#f59e0b]/30 text-center shadow-md hover:shadow-xl hover:scale-105 transition-all">
+            <h3 class="text-2xl font-bold mb-3 text-[#002B5C] dark:text-[#f59e0b]">Value</h3>
             <p class="text-gray-700 dark:text-gray-300">Checklists, guides, market reports, free resources</p>
         </div>
-        <div onclick="openModal('Engagement')" class="cursor-pointer bg-gradient-to-br from-[#002B5C]/10 to-[#00A89D]/10 p-8 rounded-2xl border border-[#00A89D]/30 text-center shadow-md hover:shadow-xl hover:scale-105 transition-all">
-            <h3 class="text-2xl font-bold mb-3 text-[#002B5C] dark:text-[#00A89D]">Engagement</h3>
+        <div onclick="openModal('Engagement')" class="cursor-pointer bg-gradient-to-br from-[#002B5C]/10 to-[#00A89D]/10 p-8 rounded-2xl border border-[#f59e0b]/30 text-center shadow-md hover:shadow-xl hover:scale-105 transition-all">
+            <h3 class="text-2xl font-bold mb-3 text-[#002B5C] dark:text-[#f59e0b]">Engagement</h3>
             <p class="text-gray-700 dark:text-gray-300">Polls, questions, "tag a friend"</p>
         </div>
     </div>
 
     <!-- Big CTA Button to AI Creator -->
     <div class="text-center my-16">
-        <div class="inline-block bg-gradient-to-br from-[#002B5C]/5 to-[#00A89D]/10 rounded-3xl p-12 border-4 border-dashed border-[#00A89D]/50 shadow-xl">
+        <div class="inline-block bg-gradient-to-br from-[#002B5C]/5 to-[#00A89D]/10 rounded-3xl p-12 border-4 border-dashed border-[#f59e0b]/50 shadow-xl">
             <button onclick="showSocialPostCreator()" 
-                    class="bg-gradient-to-r from-[#00A89D] to-[#F15A29] text-white px-14 py-8 rounded-3xl hover:scale-105 transition-all font-bold text-3xl shadow-2xl inline-flex items-center">
+                    class="bg-gradient-to-r from-[#f59e0b] to-[#7c3aed] text-white px-14 py-8 rounded-3xl hover:scale-105 transition-all font-bold text-3xl shadow-2xl inline-flex items-center">
                 <i class="fas fa-bolt mr-5 text-4xl"></i> Instantly Generate a Post with AI
             </button>
             <p class="mt-8 text-xl text-gray-700 dark:text-gray-300 font-medium max-w-2xl">
@@ -979,7 +1055,7 @@ Make it encouraging, realistic, and packed with proven realtor tactics. Emphasiz
         <div class="accordion-content">
             <p class="mb-6">Top realtors post 80% personal/value/local, 20% direct business. Follow this mix for trust + leads without being salesy.</p>
             <div class="grid grid-cols-1 md:grid-cols-5 gap-6">
-                <div class="text-center p-6 bg-[#002B5C]/10 dark:bg-[#002B5C]/30 rounded-2xl">
+                <div class="text-center p-6 bg-[#1e3a8a]/10 dark:bg-[#1e3a8a]/30 rounded-2xl">
                     <div class="text-4xl mb-4">30%</div>
                     <strong>Personal</strong><br>Behind-the-scenes, family, hobbies, life
                 </div>
@@ -991,7 +1067,7 @@ Make it encouraging, realistic, and packed with proven realtor tactics. Emphasiz
                     <div class="text-4xl mb-4">20%</div>
                     <strong>Educational/Value</strong><br>Tips, guides, market insights
                 </div>
-                <div class="text-center p-6 bg-[#002B5C]/10 dark:bg-[#002B5C]/30 rounded-2xl">
+                <div class="text-center p-6 bg-[#1e3a8a]/10 dark:bg-[#1e3a8a]/30 rounded-2xl">
                     <div class="text-4xl mb-4">15%</div>
                     <strong>Client Wins</strong><br>Just listed/sold, closing celebrations
                 </div>
@@ -1011,7 +1087,7 @@ Make it encouraging, realistic, and packed with proven realtor tactics. Emphasiz
             <p class="mb-6">Batch create on Sunday → schedule all week. Takes 45 minutes, delivers results.</p>
             <table class="w-full text-left border-collapse mb-6">
                 <thead>
-                    <tr class="bg-[#002B5C] text-white">
+                    <tr class="bg-[#1e3a8a] text-white">
                         <th class="p-4">Day</th>
                         <th class="p-4">Pillar</th>
                         <th class="p-4">Content Idea</th>
@@ -1361,7 +1437,7 @@ Make it encouraging, realistic, and packed with proven realtor tactics. Emphasiz
     </div>
 </section>
         <section id="referrals" class="card bg-white dark:bg-gray-800 pt-6 pb-12 px-8 rounded-3xl shadow-xl animate-fade-in hidden">
-    <h2 class="text-3xl font-bold mb-6 text-[#F15A29]">Referral Partners – Your Primary Growth Engine</h2>
+    <h2 class="text-3xl font-bold mb-6 text-[#7c3aed]">Referral Partners – Your Primary Growth Engine</h2>
     <p class="mb-8 text-lg">For top-producing realtors, 70–90% of business comes from referral partners (lenders, title companies, home inspectors, stagers, contractors, financial planners, attorneys, insurance agents). This section is your complete playbook for finding, winning, nurturing, and scaling lifelong partnerships that send consistent, high-quality buyer and seller leads — without ever being transactional.</p>
 
     <!-- Core Mindset -->
@@ -1375,7 +1451,7 @@ Make it encouraging, realistic, and packed with proven realtor tactics. Emphasiz
                 <li><strong>Become Indispensable:</strong> Fast market insights, strong offer support, co-marketing, education — make them think, “I win more with this realtor on my team.”</li>
                 <li><strong>Track & Celebrate:</strong> Measure referrals, thank publicly (with permission), reward generously (compliantly).</li>
             </ul>
-            <p class="mt-6 font-semibold text-center text-xl text-[#00A89D]">Great partners don’t just send leads — they send their best clients because they trust you with their reputation.</p>
+            <p class="mt-6 font-semibold text-center text-xl text-[#f59e0b]">Great partners don’t just send leads — they send their best clients because they trust you with their reputation.</p>
         </div>
     </div>
 
@@ -1385,28 +1461,28 @@ Make it encouraging, realistic, and packed with proven realtor tactics. Emphasiz
         <div class="accordion-content">
             <p class="mb-6">Each partner type has unique needs. Click each card for tailored outreach scripts, value offers, co-marketing ideas, event examples, and nurturing strategies.</p>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-    <div class="bg-gradient-to-br from-[#002B5C]/10 to-[#00A89D]/10 p-8 rounded-2xl border border-[#00A89D]/30 text-center shadow-md hover:shadow-xl hover:scale-105 transition-all">
-        <h3 class="text-2xl font-bold mb-3 text-[#002B5C] dark:text-[#00A89D]">Lenders</h3>
+    <div class="bg-gradient-to-br from-[#002B5C]/10 to-[#00A89D]/10 p-8 rounded-2xl border border-[#f59e0b]/30 text-center shadow-md hover:shadow-xl hover:scale-105 transition-all">
+        <h3 class="text-2xl font-bold mb-3 text-[#002B5C] dark:text-[#f59e0b]">Lenders</h3>
         <p class="text-gray-700 dark:text-gray-300">Your #1 source — pre-approvals, creative financing, fast closings</p>
     </div>
-    <div class="bg-gradient-to-br from-[#002B5C]/10 to-[#00A89D]/10 p-8 rounded-2xl border border-[#00A89D]/30 text-center shadow-md hover:shadow-xl hover:scale-105 transition-all">
-        <h3 class="text-2xl font-bold mb-3 text-[#002B5C] dark:text-[#00A89D]">Title & Escrow</h3>
+    <div class="bg-gradient-to-br from-[#002B5C]/10 to-[#00A89D]/10 p-8 rounded-2xl border border-[#f59e0b]/30 text-center shadow-md hover:shadow-xl hover:scale-105 transition-all">
+        <h3 class="text-2xl font-bold mb-3 text-[#002B5C] dark:text-[#f59e0b]">Title & Escrow</h3>
         <p class="text-gray-700 dark:text-gray-300">Smooth transactions, networking events, shared clients</p>
     </div>
-    <div class="bg-gradient-to-br from-[#002B5C]/10 to-[#00A89D]/10 p-8 rounded-2xl border border-[#00A89D]/30 text-center shadow-md hover:shadow-xl hover:scale-105 transition-all">
-        <h3 class="text-2xl font-bold mb-3 text-[#002B5C] dark:text-[#00A89D]">Home Inspectors</h3>
+    <div class="bg-gradient-to-br from-[#002B5C]/10 to-[#00A89D]/10 p-8 rounded-2xl border border-[#f59e0b]/30 text-center shadow-md hover:shadow-xl hover:scale-105 transition-all">
+        <h3 class="text-2xl font-bold mb-3 text-[#002B5C] dark:text-[#f59e0b]">Home Inspectors</h3>
         <p class="text-gray-700 dark:text-gray-300">Repair negotiation help, buyer education</p>
     </div>
-    <div class="bg-gradient-to-br from-[#002B5C]/10 to-[#00A89D]/10 p-8 rounded-2xl border border-[#00A89D]/30 text-center shadow-md hover:shadow-xl hover:scale-105 transition-all">
-        <h3 class="text-2xl font-bold mb-3 text-[#002B5C] dark:text-[#00A89D]">Stagers & Photographers</h3>
+    <div class="bg-gradient-to-br from-[#002B5C]/10 to-[#00A89D]/10 p-8 rounded-2xl border border-[#f59e0b]/30 text-center shadow-md hover:shadow-xl hover:scale-105 transition-all">
+        <h3 class="text-2xl font-bold mb-3 text-[#002B5C] dark:text-[#f59e0b]">Stagers & Photographers</h3>
         <p class="text-gray-700 dark:text-gray-300">Listing prep, marketing collaboration</p>
     </div>
-    <div class="bg-gradient-to-br from-[#002B5C]/10 to-[#00A89D]/10 p-8 rounded-2xl border border-[#00A89D]/30 text-center shadow-md hover:shadow-xl hover:scale-105 transition-all">
-        <h3 class="text-2xl font-bold mb-3 text-[#002B5C] dark:text-[#00A89D]">Contractors & Vendors</h3>
+    <div class="bg-gradient-to-br from-[#002B5C]/10 to-[#00A89D]/10 p-8 rounded-2xl border border-[#f59e0b]/30 text-center shadow-md hover:shadow-xl hover:scale-105 transition-all">
+        <h3 class="text-2xl font-bold mb-3 text-[#002B5C] dark:text-[#f59e0b]">Contractors & Vendors</h3>
         <p class="text-gray-700 dark:text-gray-300">Pre-listing repairs, move-in ready recommendations</p>
     </div>
-    <div class="bg-gradient-to-br from-[#002B5C]/10 to-[#00A89D]/10 p-8 rounded-2xl border border-[#00A89D]/30 text-center shadow-md hover:shadow-xl hover:scale-105 transition-all">
-        <h3 class="text-2xl font-bold mb-3 text-[#002B5C] dark:text-[#00A89D]">Financial Planners, Attorneys, Insurance</h3>
+    <div class="bg-gradient-to-br from-[#002B5C]/10 to-[#00A89D]/10 p-8 rounded-2xl border border-[#f59e0b]/30 text-center shadow-md hover:shadow-xl hover:scale-105 transition-all">
+        <h3 class="text-2xl font-bold mb-3 text-[#002B5C] dark:text-[#f59e0b]">Financial Planners, Attorneys, Insurance</h3>
         <p class="text-gray-700 dark:text-gray-300">Relocation, divorce, estate, wealth clients</p>
     </div>
 </div>
@@ -1428,7 +1504,7 @@ Make it encouraging, realistic, and packed with proven realtor tactics. Emphasiz
         <div class="accordion-content">
             <p class="mb-6">Focus your energy where it counts — top partners get VIP treatment.</p>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="bg-[#002B5C]/5 dark:bg-[#002B5C]/20 p-6 rounded-2xl">
+                <div class="bg-[#1e3a8a]/5 dark:bg-[#1e3a8a]/20 p-6 rounded-2xl">
                     <strong>A+ Partners (Top 10–20)</strong><br>5+ referrals/year
                     <ul class="list-disc pl-6 mt-4 space-y-2">
                         <li>Weekly personal touch</li>
@@ -1466,7 +1542,7 @@ Make it encouraging, realistic, and packed with proven realtor tactics. Emphasiz
             <p class="mb-6">Stay top-of-mind with consistent, helpful touches.</p>
             <table class="w-full text-left border-collapse mb-6">
                 <thead>
-                    <tr class="bg-[#002B5C] text-white">
+                    <tr class="bg-[#1e3a8a] text-white">
                         <th class="p-4">Touch Type</th>
                         <th class="p-4">Frequency</th>
                         <th class="p-4">Example</th>
@@ -1570,7 +1646,7 @@ Make it encouraging, realistic, and packed with proven realtor tactics. Emphasiz
     </div>
 </section>
         <section id="database" class="card bg-white dark:bg-gray-800 pt-6 pb-12 px-8 rounded-3xl shadow-xl animate-fade-in hidden">
-    <h2 class="text-3xl font-bold mb-6 text-[#F15A29]">Database Nurturing – Your Most Valuable Asset</h2>
+    <h2 class="text-3xl font-bold mb-6 text-[#7c3aed]">Database Nurturing – Your Most Valuable Asset</h2>
     <p class="mb-8 text-lg">Your database is not a list — it's a living network of real people who already know, like, and trust you. Nurture it intentionally and it will become your #1 source of repeat business, referrals, and lifelong income. This section is your complete playbook for building and maintaining genuine, profitable relationships at scale.</p>
 
     <!-- Core Philosophy -->
@@ -1585,7 +1661,7 @@ Make it encouraging, realistic, and packed with proven realtor tactics. Emphasiz
                 <li><strong>They’re People, Not Leads:</strong> Celebrate their wins, acknowledge life events, show up when it matters — not just when you need business.</li>
                 <li><strong>Your Database = Your Net Worth:</strong> A nurtured past client is worth 5–10x more over their lifetime than a new lead.</li>
             </ul>
-            <p class="mt-6 font-semibold text-xl text-center text-[#00A89D]">The goal: Make every person in your database say, “I’d never use anyone else — and I tell everyone about them.”</p>
+            <p class="mt-6 font-semibold text-xl text-center text-[#f59e0b]">The goal: Make every person in your database say, “I’d never use anyone else — and I tell everyone about them.”</p>
         </div>
     </div>
 
@@ -1597,27 +1673,27 @@ Make it encouraging, realistic, and packed with proven realtor tactics. Emphasiz
 
             <h4 class="text-lg font-bold mb-4">Core Categories (Tag Everyone – Click for Nurturing Strategies)</h4>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-    <div onclick="openDatabaseModal('Past Clients')" class="cursor-pointer bg-gray-50 dark:bg-gray-900 p-8 rounded-2xl border-2 border-[#00A89D]/30 text-center shadow-md hover:shadow-xl hover:scale-105 transition-all">
+    <div onclick="openDatabaseModal('Past Clients')" class="cursor-pointer bg-gray-50 dark:bg-gray-900 p-8 rounded-2xl border-2 border-[#f59e0b]/30 text-center shadow-md hover:shadow-xl hover:scale-105 transition-all">
         <h5 class="text-xl font-bold mb-2">Past Clients</h5>
         <p class="text-gray-600 dark:text-gray-400">Your gold mine (highest referral rate)</p>
     </div>
-    <div onclick="openDatabaseModal('Sphere of Influence')" class="cursor-pointer bg-gray-50 dark:bg-gray-900 p-8 rounded-2xl border-2 border-[#00A89D]/30 text-center shadow-md hover:shadow-xl hover:scale-105 transition-all">
+    <div onclick="openDatabaseModal('Sphere of Influence')" class="cursor-pointer bg-gray-50 dark:bg-gray-900 p-8 rounded-2xl border-2 border-[#f59e0b]/30 text-center shadow-md hover:shadow-xl hover:scale-105 transition-all">
         <h5 class="text-xl font-bold mb-2">Sphere of Influence</h5>
         <p class="text-gray-600 dark:text-gray-400">Friends, family, social circle</p>
     </div>
-    <div onclick="openDatabaseModal('Referral Partners')" class="cursor-pointer bg-gray-50 dark:bg-gray-900 p-8 rounded-2xl border-2 border-[#00A89D]/30 text-center shadow-md hover:shadow-xl hover:scale-105 transition-all">
+    <div onclick="openDatabaseModal('Referral Partners')" class="cursor-pointer bg-gray-50 dark:bg-gray-900 p-8 rounded-2xl border-2 border-[#f59e0b]/30 text-center shadow-md hover:shadow-xl hover:scale-105 transition-all">
         <h5 class="text-xl font-bold mb-2">Referral Partners</h5>
         <p class="text-gray-600 dark:text-gray-400">Realtors, builders, financial planners</p>
     </div>
-    <div onclick="openDatabaseModal('Community Connections')" class="cursor-pointer bg-gray-50 dark:bg-gray-900 p-8 rounded-2xl border-2 border-[#00A89D]/30 text-center shadow-md hover:shadow-xl hover:scale-105 transition-all">
+    <div onclick="openDatabaseModal('Community Connections')" class="cursor-pointer bg-gray-50 dark:bg-gray-900 p-8 rounded-2xl border-2 border-[#f59e0b]/30 text-center shadow-md hover:shadow-xl hover:scale-105 transition-all">
         <h5 class="text-xl font-bold mb-2">Community Connections</h5>
         <p class="text-gray-600 dark:text-gray-400">Local business owners, neighbors, groups</p>
     </div>
-    <div onclick="openDatabaseModal('Prospects')" class="cursor-pointer bg-gray-50 dark:bg-gray-900 p-8 rounded-2xl border-2 border-[#00A89D]/30 text-center shadow-md hover:shadow-xl hover:scale-105 transition-all">
+    <div onclick="openDatabaseModal('Prospects')" class="cursor-pointer bg-gray-50 dark:bg-gray-900 p-8 rounded-2xl border-2 border-[#f59e0b]/30 text-center shadow-md hover:shadow-xl hover:scale-105 transition-all">
         <h5 class="text-xl font-bold mb-2">Prospects</h5>
         <p class="text-gray-600 dark:text-gray-400">Leads who didn’t close (yet)</p>
     </div>
-    <div onclick="openDatabaseModal('A+ VIPs')" class="cursor-pointer bg-gray-50 dark:bg-gray-900 p-8 rounded-2xl border-2 border-[#00A89D]/30 text-center shadow-md hover:shadow-xl hover:scale-105 transition-all">
+    <div onclick="openDatabaseModal('A+ VIPs')" class="cursor-pointer bg-gray-50 dark:bg-gray-900 p-8 rounded-2xl border-2 border-[#f59e0b]/30 text-center shadow-md hover:shadow-xl hover:scale-105 transition-all">
         <h5 class="text-xl font-bold mb-2">A+ VIPs</h5>
         <p class="text-gray-600 dark:text-gray-400">Top 50 most connected/influential people</p>
     </div>
@@ -1643,7 +1719,7 @@ Make it encouraging, realistic, and packed with proven realtor tactics. Emphasiz
 
             <h4 class="text-lg font-bold mb-4">Your Annual Touch Calendar</h4>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                <div class="bg-[#002B5C]/5 dark:bg-[#002B5C]/20 p-6 rounded-2xl">
+                <div class="bg-[#1e3a8a]/5 dark:bg-[#1e3a8a]/20 p-6 rounded-2xl">
                     <strong>12 High-Value Touches</strong>
                     <ul class="list-disc pl-6 space-y-2 mt-4">
                         <li>Home Anniversary Card + Gift</li>
@@ -1731,7 +1807,7 @@ Make it encouraging, realistic, and packed with proven realtor tactics. Emphasiz
                 <li><strong>Track Engagement:</strong> Who opens emails? Who attends events? Double down on responders</li>
             </ul>
 
-            <p class="mt-8 text-xl font-bold text-center text-[#00A89D]">You don’t need more leads. You need better relationships with the people you already know.</p>
+            <p class="mt-8 text-xl font-bold text-center text-[#f59e0b]">You don’t need more leads. You need better relationships with the people you already know.</p>
         </div>
     </div>
 
@@ -1741,7 +1817,7 @@ Make it encouraging, realistic, and packed with proven realtor tactics. Emphasiz
     </div>
 </section>
                         <section id="process" class="card bg-white dark:bg-gray-800 pt-6 pb-12 px-8 rounded-3xl shadow-xl animate-fade-in hidden">
-    <h2 class="text-3xl font-bold mb-6 text-[#F15A29]">Transaction Mastery – World-Class Buyer & Seller Experience</h2>
+    <h2 class="text-3xl font-bold mb-6 text-[#7c3aed]">Transaction Mastery – World-Class Buyer & Seller Experience</h2>
     <p class="mb-8 text-lg">Your complete playbook for delivering an extraordinary, consistent client experience on every transaction — whether you're closing 20 sides or 100+. Over-communicate, systematize repeatable steps, and build scalable processes that wow clients, impress partners, and turn every deal into multiple referrals.</p>
 
     <!-- Core Principles -->
@@ -1886,7 +1962,7 @@ Make it encouraging, realistic, and packed with proven realtor tactics. Emphasiz
                 <li><strong>Partner Referral Loop:</strong> After every close, send co-branded success story + “Who’s your next client I can help?”</li>
                 <li><strong>Review Strategy:</strong> Aim for 5+ new Google/Zillow reviews per month — the #1 trust builder</li>
             </ul>
-            <p class="mt-6 font-semibold text-center text-xl text-[#00A89D]">Exceptional service isn’t expensive — it’s priceless. It turns clients into advocates and transactions into lifelong relationships.</p>
+            <p class="mt-6 font-semibold text-center text-xl text-[#f59e0b]">Exceptional service isn’t expensive — it’s priceless. It turns clients into advocates and transactions into lifelong relationships.</p>
         </div>
     </div>
 
@@ -1927,7 +2003,7 @@ Make it encouraging, realistic, and packed with proven realtor tactics. Emphasiz
                 </li>
             </ul>
 
-            <p class="mt-8 text-xl font-bold text-center text-[#00A89D]">The secret: Systems free you to be more personal, not less.</p>
+            <p class="mt-8 text-xl font-bold text-center text-[#f59e0b]">The secret: Systems free you to be more personal, not less.</p>
         </div>
     </div>
 
@@ -1937,16 +2013,94 @@ Make it encouraging, realistic, and packed with proven realtor tactics. Emphasiz
         <p class="text-xl">When you deliver that consistently, reviews soar, referrals multiply, and your business becomes truly scalable.</p>
     </div>
 </section>
-                <section id="social-post" class="card bg-white dark:bg-gray-800 pt-6 pb-12 px-8 rounded-3xl shadow-xl animate-fade-in hidden">
-    <h2 class="text-3xl font-bold mb-6 text-[#F15A29]">Social Media Post Creator</h2>
+<section id="consultation" class="card bg-white dark:bg-gray-800 pt-6 pb-12 px-8 rounded-3xl shadow-xl animate-fade-in hidden">
+    <h2 class="text-3xl font-bold mb-6 text-[#7c3aed]">Buyer/Seller Consultation Prep Kit</h2>
+    <p class="mb-8 text-lg">Walk into every appointment confident, prepared, and client-focused. Get a complete, personalized prep kit with market insights, pricing strategy, emotional rapport builders, objection handlers, and follow-up plan — tailored to your client’s unique situation.</p>
+
+    <!-- Unified Form Wrapper -->
+    <div class="bg-gray-50 dark:bg-gray-900 p-8 md:p-10 rounded-3xl mb-12 space-y-8">
+        <!-- Quick Scenario Presets -->
+        <div>
+            <label class="block text-lg font-semibold mb-3 text-[#f59e0b]">Quick Scenario (or customize below)</label>
+            <select id="consult-preset" class="w-full p-4 rounded-xl border-2 border-[#f59e0b] bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-4 focus:ring-[#F15A29]/50">
+                <option value="custom" selected>Custom Client Situation (fill details below)</option>
+                <option value="first-time-buyer">First-Time Home Buyer</option>
+                <option value="move-up">Move-Up Buyer (Growing Family)</option>
+                <option value="downsizing">Downsizing / Empty Nester</option>
+                <option value="relocation">Relocating Buyer/Seller</option>
+                <option value="divorce">Divorce or Life Transition</option>
+                <option value="inheritance">Inherited Property / Probate</option>
+                <option value="investor">Investor / Rental Property</option>
+                <option value="retirement">Retirement / Reverse Mortgage Interest</option>
+                <option value="fsbo">FSBO Seller Considering Listing</option>
+            </select>
+        </div>
+
+        <!-- Appointment Type -->
+        <div>
+            <label class="block text-lg font-semibold mb-3 text-[#f59e0b]">Appointment Focus</label>
+            <select id="consult-type" class="w-full p-4 rounded-xl border-2 border-[#f59e0b] bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-4 focus:ring-[#F15A29]/50">
+                <option value="both">Buyer & Seller Consultation</option>
+                <option value="listing">Listing Presentation (Seller)</option>
+                <option value="buyer">Buyer Consultation Only</option>
+            </select>
+        </div>
+
+        <!-- Property & Price -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div>
+                <label class="block text-lg font-semibold mb-3 text-[#f59e0b]">Property Address (for local market context)</label>
+                <input type="text" id="consult-address" placeholder="e.g., 123 Oak Lane, Zionsville, IN" class="w-full p-4 rounded-xl border-2 border-[#f59e0b] bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-4 focus:ring-[#F15A29]/50">
+            </div>
+            <div>
+                <label class="block text-lg font-semibold mb-3 text-[#f59e0b]">Price Range / Expected Sale Price</label>
+                <input type="text" id="consult-price" placeholder="e.g., $450,000–$500,000 or $725,000 list" class="w-full p-4 rounded-xl border-2 border-[#f59e0b] bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-4 focus:ring-[#F15A29]/50">
+            </div>
+        </div>
+
+        <!-- Client Personal Details -->
+        <div>
+            <label class="block text-lg font-semibold mb-3 text-[#f59e0b]">Client Personal Details (build rapport)</label>
+            <textarea id="consult-personal" rows="4" placeholder="e.g., Married with 2 kids (ages 5 & 8), loves gardening, works in tech, relocating for job, recently divorced, has two golden retrievers" class="w-full p-4 rounded-xl border-2 border-[#f59e0b] bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 resize-none"></textarea>
+        </div>
+
+        <!-- Custom Notes -->
+        <div>
+            <label class="block text-lg font-semibold mb-3 text-[#f59e0b]">Goals, Concerns, or Timeline</label>
+            <textarea id="consult-goals" rows="4" placeholder="e.g., Must sell by June for new job, wants maximum net proceeds, concerned about market slowdown, needs to be in new school district by fall" class="w-full p-4 rounded-xl border-2 border-[#f59e0b] bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 resize-none"></textarea>
+        </div>
+
+        <!-- Generate Button -->
+        <div class="text-center">
+            <button onclick="generateConsultationKit()" class="w-full bg-gradient-to-r from-[#f59e0b] to-[#7c3aed] text-white py-5 rounded-full hover:opacity-90 transition-all font-bold text-xl shadow-2xl">
+                Generate My Consultation Prep Kit
+            </button>
+        </div>
+
+        <!-- Loading -->
+        <div id="consult-loading" class="text-center py-12 hidden">
+            <i class="fas fa-spinner fa-spin text-6xl text-[#f59e0b]"></i>
+            <p class="mt-6 text-2xl text-gray-600 dark:text-gray-400 font-medium">
+                Building your personalized prep kit... 20–40 seconds
+            </p>
+        </div>
+    </div>
+
+    <!-- Output -->
+    <div id="consult-output" class="space-y-12 hidden">
+        <!-- Filled by JS -->
+    </div>
+</section>               
+<section id="social-post" class="card bg-white dark:bg-gray-800 pt-6 pb-12 px-8 rounded-3xl shadow-xl animate-fade-in hidden">
+    <h2 class="text-3xl font-bold mb-6 text-[#7c3aed]">Social Media Post Creator</h2>
     <p class="mb-8 text-lg">Generate ready-to-post content that builds relationships, sparks engagement, and grows your reach organically.</p>
 
     <!-- Unified Form Wrapper -->
     <div class="bg-gray-50 dark:bg-gray-900 p-8 md:p-10 rounded-3xl mb-12 space-y-8">
         <!-- Post Type Dropdown -->
         <div>
-    <label class="block text-lg font-semibold mb-3 text-[#00A89D]">Post Type / Goal</label>
-    <select id="post-type" class="w-full p-4 rounded-xl border-2 border-[#00A89D] bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-4 focus:ring-[#F15A29]/50">
+    <label class="block text-lg font-semibold mb-3 text-[#f59e0b]">Post Type / Goal</label>
+    <select id="post-type" class="w-full p-4 rounded-xl border-2 border-[#f59e0b] bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-4 focus:ring-[#F15A29]/50">
         <option value="custom" selected>Custom Post Idea (type your own below)</option>
         <option value="" disabled>──────────────────</option>
         
@@ -1984,7 +2138,7 @@ Make it encouraging, realistic, and packed with proven realtor tactics. Emphasiz
 
         <!-- Custom Details with Dynamic Helper -->
         <div>
-            <label class="block text-lg font-semibold mb-3 text-[#00A89D]">
+            <label class="block text-lg font-semibold mb-3 text-[#f59e0b]">
                 Custom Idea or Additional Details
                 <span id="details-helper" class="block text-base font-normal text-gray-600 dark:text-gray-400 mt-2">
                     e.g., Shout out to my favorite local coffee shop, or quick tip on credit scores
@@ -1992,19 +2146,19 @@ Make it encouraging, realistic, and packed with proven realtor tactics. Emphasiz
             </label>
             <textarea id="post-details" rows="4" 
                       placeholder="e.g., Shout out to my favorite local coffee shop, or quick tip on credit scores" 
-                      class="w-full p-4 rounded-xl border-2 border-[#00A89D] bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-4 focus:ring-[#F15A29]/50 resize-none"></textarea>
+                      class="w-full p-4 rounded-xl border-2 border-[#f59e0b] bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-4 focus:ring-[#F15A29]/50 resize-none"></textarea>
         </div>
 
         <!-- Generate Button -->
         <div class="text-center">
-            <button onclick="generateSocialPost()" class="w-full bg-gradient-to-r from-[#00A89D] to-[#F15A29] text-white py-5 rounded-full hover:opacity-90 transition-all font-bold text-xl shadow-2xl">
+            <button onclick="generateSocialPost()" class="w-full bg-gradient-to-r from-[#f59e0b] to-[#7c3aed] text-white py-5 rounded-full hover:opacity-90 transition-all font-bold text-xl shadow-2xl">
                 Generate My Post Now
             </button>
         </div>
 
         <!-- Loading Spinner -->
         <div id="social-loading" class="text-center py-12 hidden">
-            <i class="fas fa-spinner fa-spin text-6xl text-[#00A89D]"></i>
+            <i class="fas fa-spinner fa-spin text-6xl text-[#f59e0b]"></i>
             <p class="mt-6 text-2xl text-gray-600 dark:text-gray-400 font-medium">
                 Crafting your perfect post... this takes 5–10 seconds
             </p>
@@ -2017,15 +2171,15 @@ Make it encouraging, realistic, and packed with proven realtor tactics. Emphasiz
             <!-- Post content will appear here -->
         </div>
         <div class="text-center">
-            <button onclick="copySocialPost()" class="bg-[#002B5C] hover:bg-[#002B5C]/80 text-white px-8 py-4 rounded-full font-bold transition-all shadow-md">
+            <button onclick="copySocialPost()" class="bg-[#1e3a8a] hover:bg-[#1e3a8a]/80 text-white px-8 py-4 rounded-full font-bold transition-all shadow-md">
                 📋 Copy Post to Clipboard
             </button>
         </div>
     </div>
 
     <!-- Pro Tips Card -->
-    <div class="mt-12 bg-gradient-to-br from-[#002B5C]/10 to-[#00A89D]/10 rounded-3xl p-10 border-2 border-[#00A89D]/30">
-        <h3 class="text-2xl font-bold mb-6 text-[#002B5C] dark:text-[#00A89D]">Pro Tips for Maximum Engagement</h3>
+    <div class="mt-12 bg-gradient-to-br from-[#002B5C]/10 to-[#00A89D]/10 rounded-3xl p-10 border-2 border-[#f59e0b]/30">
+        <h3 class="text-2xl font-bold mb-6 text-[#002B5C] dark:text-[#f59e0b]">Pro Tips for Maximum Engagement</h3>
         <ul class="space-y-4 text-lg text-gray-700 dark:text-gray-300 list-disc pl-6">
             <li><strong>Educational + Local + Personal + Client Wins + Value</strong> — these are your 5 content pillars</li>
             <li><strong>Ask questions</strong> — polls, "What do you think?", tag friends</li>
@@ -2039,15 +2193,15 @@ Make it encouraging, realistic, and packed with proven realtor tactics. Emphasiz
 </section>
                     
                 <section id="sales-script" class="card bg-white dark:bg-gray-800 pt-6 pb-12 px-8 rounded-3xl shadow-xl animate-fade-in hidden">
-    <h2 class="text-3xl font-bold mb-6 text-[#F15A29]">Real Estate Script Generator</h2>
+    <h2 class="text-3xl font-bold mb-6 text-[#7c3aed]">Real Estate Script Generator</h2>
     <p class="mb-8 text-lg">Generate natural, client-focused scripts for any real estate situation. Select a common scenario or type your own — get 3–5 warm, effective scripts instantly.</p>
 
     <!-- Unified Form Wrapper -->
     <div class="bg-gray-50 dark:bg-gray-900 p-8 md:p-10 rounded-3xl mb-12 space-y-8">
         <!-- Sales Situation Dropdown -->
         <div>
-            <label class="block text-lg font-semibold mb-3 text-[#00A89D]">Communication Scenario</label>
-            <select id="script-scenario-select" class="w-full p-4 rounded-xl border-2 border-[#00A89D] bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-4 focus:ring-[#F15A29]/50">
+            <label class="block text-lg font-semibold mb-3 text-[#f59e0b]">Communication Scenario</label>
+            <select id="script-scenario-select" class="w-full p-4 rounded-xl border-2 border-[#f59e0b] bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-4 focus:ring-[#F15A29]/50">
                 <option value=" " selected class="font-bold">Use Custom Scenario (type below)</option>
                 <option value="" disabled>──────────────────</option>
                 
@@ -2122,28 +2276,28 @@ Make it encouraging, realistic, and packed with proven realtor tactics. Emphasiz
 
         <!-- Custom Scenario – Only visible when custom selected -->
         <div id="custom-scenario-wrapper" class="space-y-3 hidden">
-    <label class="block text-lg font-semibold mb-3 text-[#00A89D]">Custom Scenario (type your own)</label>
+    <label class="block text-lg font-semibold mb-3 text-[#f59e0b]">Custom Scenario (type your own)</label>
     <textarea id="custom-scenario" rows="3" placeholder="Describe the exact situation (e.g., Buyer is nervous about writing an escalation clause)" 
-              class="w-full p-4 rounded-xl border-2 border-[#00A89D] bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 resize-none"></textarea>
+              class="w-full p-4 rounded-xl border-2 border-[#f59e0b] bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 resize-none"></textarea>
 </div>
 
         <!-- Additional Context -->
         <div>
-            <label class="block text-lg font-semibold mb-3 text-[#00A89D]">Additional Context (optional – helps make scripts better)</label>
+            <label class="block text-lg font-semibold mb-3 text-[#f59e0b]">Additional Context (optional – helps make scripts better)</label>
             <textarea id="script-context" rows="4" placeholder="e.g., first-time buyer, relocation from out of state, strong referral from past client, competitive market, investor looking for cash-flow properties" 
-                      class="w-full p-4 rounded-xl border-2 border-[#00A89D] bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 resize-none"></textarea>
+                      class="w-full p-4 rounded-xl border-2 border-[#f59e0b] bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 resize-none"></textarea>
         </div>
 
         <!-- Generate Button -->
         <div class="text-center">
-            <button onclick="generateSalesScript()" class="w-full bg-gradient-to-r from-[#00A89D] to-[#F15A29] text-white py-5 rounded-full hover:opacity-90 transition-all font-bold text-xl shadow-2xl">
+            <button onclick="generateSalesScript()" class="w-full bg-gradient-to-r from-[#f59e0b] to-[#7c3aed] text-white py-5 rounded-full hover:opacity-90 transition-all font-bold text-xl shadow-2xl">
                 Generate Scripts
             </button>
         </div>
 
         <!-- Loading Spinner -->
         <div id="script-loading" class="text-center py-12 hidden">
-            <i class="fas fa-spinner fa-spin text-6xl text-[#00A89D]"></i>
+            <i class="fas fa-spinner fa-spin text-6xl text-[#f59e0b]"></i>
             <p class="mt-6 text-2xl text-gray-600 dark:text-gray-400 font-medium">
                 Generating your scripts... this takes 10–20 seconds
             </p>
@@ -2156,14 +2310,14 @@ Make it encouraging, realistic, and packed with proven realtor tactics. Emphasiz
             <!-- Scripts will be inserted here -->
         </div>
         <div class="text-center">
-            <button onclick="copySalesScripts()" class="bg-[#002B5C] hover:bg-[#002B5C]/80 text-white px-8 py-4 rounded-full font-bold transition-all shadow-md">
+            <button onclick="copySalesScripts()" class="bg-[#1e3a8a] hover:bg-[#1e3a8a]/80 text-white px-8 py-4 rounded-full font-bold transition-all shadow-md">
                 📋 Copy All Scripts
             </button>
         </div>
     </div>
 </section>
         <section id="eventplanning" class="card bg-white dark:bg-gray-800 pt-6 pb-12 px-8 rounded-3xl shadow-xl animate-fade-in hidden">
-    <h2 class="text-3xl font-bold mb-6 text-[#F15A29]">Event Planning – Build Relationships & Generate Referrals</h2>
+    <h2 class="text-3xl font-bold mb-6 text-[#7c3aed]">Event Planning – Build Relationships & Generate Referrals</h2>
     <p class="mb-8 text-lg">Events are one of the highest-ROI activities for realtors. Done right, they strengthen relationships with past clients, impress referral partners (lenders, builders, stagers, etc.), and create organic leads — all while being fun and memorable. This is your complete playbook for planning, executing, and following up on events that drive business.</p>
 
     <!-- Hero Quote -->
@@ -2184,7 +2338,7 @@ Make it encouraging, realistic, and packed with proven realtor tactics. Emphasiz
                 <li><strong>Budget Rule:</strong> $20–$50 per attendee is plenty for massive ROI</li>
                 <li><strong>Measure Success:</strong> Attendance, social shares, referrals generated, partner feedback</li>
             </ul>
-            <p class="mt-6 font-semibold text-center text-xl text-[#00A89D]">One well-executed event can generate 5–20+ referrals over the next 12 months.</p>
+            <p class="mt-6 font-semibold text-center text-xl text-[#f59e0b]">One well-executed event can generate 5–20+ referrals over the next 12 months.</p>
         </div>
     </div>
 
@@ -2257,7 +2411,7 @@ Make it encouraging, realistic, and packed with proven realtor tactics. Emphasiz
         <div class="accordion-content">
             <table class="w-full text-left border-collapse mb-8">
                 <thead>
-                    <tr class="bg-[#002B5C] text-white">
+                    <tr class="bg-[#1e3a8a] text-white">
                         <th class="p-4">Timeline</th>
                         <th class="p-4">Task</th>
                         <th class="p-4">Details</th>
@@ -2361,7 +2515,7 @@ Make it encouraging, realistic, and packed with proven realtor tactics. Emphasiz
     </div>
 </section>
         <section id="underwriting-search" class="card bg-white dark:bg-gray-800 pt-6 pb-12 px-8 rounded-3xl shadow-xl animate-fade-in hidden">
-    <h2 class="text-3xl font-bold mb-6 text-[#F15A29]">Underwriting Guideline Search</h2>
+    <h2 class="text-3xl font-bold mb-6 text-[#7c3aed]">Underwriting Guideline Search</h2>
     <p class="mb-8 text-lg">Ask any underwriting question (Conventional, FHA, VA, USDA, Non-QM) and get a clear, accurate answer with confidence level.</p>
 
     <!-- Important Warning -->
@@ -2376,15 +2530,15 @@ Make it encouraging, realistic, and packed with proven realtor tactics. Emphasiz
     <div class="bg-gray-50 dark:bg-gray-900 p-8 md:p-10 rounded-3xl mb-12 space-y-8">
         <!-- Question Input -->
         <div>
-            <label class="block text-lg font-semibold mb-3 text-[#00A89D]">Your Underwriting Question</label>
+            <label class="block text-lg font-semibold mb-3 text-[#f59e0b]">Your Underwriting Question</label>
             <textarea id="uw-question" rows="4" placeholder="e.g., What are the minimum credit score requirements for FHA with compensating factors? Can a borrower with a recent bankruptcy qualify for Conventional? DTI limits for VA loans?"
-                      class="w-full p-4 rounded-xl border-2 border-[#00A89D] bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-4 focus:ring-[#F15A29]/50 resize-none"></textarea>
+                      class="w-full p-4 rounded-xl border-2 border-[#f59e0b] bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-4 focus:ring-[#F15A29]/50 resize-none"></textarea>
         </div>
 
         <!-- Loan Type Dropdown -->
         <div>
-            <label class="block text-lg font-semibold mb-3 text-[#00A89D]">Loan Type (optional)</label>
-            <select id="uw-loan-type" class="w-full p-4 rounded-xl border-2 border-[#00A89D] bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-4 focus:ring-[#F15A29]/50">
+            <label class="block text-lg font-semibold mb-3 text-[#f59e0b]">Loan Type (optional)</label>
+            <select id="uw-loan-type" class="w-full p-4 rounded-xl border-2 border-[#f59e0b] bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-4 focus:ring-[#F15A29]/50">
                 <option value="any">Any / General</option>
                 <option value="conventional">Conventional</option>
                 <option value="fha">FHA</option>
@@ -2396,14 +2550,14 @@ Make it encouraging, realistic, and packed with proven realtor tactics. Emphasiz
 
         <!-- Generate Button -->
         <div class="text-center">
-            <button onclick="searchUnderwriting()" class="w-full bg-gradient-to-r from-[#00A89D] to-[#F15A29] text-white py-5 rounded-full hover:opacity-90 transition-all font-bold text-xl shadow-2xl">
+            <button onclick="searchUnderwriting()" class="w-full bg-gradient-to-r from-[#f59e0b] to-[#7c3aed] text-white py-5 rounded-full hover:opacity-90 transition-all font-bold text-xl shadow-2xl">
                 Search Guidelines
             </button>
         </div>
 
         <!-- Loading Spinner (Large & Clear) -->
         <div id="uw-loading" class="text-center py-12 hidden">
-            <i class="fas fa-spinner fa-spin text-6xl text-[#00A89D]"></i>
+            <i class="fas fa-spinner fa-spin text-6xl text-[#f59e0b]"></i>
             <p class="mt-6 text-2xl text-gray-600 dark:text-gray-400 font-medium">
                 Researching guidelines... this takes 10–20 seconds
             </p>
@@ -2416,22 +2570,22 @@ Make it encouraging, realistic, and packed with proven realtor tactics. Emphasiz
             <!-- Response will appear here -->
         </div>
         <div class="text-center">
-            <button onclick="copyUwOutput()" class="bg-[#002B5C] hover:bg-[#002B5C]/80 text-white px-8 py-4 rounded-full font-bold transition-all shadow-md">
+            <button onclick="copyUwOutput()" class="bg-[#1e3a8a] hover:bg-[#1e3a8a]/80 text-white px-8 py-4 rounded-full font-bold transition-all shadow-md">
                 📋 Copy Response
             </button>
         </div>
     </div>
 </section>
                 <section id="blog" class="card bg-white dark:bg-gray-800 pt-6 pb-12 px-8 rounded-3xl shadow-xl animate-fade-in hidden">
-    <h2 class="text-3xl font-bold mb-6 text-[#F15A29]">Blog Creator – Authority-Building Content in Seconds</h2>
+    <h2 class="text-3xl font-bold mb-6 text-[#7c3aed]">Blog Creator – Authority-Building Content in Seconds</h2>
     <p class="mb-8 text-lg">Generate SEO + GEO-optimized blog posts that position you as the trusted expert. Select a topic from the list or type your own, choose your tone, and get a ready-to-publish post (800–1,200 words).</p>
 
     <!-- Unified Form Wrapper -->
     <div class="bg-gray-50 dark:bg-gray-900 p-8 md:p-10 rounded-3xl mb-12 space-y-8">
         <!-- Tone Selector -->
         <div>
-            <label class="block text-lg font-semibold mb-3 text-[#00A89D]">Blog Tone</label>
-            <select id="blog-tone" class="w-full p-4 rounded-xl border-2 border-[#00A89D] bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-4 focus:ring-[#F15A29]/50">
+            <label class="block text-lg font-semibold mb-3 text-[#f59e0b]">Blog Tone</label>
+            <select id="blog-tone" class="w-full p-4 rounded-xl border-2 border-[#f59e0b] bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-4 focus:ring-[#F15A29]/50">
                 <option value="Friendly & Relatable" selected>Friendly & Relatable (Recommended)</option>
                 <option value="Educational & Informative">Educational & Informative</option>
                 <option value="Professional & Authoritative">Professional & Authoritative</option>
@@ -2442,8 +2596,8 @@ Make it encouraging, realistic, and packed with proven realtor tactics. Emphasiz
 
         <!-- Topic Dropdown + Custom Input -->
         <div>
-    <label class="block text-lg font-semibold mb-3 text-[#00A89D]">Blog Topic</label>
-    <select id="blog-topic-select" class="w-full p-4 rounded-xl border-2 border-[#00A89D] bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-4 focus:ring-[#F15A29]/50 mb-4">
+    <label class="block text-lg font-semibold mb-3 text-[#f59e0b]">Blog Topic</label>
+    <select id="blog-topic-select" class="w-full p-4 rounded-xl border-2 border-[#f59e0b] bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-4 focus:ring-[#F15A29]/50 mb-4">
     <option value="" selected>Use Custom Topic (type below)</option>
     <option value="" disabled>──────────────────</option>
         
@@ -2519,20 +2673,20 @@ Make it encouraging, realistic, and packed with proven realtor tactics. Emphasiz
     </select>
 
     <input type="text" id="blog-topic" placeholder="Or type your own custom topic here" 
-           class="w-full p-4 rounded-xl border-2 border-[#00A89D] bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-4 focus:ring-[#F15A29]/50">
+           class="w-full p-4 rounded-xl border-2 border-[#f59e0b] bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-4 focus:ring-[#F15A29]/50">
     <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">Select from above or type your own — both work!</p>
 </div>
 
         <!-- Generate Button -->
         <div class="text-center">
-            <button onclick="generateBlog()" class="w-full bg-gradient-to-r from-[#00A89D] to-[#F15A29] text-white py-5 rounded-full hover:opacity-90 transition-all font-bold text-xl shadow-2xl">
+            <button onclick="generateBlog()" class="w-full bg-gradient-to-r from-[#f59e0b] to-[#7c3aed] text-white py-5 rounded-full hover:opacity-90 transition-all font-bold text-xl shadow-2xl">
                 Generate Blog Post
             </button>
         </div>
 
         <!-- Loading Spinner (Now Matches Social Post & Sales Script) -->
         <div id="blog-loading" class="text-center py-12 hidden">
-            <i class="fas fa-spinner fa-spin text-6xl text-[#00A89D]"></i>
+            <i class="fas fa-spinner fa-spin text-6xl text-[#f59e0b]"></i>
             <p class="mt-6 text-2xl text-gray-600 dark:text-gray-400 font-medium">
                 Generating your blog post... this takes 20–40 seconds
             </p>
@@ -2543,9 +2697,280 @@ Make it encouraging, realistic, and packed with proven realtor tactics. Emphasiz
     <div id="blog-output" class="bg-white dark:bg-gray-800 p-10 rounded-3xl shadow-inner border border-gray-200 dark:border-gray-700 min-h-96">
         <p class="text-gray-500 dark:text-gray-400 italic text-center py-20">Select or type a topic → choose tone → click Generate to create your blog post</p>
     </div>
+    </section>
+    <section id="listing-description" class="card bg-white dark:bg-gray-800 pt-6 pb-12 px-8 rounded-3xl shadow-xl animate-fade-in hidden">
+    <h2 class="text-3xl font-bold mb-6 text-[#7c3aed]">Smart Listing Description Generator</h2>
+    <p class="mb-8 text-lg">Create emotionally compelling, SEO-optimized listing descriptions in seconds. Choose tone, select features, add custom highlights — get 3 ready-to-use versions instantly.</p>
+
+    <!-- Unified Form Wrapper -->
+    <div class="bg-gray-50 dark:bg-gray-900 p-8 md:p-10 rounded-3xl mb-12 space-y-8">
+        <!-- Property Address (Optional) -->
+        <div>
+            <label class="block text-lg font-semibold mb-3 text-[#f59e0b]">Property Address (optional – helps with local GEO)</label>
+            <input type="text" id="listing-address" placeholder="e.g., 123 Main St, Carmel, IN 46032" 
+                   class="w-full p-4 rounded-xl border-2 border-[#f59e0b] bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-4 focus:ring-[#F15A29]/50">
+        </div>
+
+        <!-- Tone Selector -->
+        <div>
+            <label class="block text-lg font-semibold mb-3 text-[#f59e0b]">Description Tone</label>
+            <select id="listing-tone" class="w-full p-4 rounded-xl border-2 border-[#f59e0b] bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-4 focus:ring-[#F15A29]/50">
+                <option value="Warm & Family-Friendly" selected>Warm & Family-Friendly (Recommended)</option>
+                <option value="Luxury & Elegant">Luxury & Elegant</option>
+                <option value="Modern & Sleek">Modern & Sleek</option>
+                <option value="Charming & Cozy">Charming & Cozy</option>
+                <option value="Investment-Focused">Investment-Focused</option>
+            </select>
+        </div>
+
+        <!-- Feature Checklist -->
+        <!-- Feature Checklist – Expanded & Organized -->
+<div>
+    <label class="block text-lg font-semibold mb-3 text-[#f59e0b]">Key Features (check all that apply)</label>
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <!-- Kitchen & Interior -->
+        <label class="flex items-center space-x-3 cursor-pointer">
+            <input type="checkbox" value="Gourmet chef's kitchen with quartz countertops and stainless steel appliances" class="form-checkbox h-5 w-5 text-[#7c3aed]">
+            <span>Gourmet Kitchen</span>
+        </label>
+        <label class="flex items-center space-x-3 cursor-pointer">
+            <input type="checkbox" value="Open concept floor plan perfect for entertaining" class="form-checkbox h-5 w-5 text-[#7c3aed]">
+            <span>Open Floor Plan</span>
+        </label>
+        <label class="flex items-center space-x-3 cursor-pointer">
+            <input type="checkbox" value="Hardwood floors throughout main living areas" class="form-checkbox h-5 w-5 text-[#7c3aed]">
+            <span>Hardwood Floors</span>
+        </label>
+        <label class="flex items-center space-x-3 cursor-pointer">
+            <input type="checkbox" value="Luxurious primary suite with spa-like bathroom and walk-in closet" class="form-checkbox h-5 w-5 text-[#7c3aed]">
+            <span>Primary Suite Retreat</span>
+        </label>
+        <label class="flex items-center space-x-3 cursor-pointer">
+            <input type="checkbox" value="Cozy fireplace in family room or living area" class="form-checkbox h-5 w-5 text-[#7c3aed]">
+            <span>Fireplace</span>
+        </label>
+        <label class="flex items-center space-x-3 cursor-pointer">
+            <input type="checkbox" value="Dedicated home office or bonus room" class="form-checkbox h-5 w-5 text-[#7c3aed]">
+            <span>Home Office</span>
+        </label>
+        <label class="flex items-center space-x-3 cursor-pointer">
+            <input type="checkbox" value="Finished basement with recreation room, theater, or gym" class="form-checkbox h-5 w-5 text-[#7c3aed]">
+            <span>Finished Basement</span>
+        </label>
+        <label class="flex items-center space-x-3 cursor-pointer">
+            <input type="checkbox" value="Abundant natural light with large windows or skylights" class="form-checkbox h-5 w-5 text-[#7c3aed]">
+            <span>Natural Light</span>
+        </label>
+
+        <!-- Outdoor & Lot -->
+        <label class="flex items-center space-x-3 cursor-pointer">
+            <input type="checkbox" value="Sparkling in-ground pool and outdoor entertaining space" class="form-checkbox h-5 w-5 text-[#7c3aed]">
+            <span>Pool / Outdoor Oasis</span>
+        </label>
+        <label class="flex items-center space-x-3 cursor-pointer">
+            <input type="checkbox" value="Expansive private lot with mature trees and landscaping" class="form-checkbox h-5 w-5 text-[#7c3aed]">
+            <span>Large Private Lot</span>
+        </label>
+        <label class="flex items-center space-x-3 cursor-pointer">
+            <input type="checkbox" value="Covered patio, deck, or screened porch" class="form-checkbox h-5 w-5 text-[#7c3aed]">
+            <span>Covered Outdoor Space</span>
+        </label>
+        <label class="flex items-center space-x-3 cursor-pointer">
+            <input type="checkbox" value="Fenced yard ideal for pets and play" class="form-checkbox h-5 w-5 text-[#7c3aed]">
+            <span>Fenced Yard</span>
+        </label>
+
+        <!-- Garage & Storage -->
+        <label class="flex items-center space-x-3 cursor-pointer">
+            <input type="checkbox" value="Oversized 3-car garage with extra storage" class="form-checkbox h-5 w-5 text-[#7c3aed]">
+            <span>3-Car Garage</span>
+        </label>
+        <label class="flex items-center space-x-3 cursor-pointer">
+            <input type="checkbox" value="Ample storage throughout including walk-in pantry and attic" class="form-checkbox h-5 w-5 text-[#7c3aed]">
+            <span>Ample Storage</span>
+        </label>
+
+        <!-- Location & Updates -->
+        <label class="flex items-center space-x-3 cursor-pointer">
+            <input type="checkbox" value="Prime location walking distance to top-rated schools, parks, and shopping" class="form-checkbox h-5 w-5 text-[#7c3aed]">
+            <span>Walkable Location</span>
+        </label>
+        <label class="flex items-center space-x-3 cursor-pointer">
+            <input type="checkbox" value="Recently updated with new roof, HVAC, windows, or flooring" class="form-checkbox h-5 w-5 text-[#7c3aed]">
+            <span>Recently Updated</span>
+        </label>
+        <label class="flex items-center space-x-3 cursor-pointer">
+            <input type="checkbox" value="Quiet cul-de-sac in highly desirable neighborhood" class="form-checkbox h-5 w-5 text-[#7c3aed]">
+            <span>Cul-de-Sac</span>
+        </label>
+        <label class="flex items-center space-x-3 cursor-pointer">
+            <input type="checkbox" value="Stunning curb appeal with professional landscaping" class="form-checkbox h-5 w-5 text-[#7c3aed]">
+            <span>Curb Appeal</span>
+        </label>
+
+        <!-- Bonus Luxury -->
+        <label class="flex items-center space-x-3 cursor-pointer">
+            <input type="checkbox" value="Smart home features including thermostat, lighting, and security" class="form-checkbox h-5 w-5 text-[#7c3aed]">
+            <span>Smart Home Features</span>
+        </label>
+        <label class="flex items-center space-x-3 cursor-pointer">
+            <input type="checkbox" value="Wine cellar, wet bar, or built-in entertainment center" class="form-checkbox h-5 w-5 text-[#7c3aed]">
+            <span>Wine Cellar / Wet Bar</span>
+        </label>
+        <label class="flex items-center space-x-3 cursor-pointer">
+            <input type="checkbox" value="In-law suite or guest quarters with separate entrance" class="form-checkbox h-5 w-5 text-[#7c3aed]">
+            <span>In-Law Suite</span>
+        </label>
+        <label class="flex items-center space-x-3 cursor-pointer">
+            <input type="checkbox" value="Breathtaking views of mountains, lake, or golf course" class="form-checkbox h-5 w-5 text-[#7c3aed]">
+            <span>Stunning Views</span>
+        </label>
+    </div>
+</div>
+
+        <!-- Custom Highlights -->
+        <div>
+            <label class="block text-lg font-semibold mb-3 text-[#f59e0b]">Custom Highlights (optional – your unique touches)</label>
+            <textarea id="listing-custom" rows="4" placeholder="e.g., breathtaking sunset views from the deck, mature oak trees, brand new composite deck, walk-in pantry, heated floors in primary bath" 
+                      class="w-full p-4 rounded-xl border-2 border-[#f59e0b] bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-4 focus:ring-[#F15A29]/50 resize-none"></textarea>
+        </div>
+
+        <!-- Generate Button -->
+        <div class="text-center">
+            <button onclick="generateListingDescription()" class="w-full bg-gradient-to-r from-[#f59e0b] to-[#7c3aed] text-white py-5 rounded-full hover:opacity-90 transition-all font-bold text-xl shadow-2xl">
+                Generate Descriptions
+            </button>
+        </div>
+
+        <!-- Loading -->
+        <div id="listing-loading" class="text-center py-12 hidden">
+            <i class="fas fa-spinner fa-spin text-6xl text-[#f59e0b]"></i>
+            <p class="mt-6 text-2xl text-gray-600 dark:text-gray-400 font-medium">
+                Crafting your listing descriptions... this takes 15–30 seconds
+            </p>
+        </div>
+    </div>
+
+    <!-- Output -->
+    <div id="listing-output" class="space-y-12 hidden">
+        <!-- Descriptions will be inserted here by JS -->
+    </div>
+</section>
+
+<section id="open-house" class="card bg-white dark:bg-gray-800 pt-6 pb-12 px-8 rounded-3xl shadow-xl animate-fade-in hidden">
+    <h2 class="text-3xl font-bold mb-6 text-[#7c3aed]">Open House Script & Strategy Generator</h2>
+    <p class="mb-8 text-lg">Run confident, lead-generating open houses that impress buyers and partners. Get personalized scripts, talking points, objection handlers, lead capture strategy, and follow-up templates — tailored to your listing and goals.</p>
+
+    <!-- Unified Form Wrapper -->
+    <div class="bg-gray-50 dark:bg-gray-900 p-8 md:p-10 rounded-3xl mb-12 space-y-8">
+        <!-- Primary Goal -->
+        <div>
+            <label class="block text-lg font-semibold mb-3 text-[#f59e0b]">Primary Goal for This Open House</label>
+            <select id="oh-goal" class="w-full p-4 rounded-xl border-2 border-[#f59e0b] bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-4 focus:ring-[#F15A29]/50">
+                <option value="leads">Maximize Lead Generation</option>
+                <option value="impressions">Create Buzz & Impressions</option>
+                <option value="partners">Strengthen Referral Partner Relationships</option>
+                <option value="community">Build Local Community Presence</option>
+            </select>
+        </div>
+
+        <!-- Property Details -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div>
+                <label class="block text-lg font-semibold mb-3 text-[#f59e0b]">Property Type</label>
+                <select id="oh-property-type" class="w-full p-4 rounded-xl border-2 border-[#f59e0b] bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-4 focus:ring-[#F15A29]/50">
+                    <option>Single Family Home</option>
+                    <option>Condo / Townhome</option>
+                    <option>Luxury Property</option>
+                    <option>New Construction</option>
+                    <option>Investment Property</option>
+                    <option>Fixer-Upper</option>
+                </select>
+            </div>
+            <div>
+                <label class="block text-lg font-semibold mb-3 text-[#f59e0b]">Price Range</label>
+                <select id="oh-price" class="w-full p-4 rounded-xl border-2 border-[#f59e0b] bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-4 focus:ring-[#F15A29]/50">
+                    <option>Under $400k</option>
+                    <option>$400k–$600k</option>
+                    <option>$600k–$900k</option>
+                    <option>$900k–$1.5M</option>
+                    <option>Over $1.5M (Luxury)</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Time of Year & Agent Style -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div>
+                <label class="block text-lg font-semibold mb-3 text-[#f59e0b]">Time of Year</label>
+                <select id="oh-season" class="w-full p-4 rounded-xl border-2 border-[#f59e0b] bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-4 focus:ring-[#F15A29]/50">
+                    <option>Spring Market</option>
+                    <option>Summer</option>
+                    <option>Back-to-School (Fall)</option>
+                    <option>Holiday Season</option>
+                    <option>Winter/Slow Season</option>
+                </select>
+            </div>
+            <div>
+                <label class="block text-lg font-semibold mb-3 text-[#f59e0b]">Your Natural Style</label>
+                <select id="oh-personality" class="w-full p-4 rounded-xl border-2 border-[#f59e0b] bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-4 focus:ring-[#F15A29]/50">
+                    <option>Friendly & Approachable</option>
+                    <option>Professional & Polished</option>
+                    <option>Energetic & Enthusiastic</option>
+                    <option>Calm & Knowledgeable</option>
+                    <option>Warm & Relational</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Feature Checklist – Expanded -->
+        <div>
+            <label class="block text-lg font-semibold mb-3 text-[#f59e0b]">Key Features to Highlight (check all that apply)</label>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <label class="flex items-center space-x-3"><input type="checkbox" value="Gourmet kitchen with quartz counters and stainless appliances" class="form-checkbox h-5 w-5 text-[#7c3aed]"><span>Gourmet Kitchen</span></label>
+                <label class="flex items-center space-x-3"><input type="checkbox" value="Open concept layout perfect for entertaining" class="form-checkbox h-5 w-5 text-[#7c3aed]"><span>Open Layout</span></label>
+                <label class="flex items-center space-x-3"><input type="checkbox" value="Luxurious primary suite with spa bath" class="form-checkbox h-5 w-5 text-[#7c3aed]"><span>Primary Suite</span></label>
+                <label class="flex items-center space-x-3"><input type="checkbox" value="Outdoor living space with patio/deck" class="form-checkbox h-5 w-5 text-[#7c3aed]"><span>Outdoor Space</span></label>
+                <label class="flex items-center space-x-3"><input type="checkbox" value="Finished basement or bonus room" class="form-checkbox h-5 w-5 text-[#7c3aed]"><span>Finished Basement</span></label>
+                <label class="flex items-center space-x-3"><input type="checkbox" value="Dedicated home office" class="form-checkbox h-5 w-5 text-[#7c3aed]"><span>Home Office</span></label>
+                <label class="flex items-center space-x-3"><input type="checkbox" value="Walkable to schools, parks, shopping" class="form-checkbox h-5 w-5 text-[#7c3aed]"><span>Walkable Location</span></label>
+                <label class="flex items-center space-x-3"><input type="checkbox" value="Recently updated (roof, HVAC, windows)" class="form-checkbox h-5 w-5 text-[#7c3aed]"><span>Recently Updated</span></label>
+                <label class="flex items-center space-x-3"><input type="checkbox" value="Pool or outdoor entertainment area" class="form-checkbox h-5 w-5 text-[#7c3aed]"><span>Pool / Oasis</span></label>
+                <label class="flex items-center space-x-3"><input type="checkbox" value="3+ car garage" class="form-checkbox h-5 w-5 text-[#7c3aed]"><span>3-Car Garage</span></label>
+                <label class="flex items-center space-x-3"><input type="checkbox" value="Smart home features" class="form-checkbox h-5 w-5 text-[#7c3aed]"><span>Smart Home</span></label>
+                <label class="flex items-center space-x-3"><input type="checkbox" value="Stunning views" class="form-checkbox h-5 w-5 text-[#7c3aed]"><span>Stunning Views</span></label>
+            </div>
+        </div>
+
+        <!-- Custom Notes -->
+        <div>
+            <label class="block text-lg font-semibold mb-3 text-[#f59e0b]">Custom Highlights or Notes</label>
+            <textarea id="oh-custom" rows="4" placeholder="e.g., new roof 2024, walk to downtown, builder warranty remaining, amazing sunset views" class="w-full p-4 rounded-xl border-2 border-[#f59e0b] bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 resize-none"></textarea>
+        </div>
+
+        <!-- Generate Button -->
+        <div class="text-center">
+            <button onclick="generateOpenHouse()" class="w-full bg-gradient-to-r from-[#f59e0b] to-[#7c3aed] text-white py-5 rounded-full hover:opacity-90 transition-all font-bold text-xl shadow-2xl">
+                Generate Open House Kit
+            </button>
+        </div>
+
+        <!-- Loading -->
+        <div id="oh-loading" class="text-center py-12 hidden">
+            <i class="fas fa-spinner fa-spin text-6xl text-[#f59e0b]"></i>
+            <p class="mt-6 text-2xl text-gray-600 dark:text-gray-400 font-medium">
+                Building your complete open house strategy... 20–40 seconds
+            </p>
+        </div>
+    </div>
+
+    <!-- Output -->
+    <div id="oh-output" class="space-y-12 hidden">
+        <!-- Filled by JS -->
+    </div>
 </section>
         <section id="books" class="card bg-white dark:bg-gray-800 pt-6 pb-12 px-8 rounded-3xl shadow-xl animate-fade-in hidden">
-            <h2 class="text-3xl font-bold mb-6 text-[#F15A29]">Recommended Books</h2>
+            <h2 class="text-3xl font-bold mb-6 text-[#7c3aed]">Recommended Books</h2>
             <p class="mb-4">Explore these highly rated books to enhance your skills in sales, networking, and more.</p>
             <div class="accordion">
                 <button onclick="toggleAccordion(this)" class="w-full text-left text-xl font-semibold py-4 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">Sales <i class="fas fa-chevron-down"></i></button>
@@ -2649,12 +3074,12 @@ Make it encouraging, realistic, and packed with proven realtor tactics. Emphasiz
         </section>
                 <!-- AI Chat Section -->
         <section id="ai-chat" class="card bg-white dark:bg-gray-800 pt-6 pb-12 px-8 rounded-3xl shadow-xl animate-fade-in hidden">
-            <h2 class="text-3xl font-bold mb-6 text-[#F15A29]">AI Chat Assistant</h2>
+            <h2 class="text-3xl font-bold mb-6 text-[#7c3aed]">AI Chat Assistant</h2>
             <p class="mb-8 text-lg">Ask me anything — sales scripts, market updates, marketing ideas, motivation, or just chat. I'm here to help you win.</p>
 
             <div class="flex flex-col h-96 md:h-full max-h-screen">
                 <!-- Chat Messages -->
-                <div id="chat-messages" class="flex-1 overflow-y-auto mb-6 space-y-4 p-4 bg-gray-50 dark:bg-gray-900 rounded-2xl border border-[#00A89D]/30">
+                <div id="chat-messages" class="flex-1 overflow-y-auto mb-6 space-y-4 p-4 bg-gray-50 dark:bg-gray-900 rounded-2xl border border-[#f59e0b]/30">
                     <div class="text-center text-gray-500 dark:text-gray-400 italic">
                         Start a conversation below...
                     </div>
@@ -2663,57 +3088,57 @@ Make it encouraging, realistic, and packed with proven realtor tactics. Emphasiz
                 <!-- Input Area -->
                 <div class="flex gap-4">
                     <input type="text" id="chat-input" placeholder="Type your message..." 
-                           class="flex-1 p-4 rounded-full border border-[#00A89D] focus:ring-[#F15A29] focus:outline-none text-lg">
-                    <button onclick="sendChatMessage()" class="bg-gradient-to-r from-[#00A89D] to-[#F15A29] text-white px-8 py-4 rounded-full hover:opacity-90 transition-all font-bold shadow-lg">
+                           class="flex-1 p-4 rounded-full border border-[#f59e0b] focus:ring-[#F15A29] focus:outline-none text-lg">
+                    <button onclick="sendChatMessage()" class="bg-gradient-to-r from-[#f59e0b] to-[#7c3aed] text-white px-8 py-4 rounded-full hover:opacity-90 transition-all font-bold shadow-lg">
                         Send
                     </button>
                 </div>
             </div>
 
             <div id="chat-loading" class="mt-8 text-center hidden">
-                <i class="fas fa-spinner fa-spin text-4xl text-[#00A89D]"></i>
+                <i class="fas fa-spinner fa-spin text-4xl text-[#f59e0b]"></i>
                 <p class="mt-4 text-xl">Thinking...</p>
             </div>
         </section>
                 <section id="calculator" class="card bg-white dark:bg-gray-800 pt-6 pb-12 px-8 rounded-3xl shadow-xl animate-fade-in hidden">
-            <h2 class="text-3xl font-bold mb-6 text-[#F15A29]">Advanced Payment Calculator</h2>
+            <h2 class="text-3xl font-bold mb-6 text-[#7c3aed]">Advanced Payment Calculator</h2>
             <p class="mb-6">Estimate monthly payments with taxes, insurance, PMI, extra payments, and biweekly options. See lifetime interest, payoff timeline, and potential savings.</p>
 
             <form id="calc-form" class="space-y-4 calc-grid gap-4">
                 <label class="block"><strong>Loan Amount ($):</strong> 
-                    <input type="number" id="loanAmount" min="50000" value="300000" class="w-full p-2 rounded-lg border border-[#00A89D] focus:ring-[#F15A29]">
+                    <input type="number" id="loanAmount" min="50000" value="300000" class="w-full p-2 rounded-lg border border-[#f59e0b] focus:ring-[#F15A29]">
                 </label>
                 <label class="block"><strong>Interest Rate (%):</strong> 
-                    <input type="number" id="rate" min="0" step="0.001" value="6.5" class="w-full p-2 rounded-lg border border-[#00A89D] focus:ring-[#F15A29]">
+                    <input type="number" id="rate" min="0" step="0.001" value="6.5" class="w-full p-2 rounded-lg border border-[#f59e0b] focus:ring-[#F15A29]">
                 </label>
                 <label class="block"><strong>Loan Term (years):</strong> 
-                    <input type="number" id="term" min="10" max="40" value="30" class="w-full p-2 rounded-lg border border-[#00A89D] focus:ring-[#F15A29]">
+                    <input type="number" id="term" min="10" max="40" value="30" class="w-full p-2 rounded-lg border border-[#f59e0b] focus:ring-[#F15A29]">
                 </label>
                 <label class="block"><strong>Annual Property Taxes ($):</strong> 
-                    <input type="number" id="taxes" value="3600" class="w-full p-2 rounded-lg border border-[#00A89D] focus:ring-[#F15A29]">
+                    <input type="number" id="taxes" value="3600" class="w-full p-2 rounded-lg border border-[#f59e0b] focus:ring-[#F15A29]">
                 </label>
                 <label class="block"><strong>Annual Homeowners Insurance ($):</strong> 
-                    <input type="number" id="insurance" value="1500" class="w-full p-2 rounded-lg border border-[#00A89D] focus:ring-[#F15A29]">
+                    <input type="number" id="insurance" value="1500" class="w-full p-2 rounded-lg border border-[#f59e0b] focus:ring-[#F15A29]">
                 </label>
                 <label class="block"><strong>PMI Rate (% of loan, if &lt;20% down):</strong> 
-    <input type="number" id="pmi" step="0.01" value="0" class="w-full p-2 rounded-lg border border-[#00A89D] focus:ring-[#F15A29]">
+    <input type="number" id="pmi" step="0.01" value="0" class="w-full p-2 rounded-lg border border-[#f59e0b] focus:ring-[#F15A29]">
 </label>
                 <label class="block"><strong>Extra Monthly Payment ($):</strong> 
-                    <input type="number" id="extraMonthly" value="0" placeholder="e.g., 200" class="w-full p-2 rounded-lg border border-[#00A89D] focus:ring-[#F15A29]">
+                    <input type="number" id="extraMonthly" value="0" placeholder="e.g., 200" class="w-full p-2 rounded-lg border border-[#f59e0b] focus:ring-[#F15A29]">
                 </label>
                 <label class="block flex items-center">
-                    <input type="checkbox" id="biweekly" class="mr-3 h-5 w-5 text-[#00A89D]">
+                    <input type="checkbox" id="biweekly" class="mr-3 h-5 w-5 text-[#f59e0b]">
                     <strong>Make Biweekly Payments (26 per year)</strong>
                 </label>
             </form>
 
-            <button type="button" onclick="calculateAdvanced()" class="mt-8 bg-gradient-to-r from-[#00A89D] to-[#F15A29] text-white px-8 py-4 rounded-full hover:opacity-90 w-full font-bold text-lg">
+            <button type="button" onclick="calculateAdvanced()" class="mt-8 bg-gradient-to-r from-[#f59e0b] to-[#7c3aed] text-white px-8 py-4 rounded-full hover:opacity-90 w-full font-bold text-lg">
            
             <div id="calc-output" class="mt-8 space-y-6"></div>
         </section>
                 <!-- MISSING SECTION: Value Vault -->
                 <section id="value-vault" class="card bg-white dark:bg-gray-800 pt-6 pb-12 px-8 rounded-3xl shadow-xl animate-fade-in hidden">
-    <h2 class="text-3xl font-bold mb-6 text-[#F15A29]">Value Vault – Your Ultimate Resource Library</h2>
+    <h2 class="text-3xl font-bold mb-6 text-[#7c3aed]">Value Vault – Your Ultimate Resource Library</h2>
     <p class="mb-8 text-lg">Packed with client-facing guides, partner tools, pop-by ideas, objection handlers, social scripts, and more. Everything here is designed to help you deliver massive value first — building trust, generating referrals, and winning more listings & buyers naturally.</p>
 
     <!-- Referral Partners + Follow-Up -->
@@ -2748,11 +3173,11 @@ Make it encouraging, realistic, and packed with proven realtor tactics. Emphasiz
         <div class="accordion-content">
             <p class="mb-4">Share these trusted, high-value resources instantly with buyers, sellers, and past clients. Position yourself as the go-to expert.</p>
             <ul class="space-y-6">
-                <li><strong>Home Buyer’s Guide (2026 Edition)</strong> – Comprehensive step-by-step process: <a href="https://www.hud.gov/sites/dfiles/PA/documents/BuyingAHouse.pdf" target="_blank" class="text-[#00A89D] underline hover:text-[#F15A29]">HUD Buyer Guide</a></li>
-                <li><strong>Home Seller’s Checklist</strong> – Prep, pricing, staging tips: <a href="https://www.realtor.com/advice/sell/home-selling-checklist/" target="_blank" class="text-[#00A89D] underline hover:text-[#F15A29]">Realtor.com Seller Checklist</a></li>
-                <li><strong>Rent vs. Buy Calculator</strong> – Interactive tool: <a href="https://www.nytimes.com/interactive/2024/upshot/buy-rent-calculator.html" target="_blank" class="text-[#00A89D] underline hover:text-[#F15A29]">NYT Rent vs Buy Calculator</a></li>
-                <li><strong>Home Value Estimator</strong> – Quick online tool (customize with your link): <a href="https://www.zillow.com/home-values/" target="_blank" class="text-[#00A89D] underline hover:text-[#F15A29]">Zillow Zestimate</a> or your branded version</li>
-                <li><strong>Moving Checklist & Timeline</strong> – Comprehensive printable: <a href="https://www.realtor.com/advice/move/moving-checklist/" target="_blank" class="text-[#00A89D] underline hover:text-[#F15A29]">Realtor.com Moving Checklist</a></li>
+                <li><strong>Home Buyer’s Guide (2026 Edition)</strong> – Comprehensive step-by-step process: <a href="https://www.hud.gov/sites/dfiles/PA/documents/BuyingAHouse.pdf" target="_blank" class="text-[#f59e0b] underline hover:text-[#7c3aed]">HUD Buyer Guide</a></li>
+                <li><strong>Home Seller’s Checklist</strong> – Prep, pricing, staging tips: <a href="https://www.realtor.com/advice/sell/home-selling-checklist/" target="_blank" class="text-[#f59e0b] underline hover:text-[#7c3aed]">Realtor.com Seller Checklist</a></li>
+                <li><strong>Rent vs. Buy Calculator</strong> – Interactive tool: <a href="https://www.nytimes.com/interactive/2024/upshot/buy-rent-calculator.html" target="_blank" class="text-[#f59e0b] underline hover:text-[#7c3aed]">NYT Rent vs Buy Calculator</a></li>
+                <li><strong>Home Value Estimator</strong> – Quick online tool (customize with your link): <a href="https://www.zillow.com/home-values/" target="_blank" class="text-[#f59e0b] underline hover:text-[#7c3aed]">Zillow Zestimate</a> or your branded version</li>
+                <li><strong>Moving Checklist & Timeline</strong> – Comprehensive printable: <a href="https://www.realtor.com/advice/move/moving-checklist/" target="_blank" class="text-[#f59e0b] underline hover:text-[#7c3aed]">Realtor.com Moving Checklist</a></li>
                 <li><strong>Home Maintenance Calendar</strong> – Seasonal tasks to protect value</li>
                 <li><strong>Local School & Neighborhood Reports</strong> – GreatSchools.org or your custom market reports</li>
                 <li><strong>First-Time Buyer Incentives & Programs</strong> – Links to state-specific assistance (share relevant ones for your area)</li>
@@ -3051,7 +3476,7 @@ const quotes = [
 // Generate quote (for Dashboard)
 function generateQuote() {
     const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
-    const formatted = `<span class="not-italic font-bold text-[#00A89D]">"</span>${randomQuote}<span class="not-italic font-bold text-[#00A89D]">"</span>`;
+    const formatted = `<span class="not-italic font-bold text-[#f59e0b]">"</span>${randomQuote}<span class="not-italic font-bold text-[#f59e0b]">"</span>`;
 
     const persistent = document.getElementById('persistent-quote');
     if (persistent) persistent.innerHTML = formatted;
@@ -3082,7 +3507,7 @@ const activities = {
 function generateTimeBlock() {
     const freq = document.getElementById('frequency').value.toLowerCase();
     const list = activities[freq].map(act => `<li class="mb-2">${act}</li>`).join('');
-    document.getElementById('time-block-output').innerHTML = `<h4 class="text-2xl font-medium mb-4 capitalize text-[#00A89D]">${freq} Schedule</h4><ul class="space-y-2">${list}</ul>`;
+    document.getElementById('time-block-output').innerHTML = `<h4 class="text-2xl font-medium mb-4 capitalize text-[#f59e0b]">${freq} Schedule</h4><ul class="space-y-2">${list}</ul>`;
 }
 function showSection(id) {
     document.querySelectorAll('main section').forEach(sec => sec.classList.add('hidden'));
@@ -3097,7 +3522,7 @@ function cycleActivities() {
     const shuffled = [...activities[freq]].sort(() => 0.5 - Math.random());
     const selection = shuffled.slice(0, Math.floor(Math.random() * 6) + 5);
     const list = selection.map(act => `<li class="mb-2">${act}</li>`).join('');
-    document.getElementById('time-block-output').innerHTML = `<h4 class="text-2xl font-medium mb-4 capitalize text-[#00A89D]">Cycled ${freq} Ideas</h4><ul class="space-y-2">${list}</ul>`;
+    document.getElementById('time-block-output').innerHTML = `<h4 class="text-2xl font-medium mb-4 capitalize text-[#f59e0b]">Cycled ${freq} Ideas</h4><ul class="space-y-2">${list}</ul>`;
 }
 async function generateSalesScript() {
     const dropdown = document.getElementById('script-scenario-select');
@@ -3187,7 +3612,7 @@ Focus on building connection and trust — not closing the deal.`;
                         <div class="flex-shrink-0 w-14 h-14 rounded-full bg-[#F15A29] flex items-center justify-center text-white font-bold text-2xl shadow-lg">
                             ${scriptNumber}
                         </div>
-                        <h3 class="text-2xl font-bold text-[#F15A29]">${heading.trim()}</h3>
+                        <h3 class="text-2xl font-bold text-[#7c3aed]">${heading.trim()}</h3>
                     </div>
                     <div class="prose prose-lg dark:prose-invert max-w-none leading-relaxed text-gray-800 dark:text-gray-200">
                         ${content.trim()}
@@ -3203,7 +3628,7 @@ Focus on building connection and trust — not closing the deal.`;
                 ${outputHtml}
             </div>
             <div class="text-center mt-8">
-                <button onclick="copySalesScripts()" class="bg-[#002B5C] hover:bg-[#002B5C]/80 text-white px-10 py-4 rounded-full font-bold transition-all shadow-lg text-lg">
+                <button onclick="copySalesScripts()" class="bg-[#1e3a8a] hover:bg-[#1e3a8a]/80 text-white px-10 py-4 rounded-full font-bold transition-all shadow-lg text-lg">
                     📋 Copy All Scripts
                 </button>
             </div>
@@ -3346,7 +3771,7 @@ Make it feel like it comes from a trusted friend who happens to be a mortgage ex
                 ${marked.parse(post)}
             </div>
             <div class="text-center">
-                <button onclick="copySocialPost()" class="bg-[#002B5C] hover:bg-[#002B5C]/80 text-white px-8 py-4 rounded-full font-bold transition-all shadow-md">
+                <button onclick="copySocialPost()" class="bg-[#1e3a8a] hover:bg-[#1e3a8a]/80 text-white px-8 py-4 rounded-full font-bold transition-all shadow-md">
                     📋 Copy Post to Clipboard
                 </button>
             </div>
@@ -3638,7 +4063,7 @@ Double-check your logic before finalizing. Accuracy is paramount.`;
                 </p>
             </div>
             <div class="text-center mt-8">
-                <button onclick="copyUwOutput()" class="bg-[#002B5C] hover:bg-[#002B5C]/80 text-white px-8 py-4 rounded-full font-bold transition-all shadow-md">
+                <button onclick="copyUwOutput()" class="bg-[#1e3a8a] hover:bg-[#1e3a8a]/80 text-white px-8 py-4 rounded-full font-bold transition-all shadow-md">
                     📋 Copy Response
                 </button>
             </div>
@@ -3683,7 +4108,7 @@ async function sendChatMessage() {
                 </div>
             </div>
             <div class="text-left mb-4">
-                <div class="inline-block bg-[#002B5C] text-white rounded-2xl px-6 py-4 max-w-lg shadow-lg">
+                <div class="inline-block bg-[#1e3a8a] text-white rounded-2xl px-6 py-4 max-w-lg shadow-lg">
                     <p class="italic">I've moved you to the <strong>Underwriting Guideline Search</strong> tool for the most accurate answer. Your question is pre-filled — just hit "Search Guidelines" or review the result!</p>
                 </div>
             </div>
@@ -3730,7 +4155,7 @@ async function sendChatMessage() {
 
         messagesDiv.innerHTML += `
             <div class="text-left mb-4">
-                <div class="inline-block bg-[#002B5C] text-white rounded-2xl px-6 py-4 max-w-lg shadow-lg">
+                <div class="inline-block bg-[#1e3a8a] text-white rounded-2xl px-6 py-4 max-w-lg shadow-lg">
                     ${marked.parse(aiReply)}
                 </div>
             </div>
@@ -3813,13 +4238,13 @@ function calculateAdvanced() {
     document.getElementById('calc-output').innerHTML = `
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
             <div class="p-8 bg-white dark:bg-gray-800 rounded-3xl shadow-2xl border-4 border-[#002B5C]">
-                <h4 class="text-2xl font-bold mb-8 text-[#002B5C] dark:text-[#00A89D]">Standard ${termYears}-Year Schedule</h4>
+                <h4 class="text-2xl font-bold mb-8 text-[#002B5C] dark:text-[#f59e0b]">Standard ${termYears}-Year Schedule</h4>
                 <div class="space-y-4 text-gray-800 dark:text-gray-200 text-lg">
                     <p><strong>Principal & Interest:</strong> $${standardPI.toFixed(2)}/mo</p>
                     <p><strong>Property Taxes:</strong> $${monthlyTaxes.toFixed(2)}/mo</p>
                     <p><strong>Homeowners Insurance:</strong> $${monthlyInsurance.toFixed(2)}/mo</p>
                     <p><strong>PMI:</strong> $${monthlyPMI.toFixed(2)}/mo</p>
-                    <p class="text-xl font-bold pt-4 border-t-2 border-[#002B5C]/30 text-[#002B5C] dark:text-[#00A89D]">
+                    <p class="text-xl font-bold pt-4 border-t-2 border-[#002B5C]/30 text-[#002B5C] dark:text-[#f59e0b]">
                         <strong>Total Monthly Payment:</strong> $${basePITI.toFixed(2)}
                     </p>
                     <p class="mt-6"><strong>Total Interest Over Term:</strong> $${standardInterest.toFixed(0)}</p>
@@ -3827,14 +4252,14 @@ function calculateAdvanced() {
             </div>
 
             <div class="p-8 bg-white dark:bg-gray-800 rounded-3xl shadow-2xl border-4 border-[#F15A29]">
-                <h4 class="text-2xl font-bold mb-8 text-[#F15A29]">Your Custom Schedule</h4>
+                <h4 class="text-2xl font-bold mb-8 text-[#7c3aed]">Your Custom Schedule</h4>
                 <div class="space-y-4 text-gray-800 dark:text-gray-200 text-lg">
                     <p><strong>Principal & Interest Applied:</strong> $${(standardPI + extraMonthly).toFixed(2)}/mo${biweekly ? ' (biweekly)' : ''}</p>
                     <p><strong>Property Taxes:</strong> $${monthlyTaxes.toFixed(2)}/mo</p>
                     <p><strong>Homeowners Insurance:</strong> $${monthlyInsurance.toFixed(2)}/mo</p>
                     <p><strong>PMI:</strong> $${monthlyPMI.toFixed(2)}/mo</p>
                     <p><strong>Extra Principal:</strong> $${extraMonthly.toFixed(2)}/mo</p>
-                    <p class="text-xl font-bold pt-4 border-t-2 border-[#F15A29]/30 text-[#F15A29]">
+                    <p class="text-xl font-bold pt-4 border-t-2 border-[#F15A29]/30 text-[#7c3aed]">
                         <strong>Your Total Monthly Cost:</strong> $${userMonthlyCost.toFixed(2)}
                     </p>
                     <p class="mt-6"><strong>Payoff Time:</strong> ${yearsToPayoff} years${remainingMonths > 0 ? ', ' + remainingMonths + ' months' : ''}</p>
@@ -3885,7 +4310,7 @@ searchInput.addEventListener('input', (e) => {
 
             // Highlight matches safely using original HTML
             const regex = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
-            const highlightedHTML = originalHTML.replace(regex, '<mark class="bg-[#F15A29]/30 dark:bg-[#F15A29]/50 text-[#F15A29] font-semibold rounded px-1">$1</mark>');
+            const highlightedHTML = originalHTML.replace(regex, '<mark class="bg-[#F15A29]/30 dark:bg-[#F15A29]/50 text-[#7c3aed] font-semibold rounded px-1">$1</mark>');
             section.innerHTML = highlightedHTML;
         } else {
             section.classList.add('hidden');
@@ -3914,8 +4339,273 @@ document.addEventListener('DOMContentLoaded', () => {
     calculateAdvanced();
     generateQuote();
 });
-   // === DATABASE NURTURING CATEGORY MODALS ===
 
+async function generateOpenHouse() {
+    const goal = document.getElementById('oh-goal').value;
+    const propertyType = document.getElementById('oh-property-type').value;
+    const price = document.getElementById('oh-price').value;
+    const season = document.getElementById('oh-season').value;
+    const personality = document.getElementById('oh-personality').value;
+    const custom = document.getElementById('oh-custom').value.trim();
+
+    const checkboxes = document.querySelectorAll('#open-house input[type="checkbox"]:checked');
+    const features = Array.from(checkboxes).map(cb => cb.value);
+
+    const loading = document.getElementById('oh-loading');
+    const output = document.getElementById('oh-output');
+
+    loading.classList.remove('hidden');
+    output.classList.add('hidden');
+    output.innerHTML = '';
+
+    let prompt = `You are an elite real estate agent coach specializing in open houses. Create a complete, ready-to-use open house kit for this listing.
+
+Primary goal: ${goal}
+Property type: ${propertyType}
+Price range: ${price}
+Season: ${season}
+Agent style: ${personality}
+
+Key features to highlight:
+${features.length ? features.join('\n- ') : 'Use best practices for the property type'}
+
+${custom ? `Custom notes: ${custom}` : ''}
+
+Generate these 6 sections:
+1. Pre-Event Prep Checklist (staging, signage, giveaways, timing)
+2. Greeting Script (first 30 seconds — warm and memorable)
+3. Feature Tour Talking Points (5–8 emotional highlights)
+4. Objection Handler Scripts (price, condition, location, timing)
+5. Lead Capture Strategy (sign-in questions, conversation starters)
+6. Follow-Up System (immediate text, 48-hour email, 1-week call)
+
+Make everything natural, confident, and aligned with the agent's personality. Focus on creating emotional connection and generating leads.`;
+
+    try {
+        const response = await fetch('/api/chat', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                model: "grok-4-1-fast-reasoning",
+                messages: [{ role: "user", content: prompt }],
+                temperature: 0.7,
+                max_tokens: 2500
+            })
+        });
+
+        if (!response.ok) throw new Error('API error');
+
+        const data = await response.json();
+        const kit = data.choices[0].message.content;
+
+        output.innerHTML = `
+            <div class="bg-white dark:bg-gray-800 p-10 rounded-3xl shadow-lg border border-[#f59e0b]/30">
+                <div class="prose prose-lg dark:prose-invert max-w-none">
+                    ${marked.parse(kit)}
+                </div>
+                <div class="text-center mt-8">
+                    <button onclick="copyOpenHouse()" class="bg-[#1e3a8a] hover:bg-[#1e3a8a]/80 text-white px-8 py-4 rounded-full font-bold transition-all shadow-md">
+                        📋 Copy Complete Kit
+                    </button>
+                </div>
+            </div>
+        `;
+        output.classList.remove('hidden');
+    } catch (error) {
+        output.innerHTML = '<p class="text-red-600 text-center py-20">Error generating kit. Check console or try again.</p>';
+        output.classList.remove('hidden');
+        console.error(error);
+    } finally {
+        loading.classList.add('hidden');
+    }
+}
+
+function copyOpenHouse() {
+    const text = document.querySelector('#oh-output .prose')?.innerText || '';
+    navigator.clipboard.writeText(text).then(() => alert('Open house kit copied!'));
+}  
+async function generateConsultationKit() {
+    const preset = document.getElementById('consult-preset').value;
+    const type = document.getElementById('consult-type').value;
+    const address = document.getElementById('consult-address').value.trim();
+    const price = document.getElementById('consult-price').value.trim();
+    const personal = document.getElementById('consult-personal').value.trim();
+    const goals = document.getElementById('consult-goals').value.trim();
+
+    const loading = document.getElementById('consult-loading');
+    const output = document.getElementById('consult-output');
+
+    loading.classList.remove('hidden');
+    output.classList.add('hidden');
+    output.innerHTML = '';
+
+    let prompt = `You are an elite real estate agent coach. Create a complete, professional consultation prep kit for this client appointment.
+
+Quick scenario: ${preset === 'custom' ? 'Fully custom' : preset}
+Appointment type: ${type}
+Property address: ${address || 'in a competitive local market'}
+Price range/expected sale: ${price || 'market-appropriate'}
+Client personal details: ${personal || 'Not provided'}
+Client goals/concerns/timeline: ${goals || 'Standard consultation'}
+
+Generate these 8 sections:
+1. Personalized Opening & Rapport Builders (use personal details for emotional connection)
+2. Market Snapshot (current local trends, inventory, days on market, buyer demand)
+3. Comparable Sales Summary (3–5 realistic comps with insights — placeholder for agent to fill actual numbers)
+4. Pricing Strategy (listing) OR Affordability Snapshot (buyer) with emotional framing
+5. Estimated Seller Net Sheet OR Buyer Monthly Payment Breakdown (use realistic placeholders)
+6. Key Conversation Starters & Deep Questions (build trust and uncover motivation)
+7. Top 5 Likely Objections & Response Scripts for this client type
+8. Next Steps & Follow-Up Plan (immediate, 48-hour, 1-week actions)
+
+Make everything warm, client-centered, and confidence-building. Use emotional language that shows empathy. Help the agent win trust and the business.`;
+
+    try {
+        const response = await fetch('/api/chat', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                model: "grok-4-1-fast-reasoning",
+                messages: [{ role: "user", content: prompt }],
+                temperature: 0.7,
+                max_tokens: 3000
+            })
+        });
+
+        if (!response.ok) throw new Error('API error');
+
+        const data = await response.json();
+        const kit = data.choices[0].message.content;
+
+        output.innerHTML = `
+            <div class="bg-white dark:bg-gray-800 p-10 rounded-3xl shadow-lg border border-[#f59e0b]/30">
+                <div class="prose prose-lg dark:prose-invert max-w-none">
+                    ${marked.parse(kit)}
+                </div>
+                <div class="text-center mt-8">
+                    <button onclick="copyConsultation()" class="bg-[#1e3a8a] hover:bg-[#1e3a8a]/80 text-white px-8 py-4 rounded-full font-bold transition-all shadow-md">
+                        📋 Copy Complete Prep Kit
+                    </button>
+                </div>
+            </div>
+        `;
+        output.classList.remove('hidden');
+    } catch (error) {
+        output.innerHTML = '<p class="text-red-600 text-center py-20">Error generating kit. Check console or try again.</p>';
+        output.classList.remove('hidden');
+        console.error(error);
+    } finally {
+        loading.classList.add('hidden');
+    }
+}
+
+function copyConsultation() {
+    const text = document.querySelector('#consult-output .prose')?.innerText || '';
+    navigator.clipboard.writeText(text).then(() => alert('Prep kit copied!'));
+}
+async function generateListingDescription() {
+    const address = document.getElementById('listing-address').value.trim();
+    const tone = document.getElementById('listing-tone').value;
+    const custom = document.getElementById('listing-custom').value.trim();
+
+    // Collect checked features
+    const checkboxes = document.querySelectorAll('#listing-description input[type="checkbox"]:checked');
+    let features = Array.from(checkboxes).map(cb => cb.value);
+
+    if (features.length === 0 && !custom && !address) {
+        alert('Please select at least one feature or add custom highlights');
+        return;
+    }
+
+    const loading = document.getElementById('listing-loading');
+    const output = document.getElementById('listing-output');
+
+    loading.classList.remove('hidden');
+    output.classList.add('hidden');
+    output.innerHTML = '';
+
+    let prompt = `You are an elite real estate copywriter. Write 3 compelling listing descriptions for this property.
+
+Tone: ${tone}
+
+Property address (use for local flavor if provided): ${address || 'beautiful neighborhood'}
+
+Key features to highlight:
+${features.join('\n- ')}
+
+${custom ? `Custom highlights: ${custom}` : ''}
+
+Generate 3 versions:
+1. MLS-Length (~250 words) — professional, feature-rich
+2. Zillow/Social Length (~400 words) — emotional, lifestyle-focused
+3. Short Teaser (75–100 words) — perfect for Instagram caption or headline
+
+Use vivid, sensory language. Trigger buyer emotions. Include natural SEO/GEO keywords. Avoid generic phrases like "move-in ready" unless true. End each with soft CTA.
+
+Make buyers fall in love with the home.`;
+
+    try {
+        const response = await fetch('/api/chat', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                model: "grok-4-1-fast-reasoning",
+                messages: [{ role: "user", content: prompt }],
+                temperature: 0.7,
+                max_tokens: 2000
+            })
+        });
+
+        if (!response.ok) throw new Error('API error');
+
+        const data = await response.json();
+        const descriptions = data.choices[0].message.content.trim();
+
+        // Split into 3 versions (assume numbered)
+        const versions = descriptions.split(/\d\.\s+/).filter(v => v.trim()).map((v, i) => {
+            const titles = ['MLS Version', 'Zillow / Social Media Version', 'Short Teaser'];
+            return { title: titles[i], content: v.trim() };
+        });
+
+        let html = '';
+        versions.forEach(ver => {
+            html += `
+                <div class="bg-white dark:bg-gray-800 p-8 rounded-3xl shadow-lg border border-[#f59e0b]/30">
+                    <h3 class="text-2xl font-bold mb-4 text-[#002B5C] dark:text-[#f59e0b]">${ver.title}</h3>
+                    <div class="prose prose-lg dark:prose-invert max-w-none mb-6">
+                        ${marked.parse(ver.content)}
+                    </div>
+                    <div class="text-center">
+                        <button onclick="copyText(this)" data-text="${ver.content.replace(/"/g, '&quot;')}" class="bg-[#1e3a8a] hover:bg-[#1e3a8a]/80 text-white px-8 py-4 rounded-full font-bold transition-all shadow-md">
+                            📋 Copy This Description
+                        </button>
+                    </div>
+                </div>
+            `;
+        });
+
+        output.innerHTML = html;
+        output.classList.remove('hidden');
+
+    } catch (error) {
+        output.innerHTML = '<p class="text-red-600 text-center py-20">Error generating descriptions. Check console or try again.</p>';
+        output.classList.remove('hidden');
+        console.error(error);
+    } finally {
+        loading.classList.add('hidden');
+    }
+}
+
+function copyText(button) {
+    const text = button.getAttribute('data-text');
+    navigator.clipboard.writeText(text).then(() => alert('Description copied!'));
+}
 function openDatabaseModal(category) {
     const modal = document.getElementById('db-modal');
     const title = document.getElementById('db-modal-title');
@@ -4043,7 +4733,7 @@ Key Requirements:
 
 Write a complete blog post on: ${topicInput}`;
 
-   try {
+    try {
         const response = await fetch('/api/chat', {
             method: 'POST',
             headers: {
@@ -4289,5 +4979,4 @@ function smartRouteChat(message) {
     </div>
 </div>
 </body>
-
 </html>
