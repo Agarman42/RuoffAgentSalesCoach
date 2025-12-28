@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Ultimate Realtor Sales Coach</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
@@ -273,6 +273,25 @@ h1, h2, h3 {
 
 .dark .modal-header p {
     color: #d1d5db !important; /* Gray-300 */
+}
+        /* Fix top overlap on mobile (address bar/status bar) */
+@supports (padding-top: env(safe-area-inset-top)) {
+    body {
+        padding-top: env(safe-area-inset-top);
+    }
+}
+
+/* Optional: Add padding to header/content to avoid overlap */
+header, 
+#sidebar, 
+main {
+    padding-top: env(safe-area-inset-top);
+}
+
+/* For full-screen feel on mobile */
+html, body {
+    height: 100%;
+    overscroll-behavior: contain;
 }
     </style>
 </head>
@@ -4980,3 +4999,4 @@ function smartRouteChat(message) {
 </div>
 </body>
 </html>
+
