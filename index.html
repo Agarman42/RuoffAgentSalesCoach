@@ -5,6 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Ultimate Realtor Sales Coach</title>
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- SWITCH TO CLASS MODE -->
+    <script>
+      tailwind.config = {
+        darkMode: 'class'
+      }
+    </script>
+
+    <!-- FORCE DARK CLASS -->
+    <script>
+      document.documentElement.classList.add('dark');
+      document.body.classList.add('dark');
+
+      const observer = new MutationObserver(() => {
+        if (!document.documentElement.classList.contains('dark')) {
+          document.documentElement.classList.add('dark');
+        }
+        if (!document.body.classList.contains('dark')) {
+          document.body.classList.add('dark');
+        }
+      });
+      observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+      observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+    </script>
+
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="manifest" href="manifest.json">
@@ -293,6 +318,7 @@ html, body {
     height: 100%;
     overscroll-behavior: contain;
 }
+
     </style>
 </head>
 <body class="bg-gradient-to-br from-gray-100 to-white dark:from-gray-900 dark:to-gray-800 text-gray-900 dark:text-gray-100 min-h-screen font-sans">
@@ -3093,32 +3119,20 @@ Make it encouraging, realistic, and packed with proven realtor tactics. Emphasiz
         </section>
                 <!-- AI Chat Section -->
         <section id="ai-chat" class="card bg-white dark:bg-gray-800 pt-6 pb-12 px-8 rounded-3xl shadow-xl animate-fade-in hidden">
-            <h2 class="text-3xl font-bold mb-6 text-[#7c3aed]">AI Chat Assistant</h2>
-            <p class="mb-8 text-lg">Ask me anything — sales scripts, market updates, marketing ideas, motivation, or just chat. I'm here to help you win.</p>
-
-            <div class="flex flex-col h-96 md:h-full max-h-screen">
-                <!-- Chat Messages -->
-                <div id="chat-messages" class="flex-1 overflow-y-auto mb-6 space-y-4 p-4 bg-gray-50 dark:bg-gray-900 rounded-2xl border border-[#f59e0b]/30">
-                    <div class="text-center text-gray-500 dark:text-gray-400 italic">
-                        Start a conversation below...
-                    </div>
-                </div>
-
-                <!-- Input Area -->
-                <div class="flex gap-4">
-                    <input type="text" id="chat-input" placeholder="Type your message..." 
-                           class="flex-1 p-4 rounded-full border border-[#f59e0b] focus:ring-[#F15A29] focus:outline-none text-lg">
-                    <button onclick="sendChatMessage()" class="bg-gradient-to-r from-[#f59e0b] to-[#7c3aed] text-white px-8 py-4 rounded-full hover:opacity-90 transition-all font-bold shadow-lg">
-                        Send
-                    </button>
-                </div>
-            </div>
-
-            <div id="chat-loading" class="mt-8 text-center hidden">
-                <i class="fas fa-spinner fa-spin text-4xl text-[#f59e0b]"></i>
-                <p class="mt-4 text-xl">Thinking...</p>
-            </div>
-        </section>
+    <h2 class="text-3xl font-bold mb-6 text-[#F15A29]">AI Chat Assistant</h2>
+    <p class="mb-8 text-lg">Ask me anything — sales scripts, market updates, marketing ideas, motivation, or just chat. I'm here to help you win.</p>
+    <div id="chat-messages" class="bg-gray-50 dark:bg-gray-900 p-6 rounded-2xl mb-6 min-h-32 max-h-96 overflow-y-auto prose dark:prose-invert max-w-none transition-all duration-300">
+    <!-- Messages appear here -->
+</div>
+    <div class="flex space-x-4">
+        <textarea id="chat-input" rows="3" class="flex-grow p-4 rounded-lg border border-[#00A89D] focus:ring-[#F15A29] text-lg resize-none" placeholder="Type your message..."></textarea>
+        <button onclick="sendChatMessage()" class="bg-gradient-to-r from-[#00A89D] to-[#F15A29] text-white px-6 py-4 rounded-lg font-bold hover:opacity-90">Send</button>
+    </div>
+    <div id="chat-loading" class="text-center mt-6 hidden">
+        <i class="fas fa-spinner fa-spin text-4xl text-[#00A89D]"></i>
+        <p class="mt-4 text-xl">Thinking...</p>
+    </div>
+</section>
                 <section id="calculator" class="card bg-white dark:bg-gray-800 pt-6 pb-12 px-8 rounded-3xl shadow-xl animate-fade-in hidden">
             <h2 class="text-3xl font-bold mb-6 text-[#7c3aed]">Advanced Payment Calculator</h2>
             <p class="mb-6">Estimate monthly payments with taxes, insurance, PMI, extra payments, and biweekly options. See lifetime interest, payoff timeline, and potential savings.</p>
@@ -3391,7 +3405,7 @@ document.getElementById('menu-toggle').addEventListener('click', () => {
 // Full quotes
 const quotes = [
     "The harder you work, the luckier you get.",
-    "Your next loan is one call away.",
+    "Your next client is one call away.",
     "Success is rented, and the rent is due every day.",
     "Every “no” brings you closer to a “yes.”",
     "You don’t have to be great to start, but you have to start to be great.",
@@ -3428,7 +3442,7 @@ const quotes = [
     "Today’s grind = tomorrow’s shine.",
     "Limits exist only in the mind.",
     "Keep going—you’re closer than you think.",
-    "One closed loan can change everything.",
+    "One closed transaction can change everything.",
     "Discipline is choosing between what you want now and what you want most.",
     "Wake up with purpose, go to bed with satisfaction.",
     "Don’t stop when you’re tired—stop when you’re done.",
@@ -3436,21 +3450,21 @@ const quotes = [
     "You were born to win.",
     "Make it happen. Shock everyone.",
     "Every call counts. Make each one great.",
-    "Loans don’t find themselves—go get yours.",
+    "Clients don’t find themselves—go get yours.",
     "Your pipeline is your paycheck. Fill it.",
     "Close the day strong.",
-    "Borrowers are waiting—be their hero today.",
+    "Buyers and sellers are waiting—be their hero today.",
     "Momentum is built one “yes” at a time.",
     "Outwork yesterday’s you.",
     "Average effort = average results. Be extraordinary.",
     "Grind now, glow later.",
-    "The best loan officers don’t wait for the phone to ring.",
+    "The best Realtors don’t wait for the phone to ring.",
     "Confidence closes.",
     "Every “I’ll think about it” is a future “Where do I sign?”",
     "Pressure makes diamonds—thrive in it.",
     "Your next record-breaking month starts today.",
     "Stop wishing, start closing.",
-    "Be the lender they brag about to their friends.",
+    "Be the Realtor they brag about to their friends.",
     "One more call could change your year.",
     "Today’s effort = tomorrow’s commission check.",
     "Borrowers don’t care how much you know until they know how much you care.",
@@ -3464,7 +3478,7 @@ const quotes = [
     "Make today so awesome yesterday gets jealous.",
     "The only bad call is the one you didn’t make.",
     "If you don’t own the day, the day owns you.",
-    "Borrowers remember how you made them feel—make it amazing.",
+    "Clients remember how you made them feel—make it amazing.",
     "Keep swinging—the home runs are coming.",
     "Success is a decision away. Decide now.",
     "Go out there and make someone’s dream happen.",
@@ -3473,13 +3487,13 @@ const quotes = [
     "Intentional effort today, dividends paid tomorrow.",
     "Winners are just people who stayed consistent when no one was watching.",
     "Show up on purpose—every single day.",
-    "Consistency turns average loan officers into top producers.",
+    "Consistency turns average Realtors into top producers.",
     "Intentional mornings create unstoppable months.",
     "Do the boring work consistently and the results will come.",
     "Consistency is louder than motivation ever will be.",
-    "The loan you close tomorrow was built by what you did today—and yesterday.",
+    "The transaction you close tomorrow was built by what you did today—and yesterday.",
     "Consistent follow-up turns “maybe” into “money.”",
-    "Intentional loan officers don’t wait for leads—they create them.",
+    "Intentional Realtors don’t wait for leads—they create them.",
     "Success loves preparation. Be consistent in yours.",
     "Consistency compounds faster than interest rates.",
     "The difference between good and great is one more intentional call.",
@@ -4108,8 +4122,32 @@ function copyUwOutput() {
     const text = document.querySelector('#uw-output .prose')?.innerText || '';
     navigator.clipboard.writeText(text).then(() => alert('Response copied!'));
 }
-let chatHistory = [];  // Initialize as an empty array
-        
+let chatHistory = [
+    { 
+        role: "system", 
+        content: `You are the ultimate AI Sales Coach for loan officers. This app is packed with powerful AI tools designed to help LOs close more loans, build stronger relationships, and grow their business.
+
+When asked what the tool does or about its features, ALWAYS highlight the AI TOOLS first — they are the coolest and most valuable part:
+
+• Sales Script Generator – Instant objection handlers and conversation scripts
+• Social Media Post Creator – Ready-to-post content that builds trust and engagement
+• Blog Creator – Full SEO-optimized blog posts in seconds
+• Underwriting Guideline Search – Fast, accurate answers with confidence levels
+• AI Chat Assistant – Ask anything: motivation, marketing ideas, scenario help
+
+Other key sections:
+• Prospecting strategies
+• Event planning ideas
+• Referral partner systems
+• Database nurturing
+• Business planning
+
+Be enthusiastic, encouraging, and focus on how these tools save time and help win more business. Use bullet points for clarity.
+
+Never lead with underwriting — it's one tool among many amazing features.` 
+    }
+];
+
 async function sendChatMessage() {
     const input = document.getElementById('chat-input');
     const messagesDiv = document.getElementById('chat-messages');
@@ -4344,7 +4382,10 @@ searchInput.addEventListener('input', (e) => {
 document.addEventListener('DOMContentLoaded', () => {
     // Hide all sections
     document.querySelectorAll('main section').forEach(sec => sec.classList.add('hidden'));
-    
+    const chatInput = document.getElementById('chat-input');
+    if (chatInput) {
+        chatInput.value = "Tell me all about this tool. What are the best features and uses?";
+    }
     // Show AI Chat Assistant
     const aiChat = document.querySelector('#ai-chat');
     if (aiChat) {
@@ -4921,26 +4962,40 @@ window.addEventListener('click', (event) => {
 function smartRouteChat(message) {
     const lowerMessage = message.toLowerCase();
 
-    const underwritingKeywords = [
-        'underwriting', 'guideline', 'overlay', 'fannie', 'freddie', 'fha', 'va', 'usda',
-        'dti', 'debt to income', 'credit score', 'appraisal', 'income', 'assets',
-        'employment', 'reserve', 'self-employed', 'bank statement', 'non-qm',
-        'compensating factor', 'exception', 'manual underwrite', 'du', 'lp', 'findings'
+    // First, detect if user is asking ABOUT the tool/features
+    const aboutToolPhrases = [
+        'what is this tool', 'what does this tool do', 'what can this tool do',
+        'tell me about this app', 'what features', 'how does this help',
+        'what are the tools', 'ai tools', 'features of this app'
     ];
 
-    const isUnderwriting = underwritingKeywords.some(keyword => lowerMessage.includes(keyword));
+    if (aboutToolPhrases.some(phrase => lowerMessage.includes(phrase))) {
+        return false; // Do NOT route — let general chat handle it
+    }
 
-    if (isUnderwriting) {
-        // Hide all sections
+    // Only route if it's clearly a guideline question
+    const underwritingKeywords = [
+        'fha', 'va', 'usda', 'conventional', 'dti', 'credit score',
+        'guideline', 'overlay', 'qualify', 'eligible', 'minimum', 'maximum',
+        'bankruptcy', 'foreclosure', 'manual underwrite', 'compensating factor',
+        '203k', 'buydown', 'irr rl', 'cash out', 'lpmi', 'manufactured'
+    ];
+
+    const isUnderwritingQuestion = underwritingKeywords.some(keyword => 
+        lowerMessage.includes(keyword) && 
+        // Require at least 2 keywords or a question structure
+        (underwritingKeywords.filter(k => lowerMessage.includes(k)).length >= 2 ||
+         lowerMessage.includes('?'))
+    );
+
+    if (isUnderwritingQuestion) {
+        // Route to underwriting tool
         document.querySelectorAll('main section').forEach(sec => sec.classList.add('hidden'));
-
-        // Show underwriting section
         const uwSection = document.getElementById('underwriting-search');
         if (uwSection) {
             uwSection.classList.remove('hidden');
         }
 
-        // Pre-fill the question
         const uwInput = document.getElementById('uw-question');
         if (uwInput) {
             uwInput.value = message;
@@ -4948,17 +5003,16 @@ function smartRouteChat(message) {
             uwInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
 
-        // Auto-trigger search after short delay
         setTimeout(() => {
             if (typeof searchUnderwriting === 'function') {
                 searchUnderwriting();
             }
         }, 800);
 
-        return true; // Routed successfully
+        return true;
     }
 
-    return false; // Not an underwriting question
+    return false;
 }
 </script>
 <!-- Post Ideas Modal -->
@@ -4967,7 +5021,7 @@ function smartRouteChat(message) {
         <span class="close-modal" onclick="closeModal()">&times;</span>
         <div class="modal-header">
             <h3 id="modal-title" class="text-3xl font-bold"></h3>
-            <p class="text-xl mt-4 text-gray-600 dark:text-gray-400">Click any idea to copy it, or use it as inspiration for the AI generator!</p>
+            <p class="text-xl mt-4 text-gray-600 dark:text-gray-400">Feel free to copy any idea, or use it as inspiration for the AI generator!</p>
         </div>
         <ul id="modal-suggestions" class="modal-suggestions list-disc pl-8 space-y-4 text-lg">
             <!-- Filled by JS -->
@@ -5000,5 +5054,3 @@ function smartRouteChat(message) {
 </div>
 </body>
 </html>
-
-
