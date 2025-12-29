@@ -4108,7 +4108,8 @@ function copyUwOutput() {
     const text = document.querySelector('#uw-output .prose')?.innerText || '';
     navigator.clipboard.writeText(text).then(() => alert('Response copied!'));
 }
-
+let chatHistory = [];  // Initialize as an empty array
+        
 async function sendChatMessage() {
     const input = document.getElementById('chat-input');
     const messagesDiv = document.getElementById('chat-messages');
@@ -4999,4 +5000,5 @@ function smartRouteChat(message) {
 </div>
 </body>
 </html>
+
 
