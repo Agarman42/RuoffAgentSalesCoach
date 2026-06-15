@@ -1,6 +1,6 @@
 /**
  * js/main.js
- * Core UI initialization for the Ultimate Realtor Sales Coach.
+ * Core UI initialization for the Ultimate Loan Officer Sales Coach.
  *
  * Responsibilities (Phase 0.5):
  * - Sidebar / mobile menu toggle
@@ -184,14 +184,14 @@
   // =====================================================
   const quotes = [
     "The harder you work, the luckier you get.",
-    "Your next listing is one conversation away.",
+    "Your next loan is one call away.",
     "Success is rented, and the rent is due every day.",
     "Every “no” brings you closer to a “yes.”",
     "You don’t have to be great to start, but you have to start to be great.",
     "Turn obstacles into opportunities.",
     "Be so good they can’t ignore you.",
     "Hustle beats talent when talent doesn’t hustle.",
-    "Make someone’s dream home a reality today!",
+    "Make someone’s dream come true today!",
     "Doubt kills more dreams than failure ever will.",
     "The best way to predict the future is to create it.",
     "Winners never quit, and quitters never win.",
@@ -221,43 +221,43 @@
     "Today’s grind = tomorrow’s shine.",
     "Limits exist only in the mind.",
     "Keep going—you’re closer than you think.",
-    "One closed transaction can change everything.",
+    "One closed loan can change everything.",
     "Discipline is choosing between what you want now and what you want most.",
     "Wake up with purpose, go to bed with satisfaction.",
     "Don’t stop when you’re tired—stop when you’re done.",
     "The comeback is always stronger than the setback.",
     "You were born to win.",
     "Make it happen. Shock everyone.",
-    "Every conversation counts. Make each one great.",
-    "Listings don’t find themselves—go get yours.",
+    "Every call counts. Make each one great.",
+    "Loans don’t find themselves—go get yours.",
     "Your pipeline is your paycheck. Fill it.",
     "Close the day strong.",
-    "Buyers and sellers are waiting—be their guide today.",
+    "Borrowers are waiting—be their hero today.",
     "Momentum is built one “yes” at a time.",
     "Outwork yesterday’s you.",
     "Average effort = average results. Be extraordinary.",
     "Grind now, glow later.",
-    "The best realtors don’t wait for the phone to ring.",
+    "The best loan officers don’t wait for the phone to ring.",
     "Confidence closes.",
     "Every “I’ll think about it” is a future “Where do I sign?”",
     "Pressure makes diamonds—thrive in it.",
     "Your next record-breaking month starts today.",
-    "Stop wishing, start listing.",
-    "Be the agent they brag about to their friends.",
-    "One more conversation could change your year.",
+    "Stop wishing, start closing.",
+    "Be the lender they brag about to their friends.",
+    "One more call could change your year.",
     "Today’s effort = tomorrow’s commission check.",
-    "Clients don’t care how much you know until they know how much you care.",
+    "Borrowers don’t care how much you know until they know how much you care.",
     "Speed + service = unstoppable.",
     "You’ve survived 100% of your worst days so far. Keep going.",
     "The magic you’re looking for is in the work you’re avoiding.",
-    "Build relationships, not just transactions.",
+    "Build relationships, not just files.",
     "Done is better than perfect.",
     "Lead with value, close with ease.",
-    "Turn “We can’t afford it” into “How do we make this happen?”",
+    "Turn “I can’t afford it” into “How do I make this happen?”",
     "Make today so awesome yesterday gets jealous.",
     "The only bad call is the one you didn’t make.",
     "If you don’t own the day, the day owns you.",
-    "Clients remember how you made them feel—make it amazing.",
+    "Borrowers remember how you made them feel—make it amazing.",
     "Keep swinging—the home runs are coming.",
     "Success is a decision away. Decide now.",
     "Go out there and make someone’s dream happen.",
@@ -267,16 +267,16 @@
     "Intentional effort today, dividends paid tomorrow.",
     "Winners are just people who stayed consistent when no one was watching.",
     "Show up on purpose—every single day.",
-    "Consistency turns average realtors into market dominators.",
+    "Consistency turns average loan officers into top producers.",
     "Intentional mornings create unstoppable months.",
     "Do the boring work consistently and the results will come.",
     "Consistency is louder than motivation ever will be.",
-    "The deal you close tomorrow was built by what you did today—and yesterday.",
+    "The loan you close tomorrow was built by what you did today—and yesterday.",
     "Consistent follow-up turns “maybe” into “money.”",
-    "Intentional realtors don’t wait for leads—they create them.",
+    "Intentional loan officers don’t wait for leads—they create them.",
     "Success loves preparation. Be consistent in yours.",
-    "Consistency compounds faster than market shifts.",
-    "The difference between good and great is one more intentional conversation.",
+    "Consistency compounds faster than interest rates.",
+    "The difference between good and great is one more intentional call.",
     "Consistency is the bridge between leads and legacy.",
     "Intentional effort feels like work; consistent effort feels like winning.",
     "Show up, suit up, follow up—every single day.",
@@ -288,19 +288,7 @@
     "Everyone is jealous of what you’ve got, nobody is jealous of how you got there.",
     "The hard thing to do and the right thing to do, are almost always the same thing.",
     "You grow in proportion to the weight you take on voluntarily.",
-    "It’s nice to be important, but it’s more important to be nice.",
-    "Your sphere is your goldmine — water it every day.",
-    "Open houses are where relationships turn into referrals.",
-    "The best marketing is a client who can’t stop talking about you.",
-    "List to last — price it right and market it aggressively.",
-    "Every showing is a chance to demonstrate unmatched value.",
-    "Follow up like your business depends on it — because it does.",
-    "Be the realtor people fight to work with.",
-    "Your database is your most valuable asset. Treat it that way.",
-    "One great review can feed your pipeline for months.",
-    "Relationships first, transactions second, referrals forever.",
-    "The agents who dominate know their numbers and work their systems.",
-    "Be known for the experience, not just the sale."
+    "It’s nice to be important, but it’s more important to be nice."
   ];
 
   let currentQuoteIndex = Math.floor(Math.random() * quotes.length);
@@ -572,7 +560,8 @@
     // Alias map for old/stale links in saved plans or elsewhere
     const aliases = {
       'social-media-strategy': 'social',
-      'referral-partners': 'referrals'
+      'referral-partners': 'referrals',
+      'prospecting': 'weekly-win-plan'
     };
     if (aliases[id]) {
       id = aliases[id];
@@ -605,6 +594,9 @@
       // - 2026 Business: generatePlan(), #planning section, #generate-plan-btn, uses wireGeneratePlanButton + enrich panel
       // Shared file (weekly-win-plan.js) but completely separate functions, prompts, buttons, outputs, and loading UI.
       if (id === 'weekly-win-plan') {
+        if (typeof window.updateWeeklyCustomizeDisplays === 'function') {
+          try { window.updateWeeklyCustomizeDisplays(); } catch (e) {}
+        }
         setTimeout(() => {
           const editBtn = document.getElementById('edit-setup-btn');
           if (editBtn && typeof window.openSetupWizard === 'function') {
@@ -933,39 +925,25 @@
   // from index.html is missing (common with browser cache, partial reloads, or older saved HTML copies).
   // This makes the progress modals resilient for both 2026 Business Plan and Weekly Win Plan.
   const GLOBAL_LOADING_CARD_INNER = `
-        <div class="flex justify-center mb-5">
+        <!-- Spinner + Icon Area -->
+        <div class="flex justify-center mb-6">
             <div class="relative">
-                <div class="w-20 h-20 rounded-full bg-gradient-to-br from-[#00A89D] to-[#008F85] flex items-center justify-center shadow-xl">
-                    <i class="fas fa-home text-white text-4xl"></i>
-                </div>
-                <div class="absolute -inset-1 rounded-full border-4 border-[#00A89D]/30 animate-pulse"></div>
+                <i class="fas fa-spinner fa-spin text-6xl text-[#00A89D]"></i>
             </div>
         </div>
         
-        <h3 id="global-loading-title" class="text-3xl font-bold text-[#002B5C] dark:text-white mb-2 tracking-tight">
-            Crafting your premium realtor kit...
+        <h3 id="global-loading-title" class="text-3xl font-bold text-[#F15A29] mb-3 tracking-tight">
+            Working on it...
         </h3>
         
-        <div class="text-xs uppercase tracking-[2px] text-[#002B5C]/60 dark:text-white/50 font-semibold mb-3">EXCLUSIVELY FOR RUOFF REAL ESTATE PARTNERS</div>
-        
-        <div id="global-loading-message" class="text-lg text-gray-600 dark:text-gray-300 min-h-[70px] transition-opacity duration-300 leading-relaxed px-2">
-            Personalized content incoming — this can take 20–50 seconds.
+        <div id="global-loading-message" class="text-lg text-gray-600 dark:text-gray-300 min-h-[60px] transition-opacity duration-300 leading-relaxed">
+            Personalized content incoming — this can take up to a minute.
         </div>
         
-        <!-- Fake premium progress bar -->
-        <div class="mt-5 mb-4 w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 overflow-hidden">
-            <div class="h-2 bg-gradient-to-r from-[#00A89D] via-[#008F85] to-[#00A89D] w-0 animate-[progress_45s_linear_forwards]" style="animation: progress 45s linear forwards;"></div>
+        <div class="mt-6 pt-4 border-t border-gray-200 dark:border-gray-700 text-xs text-gray-500 dark:text-gray-400">
+            Good things take time. We’re building something great for you.
         </div>
-        
-        <div class="mt-2 pt-4 border-t border-gray-200 dark:border-gray-700 text-xs text-gray-500 dark:text-gray-400">
-            While you wait: Great agents prepare their follow-up before the appointment even starts.
-        </div>
-        
         <div id="plan-enrich-panel"></div>
-        
-        <style>
-          @keyframes progress { from { width: 8%; } to { width: 95%; } }
-        </style>
   `;
 
   // Ensure the overlay element exists in the DOM (create dynamically if the one in index.html is missing).
@@ -1096,20 +1074,6 @@
     }
   };
 
-  // Realtor-specific sexy loading helper (45s waits feel premium + educational)
-  window.showRealtorLoading = function showRealtorLoading(customTitle = 'Crafting your premium realtor kit...') {
-    const realtorTips = [
-      "Pro move: While this generates, pull your top 3 comps and recent price reductions in the neighborhood.",
-      "Great agents prepare their follow-up texts before the buyer even leaves the open house.",
-      "Tip: The best listing descriptions trigger emotion first, then deliver the facts buyers crave.",
-      "Listing dominance starts with owning the story — the right words make buyers feel at home before they ever walk through the door.",
-      "Smart realtors always have a backup CTA ready: 'Text me for private showing details'.",
-      "While you wait: Review your sphere list — who in your database is thinking about moving this quarter?",
-      "Premium touch: Personalize every follow-up with one specific thing the buyer loved about the home.",
-    ];
-    window.showLoadingWithTips(realtorTips, customTitle);
-  };
-
   window.hideLoading = function hideLoading() {
     const loadingEl = document.getElementById('global-loading');
     if (loadingEl) {
@@ -1126,51 +1090,6 @@
       clearInterval(loadingInterval);
       loadingInterval = null;
     }
-  };
-
-  // =====================================================
-  // WORLD-CLASS UX HELPERS: Feature Checkbox Interactions (used by Listing, Open House, Consultation, etc.)
-  // Premium feel: Select all/clear, dynamic custom feature adder with real-time DOM update
-  // =====================================================
-  window.selectAllFeatures = function(containerId) {
-    const container = document.getElementById(containerId);
-    if (!container) return;
-    container.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = true);
-  };
-
-  window.clearAllFeatures = function(containerId) {
-    const container = document.getElementById(containerId);
-    if (!container) return;
-    container.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
-  };
-
-  window.addCustomFeature = function(containerId, inputId) {
-    const container = document.getElementById(containerId);
-    const input = document.getElementById(inputId);
-    if (!container || !input) return;
-    const value = input.value.trim();
-    if (!value) return;
-
-    // Create premium-style checkbox label (updated to navy for form consistency on smart tools)
-    const label = document.createElement('label');
-    label.className = 'flex items-center space-x-2 cursor-pointer p-2 rounded-xl border border-gray-200 dark:border-gray-700 hover:border-[#002B5C]/60 has-[:checked]:border-[#002B5C] has-[:checked]:bg-[#002B5C]/5 transition';
-    
-    const checkbox = document.createElement('input');
-    checkbox.type = 'checkbox';
-    checkbox.checked = true;
-    checkbox.className = 'form-checkbox h-4 w-4 text-[#00A89D]';
-    checkbox.value = value;
-
-    const span = document.createElement('span');
-    span.className = 'text-sm';
-    span.textContent = value;
-
-    label.appendChild(checkbox);
-    label.appendChild(span);
-    container.appendChild(label);
-
-    input.value = ''; // clear input
-    input.focus();
   };
 
 })();
