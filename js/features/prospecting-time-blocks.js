@@ -49,13 +49,13 @@
     if (!output) return;
 
     const hours = parseInt(document.getElementById('ptb-hours')?.value) || 15;
-    const emphasizeRealtors = document.getElementById('ptb-emphasis-realtors')?.checked;
+    const emphasizeSphere = document.getElementById('ptb-emphasis-sphere')?.checked;
     const emphasizePast = document.getElementById('ptb-emphasis-past')?.checked;
-    const emphasizeEquity = document.getElementById('ptb-emphasis-equity')?.checked;
+    const emphasizeListings = document.getElementById('ptb-emphasis-listings')?.checked;
     const weaveHobbies = document.getElementById('ptb-weave-hobbies')?.checked;
 
     const focusAreas = [];
-    if (emphasizeRealtors) focusAreas.push('Realtor outreach');
+    if (emphasizeSphere) focusAreas.push('Sphere & past client nurturing');
     if (emphasizePast) focusAreas.push('Past client follow-up');
     if (emphasizeListings) focusAreas.push('Listing and buyer lead opportunities');
 
@@ -374,12 +374,12 @@ Return ONLY valid JSON in this exact format:
     if (!summaryEl) return;
 
     const hours = parseInt(document.getElementById('ptb-hours')?.value) || 15;
-    const r = document.getElementById('ptb-emphasis-realtors')?.checked;
-    const p = document.getElementById('ptb-emphasis-past')?.checked;
-    const e = document.getElementById('ptb-emphasis-equity')?.checked;
+    const sphere = document.getElementById('ptb-emphasis-sphere')?.checked;
+    const past = document.getElementById('ptb-emphasis-past')?.checked;
+    const listings = document.getElementById('ptb-emphasis-listings')?.checked;
     const hobbies = document.getElementById('ptb-weave-hobbies')?.checked;
 
-    const focusCount = [r, p, e].filter(Boolean).length || 1;
+    const focusCount = [sphere, past, listings].filter(Boolean).length || 1;
     const estBlocks = Math.max(8, Math.round(hours * 1.1));
 
     let text = `~${estBlocks} focused blocks across ${focusCount} area${focusCount > 1 ? 's' : ''}`;
@@ -814,7 +814,7 @@ Return ONLY valid JSON in this exact format:
     }
 
     // Live updates for all controls (hobby + focus checkboxes)
-    ['ptb-emphasis-realtors', 'ptb-emphasis-past', 'ptb-emphasis-listings', 'ptb-weave-hobbies'].forEach(id => {
+    ['ptb-emphasis-sphere', 'ptb-emphasis-past', 'ptb-emphasis-listings', 'ptb-weave-hobbies'].forEach(id => {
       const el = document.getElementById(id);
       if (el) el.addEventListener('change', updatePTBLiveSummary);
     });
