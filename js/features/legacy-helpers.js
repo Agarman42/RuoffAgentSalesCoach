@@ -393,9 +393,100 @@
       ]
     },
 
+    Lenders: {
+      title: "Lenders & Mortgage Partners – Your Transaction Power Bench",
+      intro: "Every top agent has 2–3 loan officers they trust for different situations. The right lender partners make your offers stronger, your communication cleaner, and your clients calmer. This playbook is for agents building reciprocal relationships with LOs — not chasing realtors from the lender side.",
+      sections: [
+        {
+          heading: "What Great Lender Partners Do for You",
+          content: `<ul class="space-y-2">
+            <li>Pre-qualify buyers quickly with credible letters that listing agents respect</li>
+            <li>Communicate proactively on every file — you never learn bad news from the client first</li>
+            <li>Help you win offers with speed, creative structure, and clear buyer education</li>
+            <li>Co-market with you on events, content, and client appreciation without hogging the spotlight</li>
+          </ul>`
+        },
+        {
+          heading: "How to Vet & Choose Lender Partners",
+          content: `<ul class="space-y-2">
+            <li>Test them on one file before making them a primary recommendation</li>
+            <li>Ask fellow agents who actually closes smoothly with them (not just who has the lowest rate)</li>
+            <li>Look for responsiveness on nights/weekends when deals are on the line</li>
+            <li>Prefer LOs who educate buyers without undermining your advice or timeline</li>
+          </ul>`
+        },
+        {
+          heading: "Outreach & Partnership Scripts",
+          content: `<div class="space-y-4">
+            <div><strong>Intro to a New Lender Candidate:</strong><br><span class="italic">"Hi [Name], I’m [Your Name] — I focus on [area/niche] and care a lot about smooth communication for agents and clients. I’m always looking for one more lender I can trust when speed and clarity matter. Would you be open to a 15-minute coffee to see if we’re a fit?"</span></div>
+            <div><strong>After a Great Close:</strong><br><span class="italic">"[Name], thank you for how you handled [client/file]. My client felt taken care of and I never had to chase updates. I’d love to send you more buyers who need that level of communication. What would make working together even easier?"</span></div>
+            <div><strong>Co-Marketing Offer:</strong><br><span class="italic">"I’m planning a first-time buyer Q&A / market update for my sphere and a few agent partners. Would you want to co-host the financing segment? I’ll handle promotion and real estate content — you bring the lending expertise."</span></div>
+          </div>`
+        },
+        {
+          heading: "Ongoing Nurturing Cadence",
+          content: `<ul class="space-y-2">
+            <li><strong>Weekly:</strong> Quick text on active mutual files or a market note they can forward to buyers</li>
+            <li><strong>Monthly:</strong> Coffee or lunch — relationship first, pipeline second</li>
+            <li><strong>Quarterly:</strong> Co-branded asset, joint client event, or referral review</li>
+            <li><strong>Always:</strong> Credit them publicly on social when they save a deal or deliver exceptional service</li>
+          </ul>`
+        },
+        {
+          heading: "Common Situations + Winning Responses",
+          content: `<div class="space-y-5">
+            <div><strong>“I already have lenders I use.”</strong><br><span class="text-sm">"Totally fair — most top agents keep a small bench. I’m not asking you to drop anyone. I’d love to be an option when speed, communication, or a specific program is the difference between winning and losing."</span></div>
+            <div><strong>“Your rates aren’t the lowest.”</strong><br><span class="text-sm">"Rates matter, but in this market the difference is often certainty and communication. I refer lenders who make my buyers’ offers credible and keep me in the loop — that’s what protects the deal."</span></div>
+            <div><strong>“I don’t want to switch mid-transaction.”</strong><br><span class="text-sm">"Smart — never mid-deal. I’m talking about the next buyer who’s still shopping. Let’s earn trust on one file first."</span></div>
+          </div>`
+        }
+      ]
+    },
+
+    Title: {
+      title: "Title & Escrow Partners – Closing Confidence",
+      intro: "Title and escrow teams see every agent’s professionalism on every file. The reps who respond fast, solve problems early, and refer great agents become long-term partners. This is for agents building those relationships intentionally.",
+      sections: [
+        {
+          heading: "What Title Partners Value",
+          content: `<ul class="space-y-2">
+            <li>Clean, complete paperwork and responsive agents on conditions</li>
+            <li>Professional communication with clients — no drama, no surprises</li>
+            <li>Consistent volume and mutual respect on difficult files</li>
+            <li>Agents who refer clients back when title/escrow earns it</li>
+          </ul>`
+        },
+        {
+          heading: "Building the Relationship",
+          content: `<ul class="space-y-2">
+            <li>Introduce yourself on every new file — don’t be a stranger to the escrow officer</li>
+            <li>Ask what makes their job easier from the agent side</li>
+            <li>Offer to co-host a “What to Expect at Closing” lunch for fellow agents</li>
+            <li>Refer buyer/seller clients when they deliver exceptional service</li>
+          </ul>`
+        },
+        {
+          heading: "Scripts & Outreach",
+          content: `<div class="space-y-4">
+            <div><strong>Rep Introduction:</strong><br><span class="italic">"Hi [Name], I’m [Your Name] — I close a fair amount of business in [area] and I really value escrow teams who communicate early. I’d love to learn how you like agents to work with your team so I can make your job easier."</span></div>
+            <div><strong>After a Smooth Close:</strong><br><span class="italic">"Thank you for keeping [address] on track. My clients felt informed the whole way. I’d love to send more business your way — and I’m happy to refer buyers/sellers who need a team they can trust."</span></div>
+          </div>`
+        },
+        {
+          heading: "Nurturing Cadence",
+          content: `<ul class="space-y-2">
+            <li>Quarterly coffee or lunch with your top 2–3 title contacts</li>
+            <li>Share anonymized win stories when they go above and beyond</li>
+            <li>Invite them to agent appreciation or client education events</li>
+            <li>Never let a client complaint about title sit — call the rep first, solve together</li>
+          </ul>`
+        }
+      ]
+    },
+
     Builders: {
-      title: "Builders – New Construction & Preferred Lender Status",
-      intro: "Builders care about velocity and predictability. They want buyers who can actually close on time and realtors who bring qualified, ready-to-write buyers and make their sales team look good through strong lender coordination.",
+      title: "Builders & New Construction – Model Home Momentum",
+      intro: "Builders care about velocity and predictability. They want agents who bring qualified, ready-to-write buyers, represent them well on site, and make their sales team look good through smooth coordination with lenders and title.",
       sections: [
         {
           heading: "What Builders Actually Care About",
@@ -409,36 +500,36 @@
         {
           heading: "Winning Outreach Angles",
           content: `<ul class="space-y-2">
-            <li>“I help your sales team convert more traffic by bringing qualified, pre-screened buyers and coordinating smooth transactions the same day they visit the model home.”</li>
-            <li>Offer to run regular training sessions for their sales team on current programs.</li>
-            <li>Propose joint marketing at the model home (branded materials, on-site buyer info / qualification station with your lender partner resources).</li>
+            <li>“I help your sales team convert more traffic by bringing qualified, pre-screened buyers and staying on site to guide them through the next steps the same day they visit the model home.”</li>
+            <li>Offer to run regular market or buyer-education sessions for their sales team (coordinate with your lender partner for financing content).</li>
+            <li>Propose joint marketing at the model home (branded materials, on-site buyer resources, and a smooth handoff to your trusted lender).</li>
           </ul>`
         },
         {
           heading: "High-Value Scripts & Emails",
           content: `<div class="space-y-4">
-            <div><strong>Builder Sales Manager Intro:</strong><br><span class="italic">"I work with several builders in the area and bring qualified, serious buyers. I coordinate closely with trusted lender partners to get your buyers approved quickly and keep the whole team updated through construction so there are no surprises at closing. I’d love to show you how we can help more of your traffic convert and reduce fall-throughs."</span></div>
+            <div><strong>Builder Sales Manager Intro:</strong><br><span class="italic">"I work with several builders in [area] and bring qualified, serious buyers who are ready to write. I coordinate closely with trusted lender partners, keep your sales team updated through construction, and represent buyers professionally on site. I’d love to show you how I can help more of your traffic convert and reduce fall-throughs."</span></div>
           </div>`
         },
         {
           heading: "Nurturing & Relationship Builders",
           content: `<ul class="space-y-2">
             <li>Regular model home pop-bys with treats for the sales team</li>
-            <li>Co-branded “New Construction Financing Guide” they can give every visitor</li>
+            <li>Co-branded “New Construction Buyer Guide” (with your lender partner’s financing section) they can give every visitor</li>
             <li>Quarterly training lunch for their entire sales staff</li>
             <li>Immediate updates whenever one of their buyers hits a milestone</li>
           </ul>`
         },
         {
           heading: "Objections Specific to Builders",
-          content: `<div><strong>“We already have a preferred lender.”</strong><br><span class="text-sm">"Completely fair — having options is smart. I specialize in bringing well-qualified buyers and partnering with strong local lenders so we can keep your sales team’s momentum high and contracts moving smoothly. Happy to earn a spot by delivering results on the next few."</span></div>`
+          content: `<div><strong>“We already have preferred agents.”</strong><br><span class="text-sm">"Completely fair — consistency matters. I specialize in bringing well-qualified buyers and coordinating smoothly with your team and lender partners. Happy to earn a spot by delivering results on the next few visitors."</span></div>`
         },
         {
-          heading: "Construction-to-Permanent Loan Play",
+          heading: "New Construction Buyer Education Play",
           content: `<ul class="space-y-2">
-            <li>Become the expert on one-time close loans — many builders' sales teams are not comfortable explaining them.</li>
-            <li>Offer to create a simple one-pager comparing construction-to-permanent vs traditional two-loan process.</li>
-            <li>Be available for same-day calls when a buyer is in the model home and has questions about financing during construction.</li>
+            <li>Partner with your go-to lender to explain construction timelines, deposits, and financing options in plain language</li>
+            <li>Offer a simple one-pager on the new-construction buying process buyers can take from the model home</li>
+            <li>Be available for same-day follow-up when a serious buyer visits — don’t let model home traffic go cold</li>
           </ul>`
         }
       ]
@@ -460,13 +551,13 @@
           heading: "Best Outreach & Collaboration",
           content: `<ul class="space-y-2">
             <li>Joint workshops: “Homeownership as a Wealth-Building Tool” or “Refinancing vs. Investing the Equity”</li>
-            <li>Offer to review mortgage strategies for their high-net-worth clients (no strings)</li>
+            <li>Offer to review listing or buyer strategies for their high-net-worth clients (no strings)</li>
             <li>Cross-referral agreements that feel professional and reciprocal</li>
           </ul>`
         },
         {
           heading: "Scripts & Value Language",
-          content: `<div><strong>Approach Script:</strong><br><span class="italic">"I work with several planners and CPAs helping their clients make smart home financing and ownership decisions that align with their overall financial plan. I’d love to understand how you advise clients around real estate and see if there are ways I can support your clients without ever getting in the way of your relationship."</span></div>`
+          content: `<div><strong>Approach Script:</strong><br><span class="italic">"I work with several planners and CPAs helping their clients make smart real estate decisions — timing a move, evaluating equity, or finding the right property — in a way that aligns with their overall financial plan. I’d love to understand how you advise clients around real estate and see if there are ways I can support them without ever getting in the way of your relationship."</span></div>`
         },
         {
           heading: "Nurturing Ideas",
@@ -478,7 +569,7 @@
         },
         {
           heading: "Key Objection Handling",
-          content: `<div><strong>“I don’t want to refer my clients to someone who will just sell them a loan.”</strong><br><span class="text-sm">"I completely respect that. My goal is to be the person you trust to have the same fiduciary mindset you do. I’m happy to start by reviewing a couple of your clients’ situations with zero expectation of business."</span></div>`
+          content: `<div><strong>“I don’t want to refer my clients to someone who will just push a transaction.”</strong><br><span class="text-sm">"I completely respect that. My goal is to be the agent you trust to have the same advisory mindset you do — timing, net proceeds, and fit with their plan matter more than a quick deal. I’m happy to start by reviewing a couple of situations with zero expectation of business."</span></div>`
         },
         {
           heading: "Equity & Wealth Strategy Collaboration",
@@ -493,7 +584,7 @@
 
     Attorneys: {
       title: "Attorneys – Divorce, Probate, Estate & Real Estate",
-      intro: "These relationships are built on trust, speed, discretion, and zero surprises. Attorneys remember the lender who made a difficult transaction smoother for their client.",
+      intro: "These relationships are built on trust, speed, discretion, and zero surprises. Attorneys remember the agent who made a difficult transaction smoother for their client.",
       sections: [
         {
           heading: "What Attorneys Value Most",
@@ -507,8 +598,8 @@
         {
           heading: "Winning Outreach",
           content: `<ul class="space-y-2">
-            <li>Offer to speak at firm CLE or lunch meetings on current real estate financing trends</li>
-            <li>Position as the lender who understands complex title and timing issues in divorce/probate</li>
+            <li>Offer to speak at firm CLE or lunch meetings on current real estate market and transaction trends</li>
+            <li>Position as the agent who understands complex title and timing issues in divorce/probate</li>
             <li>Emphasize your ability to move quickly when a closing date is court-ordered or time-sensitive</li>
           </ul>`
         },
@@ -523,11 +614,11 @@
         },
         {
           heading: "Key Scripts",
-          content: `<div><strong>Divorce Attorney Approach:</strong><br><span class="italic">"I work with several family law attorneys on divorce-related home sales, purchases, and financing coordination. I understand the sensitivity and tight timelines involved. I’d be happy to be a resource when your clients need fast, clean financing coordination and transaction support."</span></div>`
+          content: `<div><strong>Divorce Attorney Approach:</strong><br><span class="italic">"I work with several family law attorneys on divorce-related home sales and purchases. I understand the sensitivity and tight timelines involved — and I coordinate closely with lenders and title so nothing surprises your client. I’d be happy to be a resource when timing and discretion matter."</span></div>`
         },
         {
           heading: "Nurturing & Referrals",
-          content: `Send them quarterly “Real Estate & Financing Update for Attorneys” emails. Offer to review financing implications on complex estate or divorce cases pro bono (builds massive goodwill).`
+          content: `Send them quarterly “Real Estate Market Update for Attorneys” emails. Offer to review listing or timing implications on complex estate or divorce cases pro bono (builds massive goodwill).`
         },
         {
           heading: "Time-Sensitive Transaction Support",
@@ -563,7 +654,7 @@
         },
         {
           heading: "Scripts",
-          content: `<div><strong>Insurance Agent Approach:</strong><br><span class="italic">"I close a lot of loans for clients who also need homeowners or auto insurance. I’d love to create an easy process where we can refer clients to each other cleanly. I always send my closings back to the agent who referred the insurance side."</span></div>`
+          content: `<div><strong>Insurance Agent Approach:</strong><br><span class="italic">"I close a lot of transactions for clients who also need homeowners or auto insurance updates. I’d love to create an easy process where we refer clients to each other cleanly. I always send my closings back to the insurance partner who supports the client well."</span></div>`
         },
         {
           heading: "Nurturing Cadence",
@@ -571,7 +662,7 @@
         },
         {
           heading: "Objections",
-          content: `<div><strong>“I already refer to another lender.”</strong><br><span class="text-sm">"Totally fair. I’m not asking you to stop working with anyone. I’m asking to be one of the lenders you feel good about referring when your client needs fast communication and a smooth experience."</span></div>`
+          content: `<div><strong>“I already refer to another agent.”</strong><br><span class="text-sm">"Totally fair. I’m not asking you to stop working with anyone. I’m asking to be one of the agents you feel good about referring when your client needs fast communication, local expertise, and a smooth experience."</span></div>`
         },
         {
           heading: "Creating Natural Handoff Loops",
@@ -585,23 +676,23 @@
     },
 
     Other: {
-      title: "Other Professionals (HR, Relocation, Title, etc.)",
+      title: "Other Professionals (Inspectors, HR, Relocation, etc.)",
       intro: "These sources can be extremely valuable but require more customized approaches. The principles remain the same: understand their world, give massive value first, and make referrals frictionless.",
       sections: [
         {
-          heading: "HR Directors & Relocation Companies",
+          heading: "Home Inspectors & Contractors",
           content: `<ul class="space-y-2">
-            <li>Position as the lender who can move fast for corporate relocations and executive packages</li>
-            <li>Offer to create customized pre-approval packets for their relocating employees</li>
-            <li>Provide regular market updates for the cities they move people into/out of</li>
+            <li>Build a short list of inspectors you trust and refer consistently — they see every buyer and seller in town</li>
+            <li>Send them business when clients need pre-listing or pre-purchase inspections</li>
+            <li>Co-create a simple “What to Expect” guide for first-time buyers that credits your inspector partners</li>
           </ul>`
         },
         {
-          heading: "Title Companies & Escrow Officers",
+          heading: "HR Directors & Relocation Companies",
           content: `<ul class="space-y-2">
-            <li>Build relationships through consistent, professional communication on files</li>
-            <li>Offer joint educational events for realtors</li>
-            <li>Be the lender who responds quickly to title questions and conditions</li>
+            <li>Position as the agent who can move fast for corporate relocations and executive packages</li>
+            <li>Offer neighborhood guides and market snapshots for the cities they move people into/out of</li>
+            <li>Coordinate smoothly with their preferred lenders and relocation vendors</li>
           </ul>`
         },
         {
@@ -716,7 +807,7 @@
         <div>
           <h4 class="font-bold mb-2">Key Scripts for A+ Partners</h4>
           <p class="italic text-sm mb-2">"I was thinking about you this week — how are things going with [specific thing they mentioned last time]?"</p>
-          <p class="italic text-sm">"I have a buyer who would be perfect for one of your listings. Can I run a quick scenario for you before I present it?"</p>
+          <p class="italic text-sm">"I have a buyer who would be perfect for one of your listings. Can I send a quick buyer profile and pre-qual summary before we schedule a showing?"</p>
         </div>
       `
     },
@@ -772,9 +863,9 @@
         <div>
           <h4 class="font-bold mb-2">Qualification Questions (Use in Conversations)</h4>
           <ul class="list-disc pl-5 space-y-1 text-sm">
-            <li>"How many referrals are you looking to send this year?"</li>
-            <li>"What frustrates you most about the lenders you currently work with?"</li>
-            <li>"Would you be open to me helping with one file so you can see how I communicate?"</li>
+            <li>"How many buyer or seller referrals do you typically send per year?"</li>
+            <li>"What frustrates you most about agents or vendors you've worked with on past transactions?"</li>
+            <li>"Would you be open to one low-pressure collaboration — a co-hosted event, a mutual intro, or a single file — so you can see how I communicate?"</li>
           </ul>
         </div>
       `
@@ -843,7 +934,7 @@
             <strong class="block mb-1">Week 2: Relationship Building</strong>
             <ul class="list-disc pl-5 text-sm space-y-1">
               <li>Personal text or call (learn about their business/goals)</li>
-              <li>Offer to run scenarios on any current listings/opportunities</li>
+              <li>Offer to run CMAs or buyer consults on any current listings/opportunities</li>
               <li>Send second value touch (co-branded asset or introduction)</li>
             </ul>
           </div>
@@ -869,17 +960,17 @@
         <p class="mb-4">Strong, natural responses to the most common objections you’ll hear from partners.</p>
         
         <div class="space-y-5">
-          <div><strong>“I already have a lender I like.”</strong><br>
-          <span class="text-sm italic">"Totally fair. Most of the agents I work best with have 2–3 lenders they trust for different situations. I’d love to be the one you call when speed, communication, or creative financing is the difference between winning and losing the deal."</span></div>
+          <div><strong>“I already have agents / vendors I use.”</strong><br>
+          <span class="text-sm italic">"Totally fair — most strong partners keep a small trusted bench. I’d love to earn a spot by making one transaction or collaboration noticeably easier for you and your clients."</span></div>
           
-          <div><strong>“Your rates aren’t the lowest.”</strong><br>
-          <span class="text-sm italic">"Rates matter, but in this market the difference between an accepted offer and a lost deal is often 24–48 hours of certainty. I focus on making your buyer’s offer the strongest on the table."</span></div>
+          <div><strong>“I’m happy with my current co-broke partners.”</strong><br>
+          <span class="text-sm italic">"That’s smart. I focus on seamless communication and protecting everyone’s reputation on co-broke deals. Happy to prove it on one small collaboration first — no strings."</span></div>
           
-          <div><strong>“I don’t want to change mid-transaction.”</strong><br>
-          <span class="text-sm italic">"Smart. I’m not asking you to switch anyone mid-deal. I’m asking for the next buyer who is still shopping. Let me prove the difference on one file."</span></div>
+          <div><strong>“I don’t send many referrals.”</strong><br>
+          <span class="text-sm italic">"Understood. I’m not asking for volume — just to be someone you feel great about when the right client or colleague comes up. Value first, always."</span></div>
           
-          <div><strong>“I only refer when I get something back.”</strong><br>
-          <span class="text-sm italic">"Fair. I believe the best relationships are reciprocal. I’m happy to send you buyers who need a great realtor whenever it makes sense."</span></div>
+          <div><strong>“I only partner when it’s reciprocal.”</strong><br>
+          <span class="text-sm italic">"Fair — the best relationships go both ways. I’m happy to send business your way, co-market, and make you look great with clients whenever it fits."</span></div>
         </div>
         <div class="mt-4">
           <button onclick="savePartnerStrategy('Objections', 0, this)" class="text-sm px-3 py-1 rounded-full border border-[#00A89D] text-[#00A89D] hover:bg-[#00A89D] hover:text-white">Save Objection Playbook</button>
@@ -936,9 +1027,9 @@
     '60-day-realtor-onboarding': {
       title: "60-Day Agent Partnership Onboarding",
       content: `
-        <p class="mb-4">A proven step-by-step system to turn a brand new realtor relationship into a consistent referral source within 60 days.</p>
+        <p class="mb-4">A proven step-by-step system to turn a brand new partner relationship (agent, lender, or local pro) into a consistent referral source within 60 days.</p>
         <div class="space-y-4">
-          <div class="border-l-4 border-[#00A89D] pl-4"><strong>Days 1-2:</strong> Personal intro + offer to run scenarios on their current listings.</div>
+          <div class="border-l-4 border-[#00A89D] pl-4"><strong>Days 1-2:</strong> Personal intro + offer tangible value (CMA, market snapshot, or buyer resource).</div>
           <div class="border-l-4 border-[#00A89D] pl-4"><strong>Day 7:</strong> Send a high-value co-brandable neighborhood market snapshot.</div>
           <div class="border-l-4 border-[#00A89D] pl-4"><strong>Day 14:</strong> Coffee/lunch – learn their business and pain points.</div>
           <div class="border-l-4 border-[#00A89D] pl-4"><strong>Day 21:</strong> Deliver one co-branded asset + offer to co-host an open house.</div>
@@ -973,12 +1064,12 @@
     'open-house-domination': {
       title: "Open House Domination Play",
       content: `
-        <p class="mb-4">Turn every open house into a dual win: buyer leads + new realtor relationships.</p>
+        <p class="mb-4">Turn every open house into a dual win: buyer leads + stronger partner relationships.</p>
         <div class="space-y-3">
-          <div><strong>Before:</strong> Offer the agent on-site pre-approval support + bring branded materials.</div>
-          <div><strong>During:</strong> Run quick scenarios for serious buyers. Collect contact info compliantly.</div>
-          <div><strong>After:</strong> Send the agent a thank-you + summary of buyers you met + next steps.</div>
-          <div><strong>Follow-up:</strong> Within 48 hours offer to co-host their next open house or create a joint buyer event.</div>
+          <div><strong>Before:</strong> Prep signage, neighbor outreach, and social promotion; coordinate with your lender partner for buyer qualification materials if helpful.</div>
+          <div><strong>During:</strong> Qualify visitors, collect contact info compliantly, and make the experience memorable.</div>
+          <div><strong>After:</strong> Same-day follow-up with attendees; thank any co-hosting agent or lender partner with a summary of results.</div>
+          <div><strong>Follow-up:</strong> Within 48 hours offer to co-host another open house, cross-promote with a fellow agent, or run a joint buyer event with your lender bench.</div>
         </div>
         <div class="mt-4">
           <button onclick="savePartnerStrategy('HighImpact-OpenHouse', 0, this)" class="text-sm px-3 py-1 rounded-full border border-[#00A89D] text-[#00A89D] hover:bg-[#00A89D] hover:text-white">Save This Play</button>
@@ -986,14 +1077,14 @@
       `
     },
     'realtor-to-5-more': {
-      title: "Turning One Strong Realtor Into 5 More",
+      title: "Turning One Strong Partner Into 5 More",
       content: `
-        <p class="mb-4">The network effect strategy: leverage your best relationships to grow your referral partner base exponentially.</p>
+        <p class="mb-4">The network effect strategy: leverage your best lender, title, and agent relationships to grow your partner base exponentially.</p>
         <ol class="list-decimal pl-5 space-y-2 text-sm">
-          <li>After 3+ successful files, ask: “Who’s one agent you respect that I should meet?”</li>
+          <li>After 3+ successful collaborations, ask: “Who’s one professional you respect that I should meet?”</li>
           <li>Get a warm introduction or at minimum their name + why they’d be a good fit.</li>
           <li>Reach out within 48 hours referencing the mutual connection.</li>
-          <li>Once the new agent sends one file, repeat the process with them.</li>
+          <li>Once the new partner sends one referral or collaboration, repeat the process with them.</li>
           <li>Publicly thank the original agent for the introduction (social proof loop).</li>
         </ol>
         <div class="mt-4">
@@ -1004,12 +1095,12 @@
     'builder-training': {
       title: "Builder Sales Team Training Sequence",
       content: `
-        <p class="mb-4">Become the preferred lender by making the entire sales team smarter and more confident.</p>
+        <p class="mb-4">Become the go-to agent by making the entire sales team more confident converting model-home traffic.</p>
         <div class="space-y-3 text-sm">
-          <div><strong>Step 1:</strong> Offer a 20-30 min “Current Financing Options” lunch & learn at the model home.</div>
-          <div><strong>Step 2:</strong> Create a simple one-pager they can hand every visitor.</div>
-          <div><strong>Step 3:</strong> Be available for same-day scenario help on active traffic.</div>
-          <div><strong>Step 4:</strong> Quarterly refresher sessions + new program updates.</div>
+          <div><strong>Step 1:</strong> Offer a 20–30 min “Current Market & Buyer Strategies” lunch & learn at the model home (invite your lender partner for the financing segment).</div>
+          <div><strong>Step 2:</strong> Create a simple new-construction buyer one-pager they can hand every visitor.</div>
+          <div><strong>Step 3:</strong> Be available for same-day follow-up when serious buyers visit.</div>
+          <div><strong>Step 4:</strong> Quarterly refresher sessions + updated market and incentive talking points.</div>
         </div>
         <div class="mt-4">
           <button onclick="savePartnerStrategy('HighImpact-BuilderTraining', 0, this)" class="text-sm px-3 py-1 rounded-full border border-[#00A89D] text-[#00A89D] hover:bg-[#00A89D] hover:text-white">Save This Sequence</button>
@@ -1021,7 +1112,7 @@
       content: `
         <p class="mb-4">Professional, low-pressure language for attorneys, planners, and insurance agents.</p>
         <div class="space-y-4 text-sm">
-          <div><strong>After a successful closing:</strong><br><span class="italic">"Thank you for the introduction. The closing went smoothly. If you have other clients who would benefit from the same level of communication and speed, I’d be grateful for the opportunity."</span></div>
+          <div><strong>After a successful closing:</strong><br><span class="italic">"Thank you for the introduction. The transaction went smoothly and your client felt well supported. If you have others who would benefit from the same level of communication and care, I’d be grateful for the opportunity."</span></div>
           <div><strong>Quarterly check-in:</strong><br><span class="italic">"I was thinking about the work we did together earlier this year. Is there anything I can do to support your clients or your practice right now?"</span></div>
         </div>
         <div class="mt-4">
@@ -1123,11 +1214,11 @@
     // Restored from original + new high-value additions
     { id: "book-045", title: "The Laws of Human Nature", author: "Robert Greene", category: "Sales & Negotiation", level: "Advanced", readTime: "12-15 hrs", whyUseful: "Deep understanding of human behavior and psychology. One of the best books for mastering influence, reading people, and handling difficult personalities in sales.", keyTakeaway: "Mastering others starts with mastering yourself.", amazonLink: "https://www.amazon.com/Laws-Human-Nature-Robert-Greene/dp/0143110012" },
     { id: "book-046", title: "The ONE Thing", author: "Gary Keller", category: "Mindset & Performance", level: "Beginner", readTime: "5-7 hrs", whyUseful: "Focus on the one thing that matters most. Extremely practical for realtors who get pulled in too many directions.", keyTakeaway: "Extraordinary results come from doing the one most important thing.", amazonLink: "https://www.amazon.com/ONE-Thing-Surprisingly-Extraordinary-Results/dp/1885167776" },
-    { id: "book-047", title: "Loan Officer Champions", author: "Carl White", category: "Sales & Negotiation", level: "Intermediate", readTime: "6-8 hrs", whyUseful: "Real case studies and strategies from top-producing realtors. Very actionable and industry-specific.", keyTakeaway: "Learn directly from the habits and systems of the best in the business.", amazonLink: "https://www.amazon.com/Loan-Officer-Champions-Studies-Producers/dp/173246555X" },
-    { id: "book-048", title: "Be the Better Broker, Volume 1", author: "Dustan Woodhouse", category: "Sales & Negotiation", level: "Intermediate", readTime: "6-8 hrs", whyUseful: "Practical, no-fluff advice specifically for real estate professionals. Highly regarded in the industry.", keyTakeaway: "Focus on relationships and systems to become a top producer.", amazonLink: "https://www.amazon.com/Be-Better-Broker-Become-Producer/dp/1988344034" },
-    { id: "book-049", title: "The Millionaire Loan Officer", author: "Scott Hudspeth", category: "Sales & Negotiation", level: "Intermediate", readTime: "5-7 hrs", whyUseful: "Real-world strategies and mindset shifts from a top producer. Great for scaling your business.", keyTakeaway: "Treat your career like a business, not a job.", amazonLink: "https://www.amazon.com/Millionaire-Loan-Officer-Scott-Hudspeth/dp/0971619409" },
-    { id: "book-050", title: "The Mortgage 101 Bootcamp", author: "David Dutton", category: "Sales & Negotiation", level: "Beginner", readTime: "4-6 hrs", whyUseful: "Solid foundational knowledge for new realtors. Clear explanations of the basics.", keyTakeaway: "Build a strong foundation before trying to master advanced techniques.", amazonLink: "https://www.amazon.com/Mortgage-101-Bootcamp-David-Dutton/dp/B07Z8G5Y3G" },
-    { id: "book-051", title: "Pass the Mortgage Loan Originator Test", author: "Real Estate Institute", category: "Sales & Negotiation", level: "Beginner", readTime: "4-6 hrs", whyUseful: "Targeted exam prep for those getting licensed or helping others study. Very practical.", keyTakeaway: "A focused resource for passing the licensing exam efficiently.", amazonLink: "https://www.amazon.com/Pass-Mortgage-Loan-Originator-Test/dp/0997581808" },
+    { id: "book-047", title: "The Millionaire Real Estate Agent", author: "Gary Keller", category: "Sales & Negotiation", level: "Intermediate", readTime: "8-10 hrs", whyUseful: "The classic blueprint for building a real estate business with systems, lead generation, and accountability.", keyTakeaway: "Think like a business owner, not just a salesperson.", amazonLink: "https://www.amazon.com/Millionaire-Real-Estate-Agent-Expanded/dp/0071444041" },
+    { id: "book-048", title: "Ninja Selling", author: "Larry Kendall", category: "Sales & Negotiation", level: "Intermediate", readTime: "6-8 hrs", whyUseful: "Practical, no-fluff advice specifically for real estate professionals. Highly regarded in the industry.", keyTakeaway: "Focus on relationships and systems to become a top producer.", amazonLink: "https://www.amazon.com/Ninja-Selling-Subtle-Skills-Results/dp/1942952221" },
+    { id: "book-049", title: "Your First 365 Days in Real Estate", author: "Sara Sutachan", category: "Sales & Negotiation", level: "Beginner", readTime: "5-7 hrs", whyUseful: "Real-world strategies and mindset shifts for new agents building momentum in year one.", keyTakeaway: "Treat your career like a business, not a job.", amazonLink: "https://www.amazon.com/Your-First-365-Days-Real-Estate/dp/1942952531" },
+    { id: "book-050", title: "The Conversion Code", author: "Chris Smith", category: "Sales & Negotiation", level: "Intermediate", readTime: "5-7 hrs", whyUseful: "Modern lead conversion and follow-up systems for agents who want more appointments from online leads.", keyTakeaway: "Build a strong foundation of conversion before trying to master advanced marketing.", amazonLink: "https://www.amazon.com/Conversion-Code-Capture-Internet-Customers/dp/1119215713" },
+    { id: "book-051", title: "Real Estate Exam Prep (National + State)", author: "Kaplan Real Estate Education", category: "Sales & Negotiation", level: "Beginner", readTime: "4-6 hrs", whyUseful: "Targeted exam prep for those getting licensed or refreshing core real estate fundamentals.", keyTakeaway: "A focused resource for passing the licensing exam efficiently.", amazonLink: "https://www.amazon.com/s?k=real+estate+license+exam+prep" },
     { id: "book-052", title: "The Connector's Advantage", author: "Michelle Tillis Lederman", category: "Networking & Relationships", level: "Intermediate", readTime: "6-8 hrs", whyUseful: "Modern networking strategies with a focus on building genuine, high-value relationships.", keyTakeaway: "Networking is about creating mutual value over time.", amazonLink: "https://www.amazon.com/Connectors-Advantage-7-Traits-Highly/dp/1989025358" },
     { id: "book-053", title: "Networking in the 21st Century", author: "David J.P. Fisher", category: "Networking & Relationships", level: "Intermediate", readTime: "5-7 hrs", whyUseful: "Updated take on networking for the digital age. Very relevant for social media + in-person combination.", keyTakeaway: "Build relationships before you need them.", amazonLink: "https://www.amazon.com/Networking-21st-Century-Professionals-Connections/dp/1944730036" },
     { id: "book-054", title: "Raving Fans", author: "Ken Blanchard", category: "Networking & Relationships", level: "Beginner", readTime: "3-4 hrs", whyUseful: "Classic on creating exceptional customer experiences. Perfect mindset for realtors who want referrals and repeat business.", keyTakeaway: "Create raving fans, not just satisfied customers.", amazonLink: "https://www.amazon.com/Raving-Fans-Revolutionary-Approach-Customer/dp/0688123163" },

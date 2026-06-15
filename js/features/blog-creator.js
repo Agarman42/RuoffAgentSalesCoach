@@ -99,14 +99,14 @@
     if (eff.goals) parts.push(`Current focus/goals: ${eff.goals}`);
     if (eff.challenges) parts.push(`Key challenges you help clients with: ${eff.challenges}`);
 
-    return parts.length ? parts.join('. ') + '.' : 'Write in a helpful, trustworthy, conversational voice for a local mortgage professional.';
+    return parts.length ? parts.join('. ') + '.' : 'Write in a helpful, trustworthy, conversational voice for a local real estate professional.';
   }
 
   // =====================================================
   // ORIGINAL BLOG CREATOR CODE (moved verbatim)
   // =====================================================
 
-// ==================== LOAN OFFICER BLOG DOCUMENT UPLOAD ====================
+// ==================== REALTOR BLOG DOCUMENT UPLOAD ====================
 let blogUploadedFileText = '';
 let lastBlogBundle = null; // { blogMarkdown, captionText, googlePostText, reelScriptText, topicInput }
 
@@ -290,12 +290,12 @@ if (loadingEl) loadingEl.innerHTML = blogLoadingContent;
     const richProfile = getEffectiveSetup();
     const personalization = buildBlogPersonalization(richProfile);
 
-    const systemPrompt = `You are an expert mortgage content writer creating high-quality, GEO-optimized, authority-building content for loan officers. Write in the exact voice and style of this specific loan officer: ${personalization}
+    const systemPrompt = `You are an expert real estate content writer creating high-quality, GEO-optimized, authority-building content for real estate agents. Write in the exact voice and style of this specific realtor: ${personalization}
 
 Key Requirements:
 - Length: Exactly aim for the middle of ${lengthGuide} range (e.g., ~1,750 words for 1,500–2,000). Do not generate shorter—expand with more detailed explanations, additional examples, sub-sections, or relevant anecdotes to reach the word count while keeping it engaging and reader-focused. 
 - Tone: ${tone}
-${tone.toLowerCase().includes('hilarious') ? '- HILARIOUS MODE: Make it laugh-out-loud funny! Use clever wordplay, relatable mortgage humor, self-deprecating jokes, exaggerated analogies, and witty observations. Keep it light-hearted and entertaining while still being helpful — never mean-spirited. Sprinkle humor throughout (intro, body, headings, FAQs). Readers should smile or chuckle multiple times.' : ''}
+${tone.toLowerCase().includes('hilarious') ? '- HILARIOUS MODE: Make it laugh-out-loud funny! Use clever wordplay, relatable real estate humor, self-deprecating jokes, exaggerated analogies, and witty observations. Keep it light-hearted and entertaining while still being helpful — never mean-spirited. Sprinkle humor throughout (intro, body, headings, FAQs). Readers should smile or chuckle multiple times.' : ''}
 - Write a complete blog post on: ${topicInput}
 - Primary SEO keyword/phrase (use naturally throughout, especially in title if it fits, intro, H2s, and body — aim for 1–2% density with semantic variations): ${keywordInput || 'Optimize naturally for the main topic'}
 - Local Area (incorporate relevant local insights, programs, statistics, or examples if applicable to the topic and it fits naturally; otherwise, keep general/US-wide): ${localArea || 'None provided'}
@@ -310,10 +310,9 @@ ${tone.toLowerCase().includes('hilarious') ? '- HILARIOUS MODE: Make it laugh-ou
   - Dedicated FAQ section near the end (H2: "Frequently Asked Questions") answering the top 4–6 real consumer questions in clear, helpful bullet format (elaborate on answers to add words)
   - Soft CTA at end: "Ready to explore your options? Reach out — I’m here to help."
 - SEO/GEO: Reader-first writing, natural keywords, local relevance where it fits the topic
-- Avoid: Any "trigger terms" that could lead to compliance issues
-- Never mention lenders other than Ruoff Mortgage. 
+- Avoid: Any "trigger terms" that could lead to fair housing or compliance issues
 - Do not start the blog with Imagine this or Picture this. 
-- Voice: Match the loan officer's personality and voice traits above — helpful, trustworthy, conversational, and authentic — never salesy.
+- Voice: Match the realtor's personality and voice traits above — helpful, trustworthy, conversational, and authentic — never salesy.
 - Language: Check the "Additional instructions" / additional context field. If the user requests a different language there (e.g. "Prepare the full blog in Spanish", "Generate in French", "in German", "en español"), produce the **entire output** — the blog post, the social media caption, the Google Business post, **and** the Reel script — fully in that requested language. Translate everything naturally and accurately while preserving the exact required structure, headings, SEO intent, and professional tone.
 
 After the blog post, add a clear separator (---) followed by a short, clearly labeled social media caption (e.g., **Suggested Social Media Caption:**). Keep the caption 100–200 characters, engaging, and include 4–6 relevant hashtags. **Do NOT include any character count at the end — output clean caption text only.**
@@ -358,7 +357,7 @@ let finalPrompt = systemPrompt;
             window.hideLoading?.();
             return;
         }
-        finalPrompt = `You are an expert mortgage content editor. The user already has a complete blog bundle (blog + social caption + Google post + Reel script). Apply ONLY the requested edits while keeping the same overall structure, separators (---), and section labels.
+        finalPrompt = `You are an expert real estate content editor. The user already has a complete blog bundle (blog + social caption + Google post + Reel script). Apply ONLY the requested edits while keeping the same overall structure, separators (---), and section labels.
 
 USER FEEDBACK / REQUESTED EDITS:
 ${feedback}
@@ -840,7 +839,7 @@ function downloadBlogWord() {
     a.href = url;
 
     const titleEl = blogEl.querySelector('h1');
-    const filename = titleEl ? titleEl.innerText.replace(/[^a-z0-9]/gi, '_').toLowerCase() + '_blog.doc' : 'mortgage_blog.doc';
+    const filename = titleEl ? titleEl.innerText.replace(/[^a-z0-9]/gi, '_').toLowerCase() + '_blog.doc' : 'realtor_blog.doc';
     a.download = filename;
     a.click();
     URL.revokeObjectURL(url);

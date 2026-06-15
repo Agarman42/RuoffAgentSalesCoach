@@ -1070,20 +1070,20 @@ function openSocialModal(category) {
 
         case 'Educational':
             emoji = '📚';
-            title = 'Educational Mortgage Tips';
+            title = 'Educational Home Tips';
             content = [
-                "3% down programs available right now in Indiana",
-                "Why buying now vs waiting could save you $28k+",
-                "How to boost your credit score 40+ points in 30 days",
-                "Buydown explained in 60 seconds (super simple)",
+                "What to know before your first showing appointment",
+                "How to win in a multiple-offer situation without overpaying",
                 "First-time buyer checklist (free download link)",
-                "Rate myths busted: You do NOT need 20% down",
-                "FHA vs Conventional — which is better for you?",
+                "Staging basics that help homes sell faster",
                 "What escrow really is and why it matters",
                 "Closing costs explained with real numbers",
-                "VA loan benefits every veteran should know",
-                "How to get pre-approved in under 24 hours",
-                "Refinance breakeven calculator — when it actually makes sense"
+                "How to get pre-approved before you start touring",
+                "Inspection red flags every buyer should know",
+                "Seller net sheet basics — what sellers actually walk away with",
+                "Open house etiquette for serious buyers",
+                "How long the average home search takes in [city]",
+                "Rent vs buy — when ownership actually makes sense"
             ];
             break;
 
@@ -1092,17 +1092,17 @@ function openSocialModal(category) {
             title = 'Client Success Stories';
             content = [
                 "Just helped the Smith family buy their first home in [city]!",
-                "Refinanced Sarah & Mike — saving them $312/month",
-                "Teacher closed with only 3.5% down using DPA program",
-                "Veteran client got 0% down VA loan in 21 days",
+                "Helped sellers in [neighborhood] close $15k over asking",
+                "First-time buyers beat 4 other offers with a strong strategy",
+                "Past clients referred their neighbors — now under contract!",
                 "Client testimonial: “Best decision we ever made!”",
                 "Another happy family got their keys this week 🗝️",
-                "Helped a young couple beat 7 other offers",
-                "First-time buyer closed with rate buydown — huge savings",
-                "Client went from renter to homeowner in 38 days",
-                "Refinance success story — lowered payment by $450/month",
+                "Helped a young couple find the perfect starter home",
+                "Relocated family found their dream home in 3 weeks",
+                "Seller closed in 9 days with multiple offers",
+                "Helped buyers navigate a tough inspection and still close",
                 "Helped a family move closer to grandparents",
-                "Just closed another veteran with 100% financing"
+                "Sphere referral turned into a listing + buyer win"
             ];
             break;
 
@@ -1111,17 +1111,17 @@ function openSocialModal(category) {
             title = 'Free Value Resources';
             content = [
                 "Free Homebuyer Checklist (download link)",
-                "2026 Mortgage Rate Forecast Guide",
-                "Credit Repair Checklist — boost your score fast",
-                "Closing Cost Calculator (free tool)",
+                "2026 Local Market Snapshot Guide",
+                "Seller Prep Checklist — get top dollar",
+                "Closing Cost Overview (buyer & seller)",
                 "First-Time Buyer Webinar Replay",
                 "Home Maintenance Calendar (printable)",
-                "Refinance Breakeven Calculator",
-                "Questions to Ask Your Lender checklist",
                 "Moving Checklist for new homeowners",
+                "Questions to Ask Before You List",
+                "Open House Follow-Up Script",
                 "Local Vendor List (painters, inspectors, movers)",
-                "Budget Worksheet for homebuyers",
-                "Down Payment Assistance Guide for Indiana"
+                "Neighborhood Comparison Worksheet",
+                "Down Payment & Closing Cost Planning Guide"
             ];
             break;
 
@@ -1444,14 +1444,14 @@ async function generateNewsletter(feedback = '') {
             ];
         } else {
             promptLines = [
-                'You are a world-class email designer and compliance-focused home loan professional. ACCURACY and HONESTY are your HIGHEST priority — above creativity, engagement, or length.',
+                'You are a world-class email designer and compliance-focused real estate professional. ACCURACY and HONESTY are your HIGHEST priority — above creativity, engagement, or length.',
                 '',
                 '**CRITICAL TITLE RULE (very important):**',
                 '- If the user provided a title in the Title field, use it exactly as written.',
-                '- If the Title field is blank or only contains something generic like "Mortgage Insights" or "Homeownership Insights", you MUST create a short, catchy, professional title in the style of "The Local Edge" or "Your 2026 Homeowner Playbook".',
-                '- Titles should be home loan or lending related, 4–7 words maximum, confident, and benefit-focused.',
+                '- If the Title field is blank or only contains something generic like "Market Insights" or "Homeownership Insights", you MUST create a short, catchy, professional title in the style of "The Local Edge" or "Your 2026 Homeowner Playbook".',
+                '- Titles should be real estate or local-market related, 4–7 words maximum, confident, and benefit-focused.',
                 '- Create a unique title for every newsletter — never repeat the same title.',
-                '- Good style examples: "The Lending Edge", "Closing Strong", "Your Mortgage Advantage", "Lending Smarter", "The Home Loan Edge", "Mortgage Mastery", "Borrow Better", "Rate & Relationship".',
+                '- Good style examples: "The Local Edge", "Keys & Community", "Your Market Advantage", "Neighborhood Notes", "Home & Happenings", "The Listing Life", "Move With Confidence", "Local Market Pulse".',
                 '',
                 '**LANGUAGE RULE (important):**',
                 '- Check the "Specific Topics" field (and any other instructions). If the user requests a different language there (e.g. "Prepare the full newsletter in Spanish", "Generate in French", "in German", "en español", "tout en français"), output the **entire newsletter HTML** (all sections, personal note, headlines, body text, etc.) fully in that requested language.',
@@ -1510,13 +1510,13 @@ async function generateNewsletter(feedback = '') {
                 '- ALL EXTERNAL LINKS: target="_blank" rel="noopener".',
                 '- If a personal photo URL is provided, place the image BELOW the personal note text. Use a simple table wrapper with max-width around 590px and max-height around 480px so the photo scales down automatically while staying fully visible. Keep it clean and Outlook-friendly.',
                 '- Compliance: Use the exact footer disclaimer provided below. NEVER quote specific rates anywhere.',
-                '- COMPLIANCE (CRITICAL - NEVER BREAK): NEVER quote, mention, suggest, or imply ANY specific home loan interest rates, APRs, current rates, or loan rates in ANY section (Market Update, Industry News, Current News, or elsewhere). Use only general language like "rates have fluctuated recently" WITHOUT any numbers or quotes. Violation = compliance risk.',
+                '- COMPLIANCE (CRITICAL - NEVER BREAK): NEVER quote, mention, suggest, or imply ANY specific mortgage interest rates, APRs, or financing numbers in ANY section. Use only general language like "financing conditions have shifted recently" WITHOUT specific numbers. Never make guarantees about home values or sale prices. Violation = compliance risk.',
                 '- EMAIL COMPATIBILITY (MANDATORY): Use ONLY inline styles. DO NOT include any <style> tags or class attributes. Use TABLE-BASED LAYOUTS for all structural elements. Avoid flexbox, gap, and box-shadow.',
                 '- Main container: <table width="600" align="center"...> with background white.',
                 '- Use consistent module spacing of 20px between sections. Main content tables should be width="600".',
                 '- Sections: EACH section MUST be in its OWN nested table with background:#f9f9f9 and border-left:8px solid #00A89D to create distinct shaded card boxes with individual teal stripes. Add a spacer row <tr><td height="20"></td></tr> between sections for separation. NEVER merge sections into one cell.',
-                '- For the Market Update / Market section ONLY: ALWAYS end with a "Sources" paragraph containing 1-2 HYPERLINKED credible sources. REQUIRED FORMAT (use exactly): <p style="font-size:14px; color:#666; margin-top:20px;">Sources: <a href="https://www.freddiemac.com/pmms" style="color:#00A89D; text-decoration:underline;" target="_blank" rel="noopener">Freddie Mac PMMS</a>, <a href="https://www.home loannewsdaily.com" style="color:#00A89D; text-decoration:underline;" target="_blank" rel="noopener">Mortgage News Daily</a></p>. Use ONLY real, permanent URLs from trusted sites like Freddie Mac, Mortgage News Daily, NAR, HousingWire, or MBA. NEVER plain text names — links are mandatory.',
-                '- For the Industry News / Industry Insights section ONLY: Same as above — ALWAYS include 1-2 HYPERLINKED sources in the exact format. Examples: <a href="https://www.mba.org/news-and-research" style="color:#00A89D; text-decoration:underline;" target="_blank" rel="noopener">Mortgage Bankers Association</a>, <a href="https://nationalhome loannews.com" style="color:#00A89D; text-decoration:underline;" target="_blank" rel="noopener">National Mortgage News</a>.',
+                '- For the Market Update / Market section ONLY: ALWAYS end with a "Sources" paragraph containing 1-2 HYPERLINKED credible sources. REQUIRED FORMAT (use exactly): <p style="font-size:14px; color:#666; margin-top:20px;">Sources: <a href="https://www.nar.realtor/research-and-statistics" style="color:#00A89D; text-decoration:underline;" target="_blank" rel="noopener">NAR Research</a>, <a href="https://www.housingwire.com" style="color:#00A89D; text-decoration:underline;" target="_blank" rel="noopener">HousingWire</a></p>. Use ONLY real, permanent URLs from trusted sites like NAR, HousingWire, Redfin Data Center, or local MLS/market reports. NEVER plain text names — links are mandatory.',
+                '- For the Industry News / Industry Insights section ONLY: Same as above — ALWAYS include 1-2 HYPERLINKED sources in the exact format. Examples: <a href="https://www.nar.realtor/research-and-statistics" style="color:#00A89D; text-decoration:underline;" target="_blank" rel="noopener">NAR Research</a>, <a href="https://www.housingwire.com" style="color:#00A89D; text-decoration:underline;" target="_blank" rel="noopener">HousingWire</a>.',
                 '- BLOG RULE (VERY IMPORTANT): DO NOT create any "From the Blog", "Blog Highlight", "My Recent Blog", or similar blog section yourself. Leave the exact placeholder <!-- BLOG SECTION PLACEHOLDER --> untouched (it goes right before the Personal Note Section). The blog section will be automatically injected in post-processing ONLY if the user checked the "Include Blog" box and provided a URL. Never output a blog section on your own.',
                 '',
                 'OUTPUT ONLY complete standalone HTML. Follow the header exactly. Then generate 4 or more full main content sections (Market Update, Industry Insights, Local Flavor, Client Story/Win, etc.) as complete teal cards using the exact format shown in the example cards below. Fill with real content per the CRITICAL RULES. Do not leave the comment or output placeholders for sections - expand them. After the sections, append exactly the skeleton for the placeholders and footer (do not change it). Leave the placeholders untouched for post-processing.',
@@ -1907,14 +1907,14 @@ const simpleReferralHTML = `
     <table width="100%" cellpadding="0" cellspacing="0" style="background:#f9f9f9; border-left:8px solid #00A89D; border-collapse:separate;">
       <tr>
         <td style="padding:30px 30px 30px 30px; text-align:center;">
-          <h2 style="color:#002B5C; font-size:26px; margin:0 0 20px;">Know Someone Ready to Buy or Refinance?</h2>
-          <p style="margin:0 0 25px; font-size:18px; line-height:1.6; color:#002B5C;">Hook me up – forward this or smash the button, I'll make 'em laugh all the way to closing!</p>
+          <h2 style="color:#002B5C; font-size:26px; margin:0 0 20px;">Know Someone Thinking About Buying or Selling?</h2>
+          <p style="margin:0 0 25px; font-size:18px; line-height:1.6; color:#002B5C;">Hook me up – forward this or smash the button. I'll take great care of them from first conversation to keys!</p>
           
           <!-- Outlook-friendly button -->
           <table align="center" cellpadding="0" cellspacing="0" role="presentation">
             <tr>
               <td align="center" bgcolor="#00A89D" style="border-radius:30px; padding:4px;">
-                <a href="mailto:${document.getElementById('nl-email').value || ''}?subject=Referral from a Friend — Ready for Mortgage Help!&body=Hi ${firstName},%0A%0AI'd like to refer someone who's interested in home loan options.%0A%0AName: %0APhone: %0AEmail: %0AThey're looking for: (buying / refinancing / other)%0A%0AThanks!%0A%0A" 
+                <a href="mailto:${document.getElementById('nl-email').value || ''}?subject=Referral from a Friend — Real Estate Help!&body=Hi ${firstName},%0A%0AI'd like to refer someone who may need real estate help.%0A%0AName: %0APhone: %0AEmail: %0AThey're looking for: (buying / selling / both / not sure)%0A%0AThanks!%0A%0A"
                    style="display:inline-block; padding:18px 40px; color:white; font-weight:bold; font-size:20px; text-decoration:none; border-radius:26px;">
                     Send Me a Referral
                 </a>

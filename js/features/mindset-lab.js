@@ -180,7 +180,7 @@
   let currentFilter = getPersistedFilter();
   let currentSearch = '';
 
-  // 3 Core truths for the premium "Start Here" featured row (hand-picked for immediate LO impact)
+  // 3 Core truths for the premium "Start Here" featured row (hand-picked for immediate agent impact)
   const FEATURED_MINDSET_IDS = ['res-4', 'dis-1', 'rel-1'];
 
   function renderFeaturedMindset() {

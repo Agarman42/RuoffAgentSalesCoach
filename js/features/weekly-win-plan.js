@@ -57,7 +57,7 @@
 
     return {
       ...local,
-      name: central.name || local.name || "Loan Officer",
+      name: central.name || local.name || "Realtor",
       email: central.email || '',
       // Unit goal (number of loans) — this is what the Weekly Win Plan cares about for "Monthly Target"
       monthlyUnits: central.monthlyUnits || local.monthlyGoal || local.monthlyUnits || 8,
@@ -315,7 +315,7 @@
     let fullPlan = '';
 
     try {
-    const prompt = `You are an elite mortgage business strategist and former top producer who has scaled multiple high-performing teams. You create 2026 Business Plans that are simultaneously world-class strategic documents and deeply personal roadmaps. The final output must feel like something a serious loan officer would proudly print, share with their team or spouse, and actually run their business from — complete with clear strategy, rigorous numbers, and a scaling framework — while being warm, motivating, and unmistakably built around this specific person's real life, hobbies, family, personality, and preferred style. NO EMOJIS.
+    const prompt = `You are an elite real estate business strategist and former top-producing agent who has scaled teams and personal brands. You create 2026 Business Plans that are simultaneously world-class strategic documents and deeply personal roadmaps. The final output must feel like something a serious real estate agent would proudly print, share with their team or spouse, and actually run their business from — complete with clear strategy, rigorous numbers, and a scaling framework — while being warm, motivating, and unmistakably built around this specific person's real life, hobbies, family, personality, and preferred style. NO EMOJIS.
 
 Plan Style Chosen: ${style}
 
@@ -326,19 +326,19 @@ DEEP PERSONALIZATION FROM PROFILE (make every section feel written exclusively f
 - Personality / Voice / Lifestyle: ${profile.personality || richProfile.personality || 'not specified'}
 - Preferred Tone for communication: ${profile.tone || richProfile.tone || 'warm and professional'}
 - Key Challenges they face: ${(profile.challenges || []).join(', ') || 'general growth and consistency'}
-- Target Partner Types: ${(profile.partnerTypes || []).join(', ') || 'realtors and local businesses'}
+- Target Partner Types: ${(profile.partnerTypes || []).join(', ') || 'lenders, title, inspectors, and fellow agents'}
 - Hobbies & Passions (integrate these authentically into relationship-building tactics, content ideas, motivation, and workarounds — this is critical for the plan to feel alive and stickable): ${[...(profile.hobbies || []), profile.hobbiesOther].filter(Boolean).join(', ') || (hobbiesList.length ? hobbiesList.join(', ') : 'not specified')}
 - Preferred Prospecting Activities (build the plan around these where possible): ${[...(profile.activities || []), ...(richProfile.preferredActivities || [])].filter(Boolean).join(', ') || (activitiesList.length ? activitiesList.join(', ') : 'balanced mix')}
 - Family / Life notes: ${profile.family || 'not specified'}
 
 BUSINESS NUMBERS (be precise with the math, show realistic lead/partner requirements, and ground everything in their actual situation):
 - Target Income: ${inputs.income || 'user will calculate from closings'}
-- Target Closings / Units: ${inputs.closings || closings}
-- Avg Loan Size: ${inputs.loanAmount || '400000'}
+- Target Closings / Transactions: ${inputs.closings || closings}
+- Avg Sale Price: ${inputs.loanAmount || '400000'}
 - Current Active Referral Partners: ${inputs.currentPartners || 'not specified'}
 - New Partners Goal: ${inputs.newPartners || 'not specified'}
-- Database Size: ${inputs.database || 'not specified'}
-- Closing Ratio: ${inputs.ratio || '30'}%
+- Database / Sphere Size: ${inputs.database || 'not specified'}
+- Lead-to-Close Ratio: ${inputs.ratio || '30'}%
 - Weekly Prospecting Hours available: ${richProfile.hours || 'not specified'}
 - Additional notes/priorities: ${document.getElementById('plan-notes')?.value || 'none provided'}
 
@@ -351,7 +351,7 @@ One memorable, powerful theme phrase inspired by their hobbies + personality + s
 Clear, inspiring summary of the year: target closings, volume, income. Include the key math (leads, partners, conversion needed). Grounded encouragement.
 
 ## Revenue Model & Unit Economics
-Show the actual economics. How many conversations, applications, and partners are required? What does gross revenue, marketing investment, and net look like? Make the math transparent and specific to them.
+Show the actual economics. How many conversations, appointments, listings, and buyers are required? What does gross commission income, marketing investment, and net look like? Make the math transparent and specific to them.
 
 ## Your 2026 Strategic Focus & Scaling Path
 Strategic overview tailored to their style, challenges, and real life. Then a dedicated "Scaling Path" paragraph that maps their current reality to the next level (solo → 8-12 units, 15-25 with support, 25+ with team structure) and what that transition requires.
@@ -368,14 +368,14 @@ Sustainable weekly operating system: prospecting touches, partner touches, datab
 ## Tool Ties — Execute This Plan Inside Your Sales Coach
 Actionable, specific bridges to the rest of the toolkit (use real names like Personal pillar, Evergreen vault, A+ tier, Value Vault, Weekly Win Plan, etc.):
 - Social: 2-3 exact content angles or story ideas from their Power Theme/hobbies for the Personal pillar or Evergreen vault.
-- Referral Partners: 1-2 named High-Impact Plays or Tier strategies to run this quarter with their specific partner types.
+- Referral Partners: 1-2 named High-Impact Plays or Tier strategies to run this quarter with lenders, title, inspectors, or fellow agents.
 - Value Vault / Gifts: 2 pop-by or appreciation ideas directly tied to one of their hobbies — instruct them to save each in the Value Vault.
 - Book Vault & Mindset Lab: The single best book + one mindset principle for their biggest challenge, with how to apply it.
 - Prospecting Time Blocks + Weekly Win: How to convert one quarterly milestone into protected Weekly Win time blocks.
 - Database Nurturing: A simple, sustainable system matched to their current database size.
 
 ## Your 90-Day Launch Plan
-A prioritized, concrete 90-day execution calendar pulled from the Tactics and Tool Ties. Break into First 30 Days (ignition momentum), Days 31-60, and Days 61-90. Be extremely specific with days, people, and actions ("Tuesday: Run Coffee + Value Drop with top 3 A+ realtors"). Keep it exciting and doable.
+A prioritized, concrete 90-day execution calendar pulled from the Tactics and Tool Ties. Break into First 30 Days (ignition momentum), Days 31-60, and Days 61-90. Be extremely specific with days, people, and actions ("Tuesday: Sphere coffee + market snapshot for top 10 past clients" or "Thursday: Listing prep block + open house outreach"). Keep it exciting and doable.
 
 ## Personal Fuel & Accountability
 Motivating, personalized pep talk in their preferred tone. Reference their Power Theme, a specific hobby, or family note for emotional connection. Add 1-2 accountability mechanisms that will actually work for their personality and life.
@@ -389,7 +389,7 @@ Define 5-7 leading and lagging KPIs they will track (e.g. weekly conversations, 
 ## 12-Month Strategic Calendar (High Level)
 A bird's-eye view of the year: what the big seasons and focus areas look like month-by-month or quarter-by-quarter. Tie major pushes to their hobbies or life events where relevant.
 
-Make the entire plan feel like an elite, professional business document that a loan officer would be proud to use themselves or hand to a team member — while staying warm, specific, motivating, and unmistakably personal. Use their exact hobbies, personality, challenges, and numbers throughout. Be ruthlessly specific and copy-paste ready. Never generic or fluffy. Output ONLY clean markdown with the exact headings above — nothing else before or after.`;
+Make the entire plan feel like an elite, professional business document that a real estate agent would be proud to use themselves or hand to a team member — while staying warm, specific, motivating, and unmistakably personal. Use their exact hobbies, personality, challenges, and numbers throughout. Be ruthlessly specific and copy-paste ready. Never generic or fluffy. Output ONLY clean markdown with the exact headings above — nothing else before or after.`;
 
     // Note: The form also has plan-notes for extra context, hobbiesList, activitiesList already collected.
 
@@ -767,18 +767,28 @@ function restoreSavedBusinessPlan() {
 const WEEKLY_PLAN_VERSION = 2;
 let currentWeeklyPlanMeta = { summary: '', totalHours: null };
 
+// Distinct realtor focus pipelines — sphere and past clients are separate on purpose
+const WWP_FOCUS_OPTIONS = [
+  ['wwp-emphasis-sphere', 'Sphere of influence'],
+  ['wwp-emphasis-past', 'Past clients'],
+  ['wwp-emphasis-listings', 'Listing leads'],
+  ['wwp-emphasis-buyers', 'Buyer leads'],
+  ['wwp-emphasis-openhouse', 'Open houses']
+];
+
+const WWP_FOCUS_PROMPT_GUIDE = {
+  'Sphere of influence': 'Friends, family, neighbors, and acquaintances who know you but have not closed with you. Tasks: casual check-ins, life-event congrats, market snapshots, "thinking of moving?" conversations, social engagement, community visibility. Zero hard pitch.',
+  'Past clients': 'People who have already closed a transaction with you. Tasks: home anniversary notes, equity/market updates, review asks, referral requests, pop-bys, quarterly touch cadence, life-event follow-ups.',
+  'Listing leads': 'Seller-side pipeline. Tasks: FSBO/expired outreach, sphere seller conversations, CMA prep, listing appointment follow-ups, pricing conversations, seller net sheet prep, Just Listed/Just Sold planning.',
+  'Buyer leads': 'Buyer-side pipeline. Tasks: new lead follow-up within 24hrs, showing debriefs, buyer consultation prep, lender coordination, offer strategy, nurture for "not ready yet" buyers, open house visitor follow-up.',
+  'Open houses': 'Listing marketing execution. Tasks: pre-event promotion (social, sphere, neighbors), signage/checklist prep, day-of guest engagement scripts, sign-in follow-up within 48 hours, neighbor door knocks, recap to seller.'
+};
+
 function getWeeklyCustomizePrefs() {
   const hours = parseInt(document.getElementById('wwp-hours')?.value) || 15;
   const weaveHobbies = document.getElementById('wwp-weave-hobbies')?.checked !== false;
   const focusAreas = [];
-  const emphasisMap = [
-    ['wwp-emphasis-realtors', 'Realtor outreach'],
-    ['wwp-emphasis-sphere', 'Sphere & past client nurturing'],
-    ['wwp-emphasis-past', 'Past client follow-up'],
-    ['wwp-emphasis-equity', 'Equity / refinance opportunities'],
-    ['wwp-emphasis-listings', 'Listing and buyer lead opportunities']
-  ];
-  emphasisMap.forEach(([id, label]) => {
+  WWP_FOCUS_OPTIONS.forEach(([id, label]) => {
     const el = document.getElementById(id);
     if (el && el.checked) focusAreas.push(label);
   });
@@ -901,8 +911,7 @@ function wireWeeklyCustomizeControls() {
       updateWeeklyLiveSummary();
     });
   }
-  ['wwp-emphasis-realtors', 'wwp-emphasis-sphere', 'wwp-emphasis-past',
-    'wwp-emphasis-equity', 'wwp-emphasis-listings', 'wwp-weave-hobbies'].forEach(id => {
+  WWP_FOCUS_OPTIONS.map(([id]) => id).concat(['wwp-weave-hobbies']).forEach(id => {
     const el = document.getElementById(id);
     if (el) el.addEventListener('change', updateWeeklyLiveSummary);
   });
@@ -913,37 +922,42 @@ function buildUnifiedWeeklyPrompt() {
   const p = getCentralProfile();
   const eff = getEffectiveSetup();
   const { hours, weaveHobbies, focusAreas } = getWeeklyCustomizePrefs();
-  const roleLabel = document.getElementById('wwp-emphasis-listings')
-    ? 'real estate agent'
-    : 'loan officer';
+  const activeFocus = focusAreas.length
+    ? focusAreas
+    : WWP_FOCUS_OPTIONS.map(([, label]) => label);
+  const focusGuideText = activeFocus
+    .map(label => `- ${label}: ${WWP_FOCUS_PROMPT_GUIDE[label] || ''}`)
+    .join('\n');
 
-  return `You are an expert sales coach who specializes in realistic weekly execution for a ${roleLabel}.
+  return `You are an expert real estate sales coach who builds realistic weekly execution plans for a producing real estate agent (not a loan officer).
 
 User Profile:
 - Name: ${p.name || eff.name || ''}
 - Email: ${p.email || ''}
-- Monthly goal (units): ${p.monthlyUnits || p.monthlyGoal || eff.monthlyUnits || 8}
-- Focus area: ${p.focus || eff.focus || ''}
+- Monthly transaction goal: ${p.monthlyUnits || p.monthlyGoal || eff.monthlyUnits || 8}
+- Business focus: ${p.focus || eff.focus || ''}
 - Weekly prospecting hours available: ${p.hours || eff.hours || ''}
 - Hobbies/Passions: ${[...(p.hobbies || []), p.hobbiesOther].filter(Boolean).join(', ') || [...(eff.hobbies || []), eff.hobbiesOther].filter(Boolean).join(', ') || 'none specified'}
 - Preferred prospecting activities: ${(p.activities || p.preferredActivities || eff.preferredActivities || []).join(', ') || 'balanced mix'}
 - Personality: ${p.personality || ''}
 - This week they want to block approximately ${hours} hours total.
 
-Emphasis this week: ${focusAreas.length ? focusAreas.join(', ') : 'balanced across all areas'}
-${weaveHobbies ? 'Naturally weave in their hobbies where it makes sense for relationship building.' : ''}
+Emphasis this week (distribute blocks and tasks across these pipelines):
+${focusGuideText}
+${weaveHobbies ? 'Naturally weave in their hobbies where it makes sense for warmer sphere/past-client touches and community visibility.' : ''}
 
 Create a practical, motivating 7-day (Monday through Sunday) execution plan that combines PROTECTED TIME BLOCKS with SPECIFIC TASKS inside each block.
 
 Rules:
+- This is for a REAL ESTATE AGENT. Tasks must be agent activities: sphere touches, past-client nurture, listing lead outreach, buyer lead follow-up, showings, open house prep/execution, CMA conversations, social content, pop-bys, lender partner coordination, negotiation prep. Do NOT assign loan-officer tasks (rate quotes, pre-approvals you run yourself, refi calls, etc.) — only "coordinate with lender partner" when relevant for buyers.
 - Respect their total weekly hours (${hours}).
 - Use realistic time slots and ALWAYS include AM or PM (e.g. "9:00 AM - 9:45 AM"). Never output bare times without meridian.
-- 2-5 blocks per day depending on the day.
-- Each block gets 1-3 specific, actionable tasks (calls, texts, value drops, social, pop-bys, partner touches).
+- 2-5 blocks per day depending on the day; lighter on Sunday.
+- Each block gets 1-3 specific, actionable tasks with copy-paste-ready detail (who to contact, what to say, what outcome to aim for).
 - Include a short practical tip on each task.
-- Include block "focus" category and optional "why" for motivation.
-- Prioritize their preferred activities and emphasis areas.
-- Keep it grounded — no fluff.
+- Block "focus" must use one of: Sphere, Past Clients, Listing Leads, Buyer Leads, Open Houses, Social/Content, Partner Outreach.
+- Prioritize the emphasis areas above — if multiple are selected, spread them across the week.
+- Keep it grounded and local-market realistic — no fluff, no generic "do marketing."
 
 Return ONLY valid JSON in this exact format:
 {
@@ -955,10 +969,10 @@ Return ONLY valid JSON in this exact format:
       "blocks": [
         {
           "time": "9:00 - 9:45 AM",
-          "focus": "Past Clients",
-          "why": "Re-engage people who already know and trust you",
+          "focus": "Sphere",
+          "why": "Stay top of mind with people who already know you",
           "tasks": [
-            {"task": "Specific actionable task here", "tip": "Short practical tip"}
+            {"task": "Text 5 sphere contacts a genuine check-in (no pitch)", "tip": "Lead with their life, not real estate"}
           ]
         }
       ]
@@ -1007,21 +1021,39 @@ function generateWeeklyICS(days) {
     const eventDate = new Date(baseDate);
     eventDate.setDate(baseDate.getDate() + dayIndex);
     (day.blocks || []).forEach(block => {
+      const scheduledCustom = (block.tasks || []).filter((t) => t.isCustom && t.time);
+      const blockTasks = (block.tasks || []).filter((t) => !(t.isCustom && t.time));
       const timeRange = parseWeeklyTimeRange(block.time);
-      if (!timeRange) return;
-      const start = new Date(eventDate);
-      start.setHours(timeRange.startHour, timeRange.startMinute, 0);
-      const end = new Date(eventDate);
-      end.setHours(timeRange.endHour, timeRange.endMinute, 0);
-      const taskSummary = (block.tasks || []).map(t => t.task).join('; ');
-      const summary = taskSummary || block.focus || 'Prospecting block';
-      lines.push('BEGIN:VEVENT');
-      lines.push(`UID:wwp-${Date.now()}-${Math.random().toString(36).slice(2)}@salescoach`);
-      lines.push(`DTSTART:${formatWeeklyICSDate(start)}`);
-      lines.push(`DTEND:${formatWeeklyICSDate(end)}`);
-      lines.push(`SUMMARY:${escapeWeeklyICSText(summary)}`);
-      if (block.why) lines.push(`DESCRIPTION:${escapeWeeklyICSText(block.why)}`);
-      lines.push('END:VEVENT');
+      if (timeRange) {
+        const start = new Date(eventDate);
+        start.setHours(timeRange.startHour, timeRange.startMinute, 0);
+        const end = new Date(eventDate);
+        end.setHours(timeRange.endHour, timeRange.endMinute, 0);
+        const taskSummary = blockTasks.map((t) => t.task).join('; ');
+        const summary = taskSummary || block.focus || 'Prospecting block';
+        lines.push('BEGIN:VEVENT');
+        lines.push(`UID:wwp-${Date.now()}-${Math.random().toString(36).slice(2)}@salescoach`);
+        lines.push(`DTSTART:${formatWeeklyICSDate(start)}`);
+        lines.push(`DTEND:${formatWeeklyICSDate(end)}`);
+        lines.push(`SUMMARY:${escapeWeeklyICSText(summary)}`);
+        if (block.why) lines.push(`DESCRIPTION:${escapeWeeklyICSText(block.why)}`);
+        lines.push('END:VEVENT');
+      }
+      scheduledCustom.forEach((task) => {
+        const taskRange = parseWeeklyTimeRange(task.time);
+        if (!taskRange) return;
+        const start = new Date(eventDate);
+        start.setHours(taskRange.startHour, taskRange.startMinute, 0);
+        const end = new Date(eventDate);
+        end.setHours(taskRange.endHour, taskRange.endMinute, 0);
+        lines.push('BEGIN:VEVENT');
+        lines.push(`UID:wwp-custom-${Date.now()}-${Math.random().toString(36).slice(2)}@salescoach`);
+        lines.push(`DTSTART:${formatWeeklyICSDate(start)}`);
+        lines.push(`DTEND:${formatWeeklyICSDate(end)}`);
+        lines.push(`SUMMARY:${escapeWeeklyICSText(task.task)}`);
+        if (task.tip) lines.push(`DESCRIPTION:${escapeWeeklyICSText(task.tip)}`);
+        lines.push('END:VEVENT');
+      });
     });
   });
   lines.push('END:VCALENDAR');
@@ -1057,6 +1089,181 @@ function parseWeeklyTimeRange(timeStr) {
     if (ap === 'AM' && endHour === 12) endHour = 0;
   }
   return { startHour, startMinute: parseInt(m1), endHour, endMinute: parseInt(m2) };
+}
+
+function weeklyTimeToInputValue(hour, minute) {
+  return `${String(hour).padStart(2, '0')}:${String(minute).padStart(2, '0')}`;
+}
+
+function weeklyInputValueToParts(value) {
+  if (!value || !/^\d{2}:\d{2}$/.test(value)) return null;
+  const [h, m] = value.split(':').map(Number);
+  if (Number.isNaN(h) || Number.isNaN(m)) return null;
+  return { hour: h, minute: m };
+}
+
+function weeklyFormatTime12h(hour, minute) {
+  const ap = hour >= 12 ? 'PM' : 'AM';
+  let h = hour % 12;
+  if (h === 0) h = 12;
+  return `${h}:${String(minute).padStart(2, '0')} ${ap}`;
+}
+
+function weeklyFormatBlockTimeRange(startParts, endParts) {
+  if (!startParts || !endParts) return 'Flexible';
+  return `${weeklyFormatTime12h(startParts.hour, startParts.minute)} - ${weeklyFormatTime12h(endParts.hour, endParts.minute)}`;
+}
+
+function weeklyPartsToMinutes(parts) {
+  return parts.hour * 60 + parts.minute;
+}
+
+function weeklyMinutesToParts(totalMinutes) {
+  const capped = Math.max(0, Math.min(totalMinutes, 23 * 60 + 59));
+  return { hour: Math.floor(capped / 60), minute: capped % 60 };
+}
+
+function weeklyMinutesToInputValue(totalMinutes) {
+  const parts = weeklyMinutesToParts(totalMinutes);
+  return weeklyTimeToInputValue(parts.hour, parts.minute);
+}
+
+function weeklyGetDurationMinutes(startValue, endValue, fallback = 30) {
+  const startParts = weeklyInputValueToParts(startValue);
+  const endParts = weeklyInputValueToParts(endValue);
+  if (!startParts || !endParts) return fallback;
+  let diff = weeklyPartsToMinutes(endParts) - weeklyPartsToMinutes(startParts);
+  if (diff <= 0) diff = fallback;
+  return diff;
+}
+
+function weeklyShiftEndFromStart(startInput, endInput) {
+  if (!startInput || !endInput) return;
+  const duration = parseInt(startInput.dataset.durationMinutes, 10)
+    || weeklyGetDurationMinutes(startInput.value, endInput.value);
+  const startParts = weeklyInputValueToParts(startInput.value);
+  if (!startParts) return;
+  endInput.value = weeklyMinutesToInputValue(weeklyPartsToMinutes(startParts) + duration);
+  startInput.dataset.durationMinutes = String(duration);
+}
+
+function weeklySyncDurationDataset(startInput, endInput) {
+  if (!startInput || !endInput) return;
+  startInput.dataset.durationMinutes = String(weeklyGetDurationMinutes(startInput.value, endInput.value));
+}
+
+function weeklyBlockTimeToInputs(timeStr) {
+  const parsed = parseWeeklyTimeRange(timeStr);
+  if (!parsed) return { start: '', end: '', editable: false, hasValue: false };
+  return {
+    start: weeklyTimeToInputValue(parsed.startHour, parsed.startMinute),
+    end: weeklyTimeToInputValue(parsed.endHour, parsed.endMinute),
+    editable: true,
+    hasValue: true
+  };
+}
+
+function persistCurrentWeeklyPlan() {
+  if (!currentWeeklyDays || !currentWeeklyDays.length) return;
+  savedWeeklyPlan = {
+    ...(savedWeeklyPlan || {}),
+    version: WEEKLY_PLAN_VERSION,
+    days: currentWeeklyDays,
+    summary: (savedWeeklyPlan && savedWeeklyPlan.summary) || '',
+    totalHours: (savedWeeklyPlan && savedWeeklyPlan.totalHours) || null
+  };
+  localStorage.setItem('savedWeeklyPlan', JSON.stringify(savedWeeklyPlan));
+}
+
+function migrateWeeklyCheckedTasksOnTimeChange(dayName, oldTime, newTime) {
+  if (!oldTime || oldTime === newTime) return;
+  let current = [];
+  try { current = JSON.parse(localStorage.getItem('weeklyCheckedTasks') || '[]'); } catch (e) {}
+  const prefix = `${dayName}::${oldTime}::`;
+  const migrated = current.map((key) => (key.startsWith(prefix)
+    ? `${dayName}::${newTime}::${key.slice(prefix.length)}`
+    : key));
+  localStorage.setItem('weeklyCheckedTasks', JSON.stringify(migrated));
+}
+
+function updateWeeklyBlockTime(dayName, blockIndex, startValue, endValue) {
+  if (!currentWeeklyDays) return;
+  const dayObj = currentWeeklyDays.find((d) => d.day === dayName);
+  if (!dayObj || !dayObj.blocks || !dayObj.blocks[blockIndex]) return;
+
+  const block = dayObj.blocks[blockIndex];
+  const oldTime = block.time;
+  const startParts = weeklyInputValueToParts(startValue);
+  const endParts = weeklyInputValueToParts(endValue);
+  if (!startParts || !endParts) return;
+
+  const newTime = weeklyFormatBlockTimeRange(startParts, endParts);
+  if (newTime === oldTime) return;
+
+  block.time = newTime;
+  migrateWeeklyCheckedTasksOnTimeChange(dayName, oldTime, newTime);
+  persistCurrentWeeklyPlan();
+
+  const container = document.getElementById('weekly-tasks-container');
+  if (container) renderWeeklyTiles(currentWeeklyDays, container);
+}
+
+function updateWeeklyCustomTaskTime(dayName, blockIndex, taskIndex, startValue, endValue) {
+  if (!currentWeeklyDays) return;
+  const dayObj = currentWeeklyDays.find((d) => d.day === dayName);
+  if (!dayObj || !dayObj.blocks || !dayObj.blocks[blockIndex]) return;
+  const tasks = dayObj.blocks[blockIndex].tasks;
+  if (!tasks || !tasks[taskIndex]) return;
+
+  const task = tasks[taskIndex];
+  if (!startValue && !endValue) {
+    delete task.time;
+    persistCurrentWeeklyPlan();
+    return;
+  }
+
+  const startParts = weeklyInputValueToParts(startValue);
+  if (!startParts) return;
+  let endParts = weeklyInputValueToParts(endValue);
+  if (!endParts) {
+    endParts = weeklyMinutesToParts(weeklyPartsToMinutes(startParts) + 30);
+  }
+
+  task.time = weeklyFormatBlockTimeRange(startParts, endParts);
+  persistCurrentWeeklyPlan();
+}
+
+function wireWeeklyTimeEditors(container) {
+  container.querySelectorAll('.wwp-time-editor').forEach((editor) => {
+    const startInput = editor.querySelector('.wwp-block-time-start, .wwp-task-time-start');
+    const endInput = editor.querySelector('.wwp-block-time-end, .wwp-task-time-end');
+    if (!startInput || !endInput) return;
+
+    weeklySyncDurationDataset(startInput, endInput);
+
+    const commit = () => {
+      const dayName = startInput.dataset.day;
+      const blockIndex = parseInt(startInput.dataset.blockIndex, 10);
+      if (Number.isNaN(blockIndex)) return;
+
+      if (startInput.classList.contains('wwp-task-time-start')) {
+        const taskIndex = parseInt(startInput.dataset.taskIndex, 10);
+        if (Number.isNaN(taskIndex)) return;
+        updateWeeklyCustomTaskTime(dayName, blockIndex, taskIndex, startInput.value, endInput.value);
+        return;
+      }
+
+      updateWeeklyBlockTime(dayName, blockIndex, startInput.value, endInput.value);
+    };
+
+    startInput.addEventListener('input', () => weeklyShiftEndFromStart(startInput, endInput));
+    endInput.addEventListener('input', () => weeklySyncDurationDataset(startInput, endInput));
+    startInput.addEventListener('change', commit);
+    endInput.addEventListener('change', () => {
+      weeklySyncDurationDataset(startInput, endInput);
+      commit();
+    });
+  });
 }
 
 function formatWeeklyICSDate(date) {
@@ -1109,7 +1316,7 @@ async function generateWeeklyPlan() {
                         This usually takes 30–60 seconds — grab coffee! ☕
                     </p>
                     <p class="text-sm text-gray-500 dark:text-gray-400">
-                        Creating 7 days of personalized, high-impact prospecting tasks
+                        Creating 7 days of sphere, listing, buyer, and open-house execution blocks
                     </p>
                 </div>
 
@@ -1124,7 +1331,7 @@ async function generateWeeklyPlan() {
                         </div>
                         <div class="flex gap-3">
                             <i class="fas fa-user-friends text-[#00A89D] mt-0.5"></i>
-                            <div><strong>Personal + Business mix:</strong> Top producers blend value touches with genuine relationship building.</div>
+                            <div><strong>Sphere + pipeline mix:</strong> Top agents protect time for sphere, past clients, listings, and buyers every week.</div>
                         </div>
                         <div class="flex gap-3">
                             <i class="fas fa-chart-line text-[#002B5C] mt-0.5"></i>
@@ -1383,15 +1590,20 @@ function renderWeeklyTiles(days, container) {
         const blockCount = blocks.length;
         const taskCount = blocks.reduce((n, b) => n + (b.tasks || []).length, 0);
 
-        const blocksHtml = blocks.map((block) => {
-            const tasksHtml = (block.tasks || []).map((t) => {
+        const blocksHtml = blocks.map((block, blockIndex) => {
+            const timeInputs = weeklyBlockTimeToInputs(block.time);
+            const tasksHtml = (block.tasks || []).map((t, taskIndex) => {
                 const taskKey = `${day.day}::${block.time}::${t.task}`;
                 const isChecked = checkedTasks.includes(taskKey);
                 const isCustom = t.isCustom === true;
+                const customTimeInputs = isCustom ? weeklyBlockTimeToInputs(t.time || '') : null;
 
                 let icon = 'fa-check-circle';
                 const lower = (t.task || '').toLowerCase();
                 if (lower.includes('call') || lower.includes('text') || lower.includes('dm') || lower.includes('reach out')) icon = 'fa-phone';
+                else if (lower.includes('open house') || lower.includes('showing') || lower.includes('door knock')) icon = 'fa-home';
+                else if (lower.includes('listing') || lower.includes('cma') || lower.includes('seller') || lower.includes('fsbo') || lower.includes('expired')) icon = 'fa-sign';
+                else if (lower.includes('buyer') || lower.includes('offer') || lower.includes('tour')) icon = 'fa-key';
                 else if (lower.includes('social') || lower.includes('post') || lower.includes('reel') || lower.includes('linkedin')) icon = 'fa-share-alt';
                 else if (lower.includes('pop') || lower.includes('gift') || lower.includes('coffee') || lower.includes('lunch') || lower.includes('note')) icon = 'fa-gift';
                 else if (lower.includes('value') || lower.includes('article') || lower.includes('checklist')) icon = 'fa-lightbulb';
@@ -1411,6 +1623,17 @@ function renderWeeklyTiles(days, container) {
                                 </div>
                             </div>
                             ${t.tip ? `<div class="mt-1.5 ml-5 text-xs text-gray-500 dark:text-gray-400"><span class="text-[#00A89D] font-semibold">Tip:</span> ${t.tip}</div>` : ''}
+                            ${isCustom ? `
+                            <div class="mt-2 ml-5 flex items-center gap-1.5 flex-wrap wwp-time-editor" title="Optional — adds this task to calendar export">
+                                <span class="text-[10px] text-gray-400 font-medium">Schedule:</span>
+                                <input type="time" class="wwp-task-time-start text-xs px-2 py-1 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-[#002B5C] dark:text-white tabular-nums"
+                                       ${customTimeInputs && customTimeInputs.start ? `value="${customTimeInputs.start}"` : ''}
+                                       data-day="${day.day}" data-block-index="${blockIndex}" data-task-index="${taskIndex}" aria-label="Custom task start time">
+                                <span class="text-xs text-gray-400">–</span>
+                                <input type="time" class="wwp-task-time-end text-xs px-2 py-1 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-[#002B5C] dark:text-white tabular-nums"
+                                       ${customTimeInputs && customTimeInputs.end ? `value="${customTimeInputs.end}"` : ''}
+                                       data-day="${day.day}" data-block-index="${blockIndex}" data-task-index="${taskIndex}" aria-label="Custom task end time">
+                            </div>` : ''}
                             <button onclick="if(typeof window.saveWeeklyTask==='function') window.saveWeeklyTask(this)"
                                     data-day="${day.day}" data-task="${(t.task || '').replace(/"/g, '&quot;')}"
                                     data-tip="${(t.tip || '').replace(/"/g, '&quot;')}"
@@ -1422,10 +1645,20 @@ function renderWeeklyTiles(days, container) {
                 `;
             }).join('');
 
+            const timeEditorHtml = timeInputs.editable
+                ? `<div class="flex items-center gap-1.5 flex-wrap wwp-time-editor" title="Adjust times before calendar export — end time shifts with start">
+                        <input type="time" class="wwp-block-time-start text-xs px-2 py-1 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-[#002B5C] dark:text-white tabular-nums"
+                               value="${timeInputs.start}" data-day="${day.day}" data-block-index="${blockIndex}" aria-label="Block start time">
+                        <span class="text-xs text-gray-400">–</span>
+                        <input type="time" class="wwp-block-time-end text-xs px-2 py-1 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-[#002B5C] dark:text-white tabular-nums"
+                               value="${timeInputs.end}" data-day="${day.day}" data-block-index="${blockIndex}" aria-label="Block end time">
+                   </div>`
+                : `<div class="font-bold text-sm tabular-nums text-[#002B5C] dark:text-white">${block.time || 'Flexible'}</div>`;
+
             return `
                 <div class="rounded-2xl border border-gray-200 dark:border-gray-700 bg-gray-50/50 dark:bg-gray-800/40 p-3.5 mb-3">
-                    <div class="flex items-center justify-between gap-2 mb-2">
-                        <div class="font-bold text-sm tabular-nums text-[#002B5C] dark:text-white">${block.time}</div>
+                    <div class="flex items-center justify-between gap-2 mb-2 flex-wrap">
+                        ${timeEditorHtml}
                         ${block.focus ? `<span class="text-[10px] px-2 py-0.5 rounded-full bg-[#00A89D]/10 text-[#00A89D] font-semibold">${block.focus}</span>` : ''}
                     </div>
                     ${block.why ? `<div class="text-xs text-[#00A89D]/90 mb-2 italic">${block.why}</div>` : ''}
@@ -1470,6 +1703,8 @@ function renderWeeklyTiles(days, container) {
             renderWeeklyTiles(currentWeeklyDays, container);
         });
     });
+
+    wireWeeklyTimeEditors(container);
 }
 
 // =====================================================
@@ -1547,6 +1782,7 @@ function copyWeeklyPlan() {
             text += `  ${b.time}${b.focus ? ` (${b.focus})` : ''}\n`;
             (b.tasks || []).forEach(t => {
                 text += `    • ${t.task}`;
+                if (t.time) text += ` [${t.time}]`;
                 if (t.tip) text += ` — ${t.tip}`;
                 text += `\n`;
             });
@@ -1624,17 +1860,34 @@ function addCustomTaskToDay(dayName, buttonElement) {
     if (!dayObj) return;
 
     const inputWrapper = document.createElement('div');
-    inputWrapper.className = 'mt-3 flex gap-2';
+    inputWrapper.className = 'mt-3 space-y-2';
     inputWrapper.innerHTML = `
         <input type="text" placeholder="Your custom task..." 
-               class="flex-1 px-3 py-2 text-sm rounded-2xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900">
-        <button class="px-4 py-2 text-sm rounded-2xl bg-[#00A89D] text-white font-medium">Add</button>
-        <button class="px-3 py-2 text-sm rounded-2xl border border-gray-300">Cancel</button>
+               class="w-full px-3 py-2 text-sm rounded-2xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900">
+        <div class="flex items-center gap-2 flex-wrap wwp-time-editor">
+            <span class="text-xs text-gray-500 dark:text-gray-400">Schedule (optional, for calendar export):</span>
+            <input type="time" class="wwp-custom-add-start text-xs px-2 py-1 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900" aria-label="Custom task start time">
+            <span class="text-xs text-gray-400">–</span>
+            <input type="time" class="wwp-custom-add-end text-xs px-2 py-1 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900" aria-label="Custom task end time">
+        </div>
+        <div class="flex gap-2">
+            <button class="px-4 py-2 text-sm rounded-2xl bg-[#00A89D] text-white font-medium">Add</button>
+            <button class="px-3 py-2 text-sm rounded-2xl border border-gray-300 dark:border-gray-600">Cancel</button>
+        </div>
     `;
 
-    const input = inputWrapper.querySelector('input');
+    const input = inputWrapper.querySelector('input[type="text"]');
+    const startTimeInput = inputWrapper.querySelector('.wwp-custom-add-start');
+    const endTimeInput = inputWrapper.querySelector('.wwp-custom-add-end');
     const addBtn = inputWrapper.querySelector('button');
     const cancelBtn = inputWrapper.querySelectorAll('button')[1];
+
+    if (startTimeInput && endTimeInput) {
+        startTimeInput.addEventListener('input', () => {
+            if (startTimeInput.value) weeklyShiftEndFromStart(startTimeInput, endTimeInput);
+        });
+        endTimeInput.addEventListener('input', () => weeklySyncDurationDataset(startTimeInput, endTimeInput));
+    }
 
     buttonElement.style.display = 'none';
     buttonElement.parentNode.appendChild(inputWrapper);
@@ -1661,11 +1914,24 @@ function addCustomTaskToDay(dayName, buttonElement) {
         }
         if (!targetBlock.tasks) targetBlock.tasks = [];
 
-        targetBlock.tasks.push({
+        const newTask = {
             task: value,
             tip: 'You added this task',
             isCustom: true
-        });
+        };
+
+        if (startTimeInput && endTimeInput && startTimeInput.value) {
+            const startParts = weeklyInputValueToParts(startTimeInput.value);
+            let endParts = weeklyInputValueToParts(endTimeInput.value);
+            if (startParts) {
+                if (!endParts) {
+                    endParts = weeklyMinutesToParts(weeklyPartsToMinutes(startParts) + 30);
+                }
+                newTask.time = weeklyFormatBlockTimeRange(startParts, endParts);
+            }
+        }
+
+        targetBlock.tasks.push(newTask);
 
         savedWeeklyPlan = {
             version: WEEKLY_PLAN_VERSION,
@@ -1887,7 +2153,7 @@ function clearBusinessPlan() {
 
 // Setup & Persistence
 let userSetup = JSON.parse(localStorage.getItem('winPlanSetup')) || {
-    name: "Loan Officer",
+    name: "Realtor",
     email: "",
     monthlyGoal: 8,
     focus: "Balanced",
@@ -1912,7 +2178,7 @@ let currentWeeklyDays = null;
 
 function updateSetupDisplays() {
     const effective = getEffectiveSetup();
-    const name = (effective.name || '').trim() || "Loan Officer";
+    const name = (effective.name || '').trim() || "Realtor";
 
     const titleEl = document.getElementById('personalized-title');
     if (titleEl) titleEl.textContent = `${name}'s Weekly Win Plan`;
@@ -1973,7 +2239,7 @@ function syncWeeklyPreferencesToUserSetup() {
     const lastMonthEl = document.getElementById('setup-last-month');
     const hobbiesOtherEl = document.getElementById('setup-hobbies-other');
 
-    if (nameEl) userSetup.name = nameEl.value.trim() || "Loan Officer";
+    if (nameEl) userSetup.name = nameEl.value.trim() || "Realtor";
     if (goalEl) userSetup.monthlyGoal = parseInt(goalEl.value) || 8;
     if (hoursEl) userSetup.hours = hoursEl.value;
     if (focusEl) userSetup.focus = focusEl.value;
@@ -2393,16 +2659,16 @@ window.loadPlanBaseline = function() {
 
 // === Hobby-Tied Tactics (richer, live suggestions based on selected hobbies) ===
 const hobbyTacticsMap = {
-  'Golf': 'Invite a top realtor for 9 holes this month. No pitch — just ask about their toughest client challenge over the back nine.',
+  'Golf': 'Invite a top lender partner or past client for 9 holes this month. No pitch — just ask about their toughest client challenge over the back nine.',
   'Family Time': 'Text 3 past clients with kids the same age as yours a quick family photo + “hope your crew is loving the season”. Zero ask.',
   'Cooking': 'Host a tiny “client appreciation” cooking demo or dinner for 4-6 sphere members. Share one recipe + one market stat.',
-  'Outdoors': 'Organize a casual group hike or park walk with 2-3 sphere + one agent. Position as community value, not sales.',
+  'Outdoors': 'Organize a casual group hike or park walk with 2-3 sphere members + one professional partner. Position as community value, not sales.',
   'Fitness': 'Start a friendly monthly step challenge with one partner. Loser buys coffee and you casually discuss one referral opportunity.',
   'Crafts': 'Hand-write 5 “thank you + local market update” cards to your best referrers this month. Your authenticity stands out.',
-  'Cards/Poker': 'Host a low-key poker or game night for 6-8 people from sphere + one agent. Winner gets a small gift from you.',
+  'Cards/Poker': 'Host a low-key poker or game night for 6-8 people from sphere + one referral partner. Winner gets a small gift from you.',
   'Sports': 'Group text 5 sphere “big game this weekend?” then follow up mid-week with a 1-line market insight that feels natural.',
   'Crafts / DIY': 'Make or customize a small “welcome home” item for a recent client closing and drop it by with a photo for social.',
-  'Fitness / Gym': 'Offer to be a “accountability buddy” for a partner who also works out — turns into regular non-mortgage conversations.'
+  'Fitness / Gym': 'Offer to be an accountability buddy for a sphere member or lender partner who also works out — turns into regular non-sales conversations.'
 };
 
 window.updateHobbyTactics = function() {
@@ -2425,14 +2691,14 @@ window.updateHobbyTactics = function() {
 
 // === Inspiration Pull (richer, from curated Book Vault + Mindset Lab ideas) ===
 const inspirations = [
-  { title: "Never Split the Difference", content: "Use calibrated questions and tactical empathy instead of arguing rate objections.", why: "Builds trust fast with both clients and realtors — perfect for Referral Mastery or any style.", tags: ['referral','objections'], saveLabel: 'Book idea: Never Split the Difference' },
+  { title: "Never Split the Difference", content: "Use calibrated questions and tactical empathy instead of arguing price or timing objections.", why: "Builds trust fast with buyers, sellers, and referral partners — perfect for tough negotiations.", tags: ['referral','objections'], saveLabel: 'Book idea: Never Split the Difference' },
   { title: "Atomic Habits", content: "You do not rise to the level of your goals. You fall to the level of your systems.", why: "Turn prospecting into a non-negotiable system instead of a motivation-dependent event.", tags: ['discipline','habits'], saveLabel: 'Mindset from Atomic Habits' },
   { title: "The Go-Giver", content: "Your income is determined by how many people you serve and how well you serve them.", why: "Shift from “what can I get” to “how can I add value first” in every partner conversation.", tags: ['value','referral'], saveLabel: 'Book takeaway: The Go-Giver' },
   { title: "Fanatical Prospecting", content: "Prospecting is a numbers game fueled by discipline and the right activity mix.", why: "Even on slow days, the mix (calls + notes + social + pop-bys) compounds.", tags: ['prospecting','discipline'], saveLabel: 'Prospecting truth: Fanatical Prospecting' },
   { title: "Mindset Lab — Rejection", content: "Your job is not to avoid hearing no. Your job is to make 'no' meaningless by having so many conversations that the nos become background noise.", why: "Great reframe when the pipeline feels quiet — just keep the activity volume up.", tags: ['resilience','mindset'], saveLabel: 'Mindset reframe for tough days' },
-  { title: "Book of Yes", content: "Your success is directly tied to the quality of your conversations with real estate agents.", why: "Every realtor touch should make them look like the hero to their clients.", tags: ['referral','realtors'], saveLabel: 'Realtor conversation tip: Book of Yes' },
+  { title: "Book of Yes", content: "Your success is directly tied to the quality of your conversations with sphere, past clients, and referral partners.", why: "Every touch should make the other person feel like the hero in their own story.", tags: ['referral','sphere'], saveLabel: 'Conversation tip: Book of Yes' },
   { title: "Mindset Lab — Discipline", content: "If it isn’t scheduled, it isn’t real. Hope is not a calendar entry.", why: "Block the exact time for the activities you chose above — protect it like a client appointment.", tags: ['discipline','habits'], saveLabel: 'Scheduling truth from Mindset Lab' },
-  { title: "Building a StoryBrand", content: "If you confuse, you lose. Make the customer the hero of the story.", why: "Your social and partner content should position the client/realtor as the hero, not you.", tags: ['social','branding'], saveLabel: 'StoryBrand content principle' }
+  { title: "Building a StoryBrand", content: "If you confuse, you lose. Make the customer the hero of the story.", why: "Your social and marketing content should position the client as the hero, not you.", tags: ['social','branding'], saveLabel: 'StoryBrand content principle' }
 ];
 
 window.pullInspiration = function() {
@@ -2686,6 +2952,8 @@ window.copyWeeklyPlan = copyWeeklyPlan;
 window.clearWeeklyPlan = clearWeeklyPlan;
 window.addCustomTaskToDay = addCustomTaskToDay;
 window.exportWeeklyPlanToICS = exportWeeklyPlanToICS;
+window.updateWeeklyBlockTime = updateWeeklyBlockTime;
+window.updateWeeklyCustomTaskTime = updateWeeklyCustomTaskTime;
 
 // =====================================================
 function wireGeneratePlanButton() {
@@ -2803,6 +3071,8 @@ function initWeeklyWinPlan() {
     window.generateWeeklyPlan = generateWeeklyPlan;
     window.saveWeeklyPlanToVault = saveWeeklyPlanToVault;
     window.exportWeeklyPlanToICS = exportWeeklyPlanToICS;
+window.updateWeeklyBlockTime = updateWeeklyBlockTime;
+window.updateWeeklyCustomTaskTime = updateWeeklyCustomTaskTime;
     window.updateWeeklyCustomizeDisplays = updateWeeklyCustomizeDisplays;
 
     console.log('%c[weekly-win-plan.js] Weekly Win Plan / Business Planning initialized', 'color:#00A89D');
