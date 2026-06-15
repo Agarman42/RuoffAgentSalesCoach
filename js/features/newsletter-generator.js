@@ -381,51 +381,51 @@ const proTips = [
     "Home Maintenance & Care: Clean Pet Hair from HVAC Registers — Improves airflow and reduces allergens.",
     "Home Maintenance & Care: Inspect for Proper Sump Pump Discharge — Make sure water is directed far from the foundation.",
 
-    // ==================== SMART HOMEOWNERSHIP MONEY MOVES ====================
+    // ==================== SMART HOMEOWNERSHIP MONEY MOVES (Client advice agents share) ====================
     "Smart Money Moves: File for Homestead Deduction — Available in Indiana, Ohio, Michigan, and Kentucky. Caps taxable value increases and can save you hundreds per year.",
     "Smart Money Moves: Track Capital Improvements — Keep receipts for roof, HVAC, kitchen, or bath upgrades. This raises your cost basis and reduces capital gains tax when you sell.",
     "Smart Money Moves: Build a Dedicated House Fund — Set aside 1–2% of your home’s value each year in a high-yield savings account for repairs and emergencies.",
     "Smart Money Moves: Annual Homeowners Insurance Review — Shop every 2–3 years and bundle with auto. Many families save 15–30%.",
     "Smart Money Moves: Take Advantage of Utility Rebates — Duke Energy, AEP, NIPSCO, DTE, Consumers Energy, and Kentucky utilities offer rebates for energy upgrades.",
-    "Smart Homeownership Moves: Make Extra Principal Payments — Even $50–100 extra per month can shave years off your home loan and save thousands in interest.",
+    "Smart Ownership: Track Your Home's Value Annually — Pull comps or ask your agent for a quick equity snapshot. Great for planning upgrades or a future move.",
     "Smart Money Moves: Energy Efficiency Tax Credits — Federal credits up to $3,200+ for windows, insulation, and heat pumps. Stack with state incentives.",
-    "Smart Money Moves: Review Your Property Tax Assessment — If it seems high, appeal with recent comparable sales.",
-    "Smart Homeownership Moves: High-Yield Emergency Fund — Keep 3–6 months of expenses (including housing costs) in an online savings account earning 4–5%.",
+    "Smart Money Moves: Review Your Property Tax Assessment — If it seems high, appeal with recent comparable sales your agent can help gather.",
+    "Smart Money Moves: High-Yield Emergency Fund — Keep 3–6 months of expenses (including housing costs) in an online savings account earning 4–5%.",
     "Smart Money Moves: Bundle Cable/Internet Annually — Call your provider for retention deals — many save $20–50 per month.",
     "Smart Money Moves: Install a Smart Thermostat — Cuts heating/cooling costs by 10–15%. Many utilities offer rebates.",
     "Smart Money Moves: LED Bulb Swap — Saves $50–100 yearly and lasts 10+ years.",
     "Smart Money Moves: Lower Water Heater to 120°F — Simple adjustment that saves 3–5% on water heating.",
     "Smart Money Moves: Create a Home Inventory — Photograph valuables and store in the cloud for faster insurance claims.",
-    "Smart Homeownership Moves: Review Escrow Account Annually — Overpayments can be refunded by your loan servicer.",
+    "Smart Ownership: Review Property Tax Bill Annually — Make sure your assessment matches reality; appeal if neighborhood comps suggest you're overpaying.",
     "Smart Money Moves: Over 65 Circuit Breaker Credit — Protects qualifying seniors from large property tax increases in all four states.",
     "Smart Money Moves: Veteran Property Tax Exemptions — Additional relief available in IN, OH, MI, and KY for qualifying veterans.",
     "Smart Money Moves: Shop Homeowners Insurance Every 2-3 Years — Switching can save 10-25% with the same or better coverage.",
     "Smart Money Moves: Take Advantage of Federal Energy Credits — Up to $3,200 for qualifying home improvements in 2026.",
-    "Smart Homeownership Moves: Annual Escrow Review — Make sure you're not overpaying into your property tax and insurance account.",
-    "Smart Money Moves: Consider a Home Equity Line of Credit (HELOC) — Flexible access to equity for home projects or emergencies.",
+    "Smart Ownership: Document Every Upgrade — Photos and receipts help at resale and make your agent's pricing conversation sharper.",
+    "Smart Money Moves: Consider a Home Equity Line of Credit (HELOC) — Flexible access to equity for home projects or emergencies; talk with your lender before major renovations.",
     "Smart Money Moves: Track Utility Usage Monthly — Spot unusual spikes early and address them before bills get out of hand.",
     "Smart Money Moves: Use Cash-Back Credit Cards for Home Purchases — Earn rewards on tools, materials, and repairs.",
     "Smart Money Moves: Set Up Automatic Bill Pay for Utilities — Avoid late fees and keep your credit score strong.",
-    "Smart Money Moves: Review Credit Report Annually — Free once per year at AnnualCreditReport.com. Fix errors that could affect home loan rates.",
-    "Smart Homeownership Moves: Consider Recasting Your Loan — After a large principal payment, ask your lender to re-amortize to lower monthly payments.",
-    "Smart Homeownership Moves: Compare Current Home Loan Rates Every Year — Even if you don't move, knowing the market helps with future planning or advising clients.",
-    "Smart Homeownership Moves: Use Tax Software to Maximize Deductions — Tools like TurboTax pull home-related interest and property taxes automatically.",
-    "Smart Money Moves: Build Equity Through Home Improvements — Kitchen and bath updates often give the best return on investment.",
-    "Smart Money Moves: Pay Bi-Weekly Instead of Monthly — Makes one extra payment per year and reduces interest significantly.",
+    "Smart Money Moves: Review Credit Report Annually — Free once per year at AnnualCreditReport.com. Fix errors before your next purchase or sale.",
+    "Seller Prep: Small Repairs Before Listing — Fix leaky faucets, touch up paint, and replace burned-out bulbs. First impressions drive offers.",
+    "Market Awareness: Know Your Neighborhood Stats — Median days on market and list-to-sale ratio help you time a move-up or sale.",
+    "Smart Money Moves: Save Improvement Receipts for Tax Time — Mortgage interest and property taxes are common deductions; your tax pro can flag what else applies.",
+    "Smart Money Moves: Build Equity Through Home Improvements — Kitchen and bath updates often give the best return on investment in Midwest markets.",
+    "Smart Ownership: Pay Down High-Interest Debt Before a Move — Stronger finances mean more options when you're ready to buy or sell.",
 
-    // ==================== EQUITY & MOVE-UP CHECKUP (Realtor Client Advice) ====================
+    // ==================== EQUITY & MOVE-UP CHECKUP (Realtor client advice) ====================
     "Equity & Move-Up: When to Consider Selling & Moving Up — Equity gains + life changes (growing family, new job) often signal it's time to explore options.",
-    "Equity & Move-Up: Cash-Out vs HELOC for Home Projects — Cash-out refinance for big one-time needs; HELOC for phased renovations. Help clients understand the trade-offs.",
-    "Equity & Move-Up: Build Equity Faster — Make extra principal payments, complete value-adding projects, or pay bi-weekly to shorten the term.",
-    "Equity & Move-Up: Annual Equity Snapshot — Pull comps or use tools to estimate current value vs. home loan balance — powerful conversation starter for move-up clients.",
-    "Equity & Move-Up: PMI Removal Strategy — Once clients hit 20% equity, guide them on requesting cancellation to free up cash flow.",
-    "Equity & Move-Up: Preparing for a Future Refi or Sale — Keep credit strong, document improvements, and avoid new debt — position yourself as the long-term advisor.",
-    "Equity & Move-Up: Rate-and-Term Options for Existing Homeowners — Lower payment or shorter term without cash-out can help clients stay in their home longer.",
-    "Equity & Move-Up: Using Equity Wisely — Debt consolidation, education, or investment properties — always tie back to long-term financial goals.",
-    "Equity & Move-Up: HELOC as a Safety Net — Flexible access for emergencies or opportunities without selling.",
-    "Equity & Move-Up: Credit Check Before Major Moves — Review scores and reports with clients before listing or buying — small fixes can make a big difference.",
-    "Equity & Move-Up: Total Cost of Moving Up — Help clients calculate not just new home loan but taxes, insurance, maintenance, and commute.",
-    "Equity & Move-Up: 15-Year vs 30-Year Considerations for Move-Up Buyers — Faster payoff vs. flexibility — match to their life stage and risk tolerance.",
+    "Equity & Move-Up: Renovation Budget Planning — Phase big projects or bundle for one contractor bid. Your agent can suggest which upgrades add the most value locally.",
+    "Equity & Move-Up: Build Equity Faster — Complete value-adding projects, maintain the home well, and avoid deferred repairs that buyers notice at inspection.",
+    "Equity & Move-Up: Annual Equity Snapshot — Pull comps or use tools to estimate current value vs. what you owe — a powerful conversation starter for move-up clients.",
+    "Equity & Move-Up: At 20% Equity — Great time to explore move-up options, investment property conversations, or a strategic sale with your agent.",
+    "Equity & Move-Up: Pre-Sale Prep Timeline — Start decluttering and minor repairs 4–6 weeks before photos. Strong listings sell faster and often for more.",
+    "Equity & Move-Up: Spring vs Fall Timing — In the Midwest, spring often brings more buyers; fall can mean less competition for buyers — match timing to your goals.",
+    "Equity & Move-Up: Using Equity Wisely — Home projects, education, or a down payment on the next place — always tie decisions back to long-term goals.",
+    "Equity & Move-Up: Line Up Your Team Early — Inspector, lender, and title contacts before you list or make an offer saves weeks of stress.",
+    "Equity & Move-Up: Credit Check Before Major Moves — Review scores and reports before listing or buying — small fixes can make a big difference.",
+    "Equity & Move-Up: Total Cost of Moving Up — Factor in monthly payment, taxes, insurance, maintenance, and commute — not just the purchase price.",
+    "Equity & Move-Up: Lifestyle vs Payment Math — A bigger home means higher utilities and upkeep — make sure the whole budget fits, not just the mortgage.",
 
     // ==================== LOCAL LIVING PERKS (4-State Focused) ====================
     "Local Living Perks: Homestead Exemptions — Available in Indiana, Ohio, Michigan, and Kentucky. Reduces your taxable assessed value and can save hundreds annually.",
@@ -441,7 +441,7 @@ const proTips = [
 
     // ==================== ADDITIONAL HIGH-VALUE TIPS ====================
     "Smart Money Moves: Create a Home Inventory — Photograph valuables and store in the cloud. Makes insurance claims much faster after storms or theft.",
-    "Smart Money Moves: Review Escrow Account Annually — Overpayments in escrow can be refunded by your home loan servicer.",
+    "Smart Ownership: Review Insurance Deductibles Annually — A higher deductible can lower premiums if your emergency fund can cover it.",
     "Home Maintenance & Care: Test Backup Sump Pump Battery — Make sure it works when power goes out during heavy Midwest storms.",
     "Smart Money Moves: Over 65 Circuit Breaker Credit — Protects qualifying seniors from large property tax increases in all four states.",
     "Home Maintenance & Care: Clean Pet Hair from Dryer Vent — Extra buildup from pets increases fire risk and drying time.",
@@ -449,29 +449,29 @@ const proTips = [
     "Home Maintenance & Care: Inspect Soffits and Fascia for Rot — Early detection prevents costly repairs to roofline.",
     "Smart Money Moves: Set Up Automatic Bill Pay for Utilities — Avoid late fees and keep your credit score strong.",
     "Home Maintenance & Care: Check for Bird Nests in Vents — Remove safely to maintain proper airflow and prevent fire hazards.",
-    "Smart Money Moves: Review Credit Report Annually — Free once per year. Fix errors that could affect future home loan rates.",
+    "Smart Money Moves: Review Credit Report Annually — Free once per year. Fix errors before your next purchase or sale.",
     "Home Maintenance & Care: Lubricate Garage Door Tracks and Rollers — Smooth operation prevents premature wear.",
-    "Smart Homeownership Moves: Compare Current Home Loan Rates Every Year — Even if you don't move, knowing the market helps with future planning or advising clients.",
+    "Buyer Strategy: Get Pre-Approved Before Touring — Know your budget and show sellers you're serious in competitive markets.",
     "Home Maintenance & Care: Clean Window Tracks — Dirt and debris can cause windows to stick and let in drafts.",
-    "Smart Homeownership Moves: Use Tax Software to Maximize Deductions — Tools like TurboTax pull home-related interest and property taxes automatically.",
+    "Seller Prep: Declutter Before Photos — Less stuff on counters and floors makes rooms look larger in listing photos.",
     "Home Maintenance & Care: Inspect for Termite Activity — Look for mud tubes or discarded wings, especially in humid Midwest summers.",
     "Smart Money Moves: Build Equity Through Home Improvements — Kitchen and bath updates often give the best return on investment.",
     "Home Maintenance & Care: Check for Ice Dams on Roof After Heavy Snow — Remove safely or hire a pro to prevent water backup into attic.",
-    "Smart Money Moves: Pay Bi-Weekly Instead of Monthly — Makes one extra payment per year and reduces interest significantly.",
+    "Open House Tip: Drive the Neighborhood First — Note curb appeal, noise, and commute feel — buyers decide emotionally before they walk in.",
     "Home Maintenance & Care: Clean Leaf Debris from Window Wells — Prevents water from entering basements during heavy rain.",
-    "Smart Homeownership Moves: Consider Recasting Your Loan — After a large principal payment, ask your lender to re-amortize to lower monthly payments.",
+    "Move-Up Planning: Run a Net Sheet Early — Your agent can estimate proceeds and next-home costs before you commit to listing.",
     "Home Maintenance & Care: Inspect Downspout Extensions — Make sure they direct water away from the foundation.",
     "Smart Money Moves: Track Utility Usage Monthly — Spot unusual spikes early and address them before bills get out of hand.",
     "Home Maintenance & Care: Clean Refrigerator Door Gaskets — Dirty gaskets cause your fridge to work harder and raise energy bills.",
     "Smart Money Moves: Shop Homeowners Insurance Every 2-3 Years — Loyalty discounts fade. Switching can save 10-25%.",
     "Home Maintenance & Care: Check for Pest Entry Points — Seal gaps around pipes, vents, and doors.",
-    "Smart Homeownership Moves: Annual Home & Escrow Review — Make sure your statement is accurate and you're not overpaying on taxes or insurance.",
+    "Smart Ownership: Compare HOA Fees Before You Buy — Monthly dues affect affordability as much as the mortgage payment.",
     "Home Maintenance & Care: Clean Bathroom Exhaust Fans — Dust and lint buildup reduces airflow. Clean quarterly.",
-    "Smart Money Moves: Consider a 15-Year Mortgage — Pay off faster and save tens of thousands in interest if your budget allows.",
+    "Staging ROI: Fresh Paint & Declutter — Often the highest-return prep before listing in Midwest markets.",
     "Home Maintenance & Care: Inspect Fence Posts for Rot — Replace or reinforce before they fail in storms.",
-    "Smart Money Moves: HELOC for Home Projects — Flexible line of credit for renovations or emergencies.",
+    "Renovation Tip: Get 3 Contractor Bids — Compare scope and timeline, not just price, before major projects.",
     "Home Maintenance & Care: Clean Microwave Vent Filter — Grease buildup reduces effectiveness and increases fire risk.",
-    "Smart Money Moves: Compare Closing Costs Carefully When Refinancing — Shop lenders not just on rate but on total fees.",
+    "Buyer Tip: Compare Total Closing Costs — Ask your agent and lender for a line-by-line estimate, not just the offer price.",
     "Home Maintenance & Care: Check for Leaking Faucets — A slow drip can waste hundreds of gallons of water per year.",
     "Smart Money Moves: Use Tax-Advantaged Accounts for Home Repairs — HSA or FSA if eligible for certain medical-related home modifications.",
     "Home Maintenance & Care: Review Flood Insurance Needs — Especially important in flood-prone areas of the four states.",
@@ -483,7 +483,7 @@ const proTips = [
     "Smart Money Moves: Consider Title Insurance Review — Especially if you’ve owned the home for many years.",
     "Home Maintenance & Care: Clean Kitchen Cabinet Tops — Dust and grease buildup attracts pests.",
     "Smart Money Moves: Set a Home Maintenance Budget — 1% of home value per year is a good rule of thumb.",
-    "Smart Money Moves: Review Life Insurance Needs After Buying a Home — Ensure coverage protects your family and home loan.",
+    "Smart Ownership: Update Beneficiaries After Closing — Make sure your home and family are protected on paper, not just in spirit.",
     "Home Maintenance & Care: Inspect Chimney Crown for Cracks — Prevents water from entering the chimney structure.",
     "Smart Money Moves: Take Photos of Major Repairs — Document work for insurance and future buyers.",
     "Home Maintenance & Care: Check for Proper Grading Around Foundation — Ensure water flows away from the house.",
@@ -1034,7 +1034,7 @@ function openSocialModal(category) {
             emoji = '💡';
             title = 'Personal Content Ideas';
             content = [
-                "Behind-the-scenes of my morning coffee run before approvals ☕",
+                "Behind-the-scenes of my morning coffee run before showings ☕",
                 "Weekend family hike in Indiana — who else loves getting outdoors?",
                 "My favorite hobby right now: [golf/poker/cooking] — what’s yours?",
                 "Quick kitchen hack I used this week (recipe in comments)",
@@ -1130,8 +1130,8 @@ function openSocialModal(category) {
             title = 'Engagement & Poll Ideas';
             content = [
                 "Poll: Renting or Buying in 2026?",
-                "Would you rather: Lower rate or lower monthly payment?",
-                "Tag a friend who needs to see this rate tip!",
+                "Would you rather: Bigger yard or shorter commute?",
+                "Tag a friend who needs a great local agent!",
                 "Quick question: What’s your biggest homebuying fear?",
                 "This or That: Beach house or mountain cabin?",
                 "Poll: Fixer-upper or move-in ready?",
@@ -1290,6 +1290,36 @@ document.getElementById('generate-newsletter-btn')?.addEventListener('click', as
     generateNewsletter('');
 });
 
+const REFERRAL_CTA_HEADLINE = 'Know Someone Thinking About Buying or Selling?';
+const LEGACY_REFERRAL_CTA_HEADLINE = 'Know Someone Ready to Buy or Refinance?';
+
+function htmlIncludesReferralCta(html) {
+    return html.includes(REFERRAL_CTA_HEADLINE) || html.includes(LEGACY_REFERRAL_CTA_HEADLINE);
+}
+
+function insertBeforeReferralBlock(html, insertHtml) {
+    const headlines = [REFERRAL_CTA_HEADLINE, LEGACY_REFERRAL_CTA_HEADLINE];
+    for (const headline of headlines) {
+        if (!html.includes(headline)) continue;
+        const pattern = new RegExp('<tr>\\s*<td>\\s*<table[^>]*>[\\s\\S]*?' + headline.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '[\\s\\S]*?<\\/table>\\s*<\\/td>\\s*<\\/tr>', 'i');
+        return html.replace(pattern, insertHtml + '$&');
+    }
+    return html;
+}
+
+function getAudienceGuidance(audience) {
+    switch (audience) {
+        case 'partners':
+            return 'Write for referral partners (lenders, title, inspectors). Lead with local market intel, co-marketing ideas, and partnership gratitude. Keep the personal note professional-warm. Soft CTA: loop me in on clients who need a great agent.';
+        case 'past':
+            return 'Write for past clients. Lead with home care, neighborhood updates, and life-after-closing tips. Celebrate their milestone. Soft CTA: referrals and "thinking of moving again" conversations.';
+        case 'sphere':
+            return 'Write for sphere of influence (friends, family, community). More personal/local flavor, lighter real estate touch. Weave value naturally — not a sales pitch.';
+        default:
+            return 'Write for your full database — mix of buyers, sellers, past clients, and sphere. Balance market insight with approachable, non-salesy value.';
+    }
+}
+
 document.getElementById('regenerate-with-edits-btn')?.addEventListener('click', async () => {
     const feedback = document.getElementById('nl-feedback')?.value.trim() || '';
     if (!feedback) {
@@ -1385,7 +1415,7 @@ async function generateNewsletter(feedback = '') {
                         <ul class="text-xs text-gray-600 dark:text-gray-400 space-y-1 list-disc pl-5">
                             <li>Send consistently (weekly or monthly) — momentum compounds.</li>
                             <li>Keep it short &amp; scannable — bold headers, emojis, short paragraphs.</li>
-                            <li>End with a soft CTA: "Know anyone thinking about buying/refinancing? I'm here to help!"</li>
+                            <li>End with a soft CTA: "Know anyone thinking about buying or selling? I'm here to help!"</li>
                             <li>Use tools like Mailchimp/Constant Contact for pretty delivery &amp; tracking.</li>
                             <li>Personal updates are magic — share wins, family, hobbies to humanize yourself.</li>
                         </ul>
@@ -1469,13 +1499,14 @@ async function generateNewsletter(feedback = '') {
                 '',
                 'User Inputs:',
                 '- Audience: ' + (document.getElementById('nl-audience').value || 'Full Database'),
+                '- Audience guidance: ' + getAudienceGuidance(document.getElementById('nl-audience')?.value || 'full'),
                 '- Tone: ' + (document.getElementById('nl-tone').value || 'warm-professional') + ' — Write in this exact tone throughout the entire newsletter.',
                 '- Match the full "REALTOR PROFILE & VOICE CONTEXT" section above for this specific realtor (use their personality, voice traits, hobbies, and challenges to make the personal note + any relatable language feel authentic to them — blend naturally, never salesy).',
                 '- Location: ' + (document.getElementById('nl-location').value || 'Fort Wayne, Indiana'),
-                '- Title: ' + (document.getElementById('nl-title').value || 'Homeownership & Market Insights'),
+                '- Title: ' + (document.getElementById('nl-title').value || 'Local Market & Home Insights'),
                 '- Length: ' + (document.getElementById('nl-length').value || 'medium'),
                 '- Sections: ' + (sections || 'Market Update, Industry News, Local Spotlight, Quick Recipe'),
-                '- Personal update: "' + (document.getElementById('nl-personal-text').value || 'Excited to help more families achieve homeownership this year!') + '"',
+                '- Personal update: "' + (document.getElementById('nl-personal-text').value || 'Excited to help more families find the right home — or sell for top dollar — this year!') + '"',
                 '- Personal photo URL: "' + personalPhotoUrl + '"',
                 '- Personal video URL: "' + personalVideoUrl + '"',
                 '- Specific topics / special requests (including any language requests such as "in Spanish" or "prepare the newsletter in French"): "' + (document.getElementById('nl-specific').value || 'None') + '"',
@@ -1821,7 +1852,7 @@ if (includeBlog) {
                             <td style="padding:30px;">
                                 <h2 style="color:#002B5C; font-size:26px; margin:0 0 15px;">My Recent Blog</h2>
                                 <p style="font-size:18px; font-weight:bold; margin-bottom:10px;">${blogTitle}</p>
-                                <p style="margin-bottom:15px;">Discover the latest insights on homeownership and home loan strategies in this recent article.</p>
+                                <p style="margin-bottom:15px;">Discover the latest insights on buying, selling, and local market trends in this recent article.</p>
                                 <a href="${fullBlogUrl}" target="_blank" rel="noopener" style="color:#00A89D; font-weight:bold; text-decoration:underline; display:inline-block;">Read full article →</a>
                             </td>
                         </tr>
@@ -1890,8 +1921,8 @@ ${videoTable}
 </tr>
 <tr><td height="20"></td></tr>`;
     // Insert before referral text if present, else before footer
-    if (html.includes('Know Someone Ready to Buy or Refinance?')) {
-        html = html.replace(/<tr>\s*<td>\s*<table[^>]*>[\s\S]*?Know Someone Ready to Buy or Refinance\?[\s\S]*?<\/table>\s*<\/td>\s*<\/tr>/i, videoSection + '$&');
+    if (htmlIncludesReferralCta(html)) {
+        html = insertBeforeReferralBlock(html, videoSection);
     } else {
         html = html.replace(
             /(<tr><td style="padding:20px; background:#002B5C; color:white; text-align:center; font-size:8px;)/i,
@@ -1907,7 +1938,7 @@ const simpleReferralHTML = `
     <table width="100%" cellpadding="0" cellspacing="0" style="background:#f9f9f9; border-left:8px solid #00A89D; border-collapse:separate;">
       <tr>
         <td style="padding:30px 30px 30px 30px; text-align:center;">
-          <h2 style="color:#002B5C; font-size:26px; margin:0 0 20px;">Know Someone Thinking About Buying or Selling?</h2>
+          <h2 style="color:#002B5C; font-size:26px; margin:0 0 20px;">${REFERRAL_CTA_HEADLINE}</h2>
           <p style="margin:0 0 25px; font-size:18px; line-height:1.6; color:#002B5C;">Hook me up – forward this or smash the button. I'll take great care of them from first conversation to keys!</p>
           
           <!-- Outlook-friendly button -->
@@ -1934,7 +1965,7 @@ html = html.replace(/\[Name\]/g, firstName);
 // === ROBUST FALLBACK ENSURE: Always include referral section at the bottom ===
 // The AI occasionally omits the [REFERRAL CTA PLACEHOLDER] or generates its own version.
 // This (combined with the pre-referral video insert) guarantees video (when checked) + referral.
-if (!html.includes('Know Someone Ready to Buy or Refinance?')) {
+if (!htmlIncludesReferralCta(html)) {
     html = html.replace(
         /(<tr><td style="padding:20px; background:#002B5C; color:white; text-align:center; font-size:8px;)/i,
         simpleReferralHTML + '\n<tr><td height="20"></td></tr>\n$1'
@@ -2484,7 +2515,7 @@ function copyForOutlook() {
       if (ch) parts.push(`Helping with things like ${ch.toLowerCase()}.`);
     }
 
-    const fill = parts.join(' ') || 'Excited to help more families achieve homeownership this year!';
+    const fill = parts.join(' ') || 'Excited to help more families find the right home — or sell for top dollar — this year!';
     textEl.value = fill;
     if (!silent) {
       textEl.focus();

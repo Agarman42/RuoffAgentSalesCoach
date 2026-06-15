@@ -6,11 +6,11 @@
  *
  * Key improvements:
  * - Simple core input (no overwhelming extra fields)
- * - Optional document upload (PDF/text) for Ruoff overlays / agency manuals — text is extracted and injected into the prompt
+ * - Optional document upload (PDF/text) for lender overlays / agency manuals — text is extracted and injected into the prompt
  * - Dramatically improved prompt for layered, real-world scenarios (stronger reasoning, compensating factors, honest confidence)
  * - True multi-turn conversation on a single scenario (follow-ups, "what if", alternatives, conditions lists, client scripts)
  * - Rich, premium output UI with visual confidence, section cards, per-section copy, and action buttons
- * - Realistic LO scenario examples (click to populate)
+ * - Realistic buyer-qualification scenario examples (click to populate)
  * - One-click save of full scenario + answer to My Saved Items
  * - History of the current scenario conversation
  */
@@ -135,7 +135,7 @@
   function buildUnderwritingPrompt(newQuestion = null) {
     const isFollowUp = !!newQuestion && currentScenario.history.length > 0;
 
-    let prompt = `You are a senior mortgage underwriter with 20+ years experience. You are extremely accurate, practical, and honest about gray areas. You know Fannie Mae, Freddie Mac, FHA, VA, and USDA guidelines deeply, and you are familiar with common investor overlays (especially Ruoff Mortgage).
+    let prompt = `You are a senior mortgage financing advisor helping a real estate agent understand a buyer's qualification scenario. You are extremely accurate, practical, and honest about gray areas. You know Fannie Mae, Freddie Mac, FHA, VA, and USDA guidelines deeply, and you understand common investor/lender overlays agents encounter when coordinating with loan partners.
 
 **CRITICAL INSTRUCTION — WHERE TO FIND THE MOST RECENT AGENCY GUIDES (READ THIS FIRST):**
 You do NOT have the current exact wording of any agency guidelines memorized from training data (training cutoffs mean it is outdated or imprecise). 
@@ -180,7 +180,7 @@ When in doubt on a factual detail, be conservative and transparent: say the user
     if (currentScenario.history.length > 0) {
       prompt += `CONVERSATION HISTORY FOR THIS SPECIFIC SCENARIO (maintain consistency):\n`;
       currentScenario.history.forEach((turn, i) => {
-        prompt += `\n${turn.role === 'user' ? 'LO:' : 'Underwriter:'} ${turn.content}\n`;
+        prompt += `\n${turn.role === 'user' ? 'Agent:' : 'Advisor:'} ${turn.content}\n`;
       });
       prompt += `\n`;
     }
@@ -222,15 +222,15 @@ When in doubt on a factual detail, be conservative and transparent: say the user
 (What could help this file? What would kill it?)
 
 ## Recommended Next Steps
-(What the LO should do / ask for / document)
+(What the agent should do next — including what to ask their lender partner for / document)
 
 ## Client-Facing Talking Points (optional but useful)
-(1-2 short sentences the LO can use with the borrower or realtor)
+(1-2 short sentences the agent can use with the buyer — never quote specific rates)
 
 End with this exact disclaimer (no changes):
-"**Important:** This is an AI-assisted analysis based on standard guidelines and any documents you provided. Always verify against the most current full guideline manuals and your specific investor overlays. Underwriting decisions are ultimately made by the underwriter on the file."
+"**Important:** This is an AI-assisted analysis based on standard guidelines and any documents you provided. Always verify with your lender partner and the most current official guideline manuals. Final underwriting decisions are made by the lender on the file."
 
-Do not add extra fluff or marketing language. Be the calm, experienced underwriter the LO wishes they had on speed dial.`;
+Do not add extra fluff or marketing language. Be the calm, experienced financing advisor the agent wishes they had when a buyer scenario gets complicated.`;
 
     return prompt;
   }
@@ -305,11 +305,11 @@ Do not add extra fluff or marketing language. Be the calm, experienced underwrit
                             </div>
                             <div class="flex gap-3">
                                 <i class="fas fa-file-alt text-[#00A89D] mt-0.5"></i>
-                                <div><strong>Uploaded context:</strong> Any Ruoff overlays or agency documents you provided are being factored in.</div>
+                                <div><strong>Uploaded context:</strong> Any lender overlays or agency documents you provided are being factored in.</div>
                             </div>
                             <div class="flex gap-3">
                                 <i class="fas fa-balance-scale text-[#002B5C] mt-0.5"></i>
-                                <div><strong>Practical guidance:</strong> Honest confidence levels and actionable next steps for your specific file.</div>
+                                <div><strong>Practical guidance:</strong> Honest confidence levels and actionable next steps you can take with your lender partner.</div>
                             </div>
                         </div>
 
@@ -324,7 +324,7 @@ Do not add extra fluff or marketing language. Be the calm, experienced underwrit
                     </div>
 
                     <p class="text-center text-xs text-gray-500 dark:text-gray-400 mt-5">
-                        AI-assisted analysis — always verify with official guidelines and your underwriter.
+                        AI-assisted analysis — always verify with official guidelines and your lender partner.
                     </p>
                 </div>
             </div>
@@ -444,7 +444,7 @@ Do not add extra fluff or marketing language. Be the calm, experienced underwrit
       <div class="space-y-6">
         <div class="flex items-center justify-between">
           <div>
-            <div class="text-xs uppercase tracking-widest text-[#00A89D] font-semibold">Underwriting Analysis</div>
+            <div class="text-xs uppercase tracking-widest text-[#00A89D] font-semibold">Buyer Qualification Analysis</div>
             <div class="text-xl font-bold text-[#002B5C] dark:text-white">${currentScenario.question.substring(0, 90)}${currentScenario.question.length > 90 ? '...' : ''}</div>
           </div>
           <div class="flex gap-2">

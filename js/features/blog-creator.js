@@ -259,7 +259,7 @@ const blogLoadingContent = `
                         </div>
                         <div class="flex gap-3">
                             <i class="fas fa-user-tie text-[#002B5C] mt-0.5"></i>
-                            <div><strong>Positions you as expert:</strong> Clients and realtors remember and refer the LO who publishes thoughtful local content.</div>
+                            <div><strong>Positions you as expert:</strong> Clients and referral partners remember and refer the agent who publishes thoughtful local content.</div>
                         </div>
                         <div class="flex gap-3">
                             <i class="fas fa-cogs text-[#F15A29] mt-0.5"></i>

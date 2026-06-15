@@ -1290,7 +1290,7 @@ function openDetailModal(client) {
                 aiBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enhancing...';
                 aiBtn.disabled = true;
 
-                // Pull LO voice/profile so the enhanced message actually matches how *this* LO speaks (consistent with sales scripts, social, blog, etc.)
+                // Pull agent voice/profile so the enhanced message matches how *this* realtor speaks (consistent with sales scripts, social, blog, etc.)
                 const loVoice = [
                     profile.personality ? `Personality: ${profile.personality}` : '',
                     (profile.voiceTraits && profile.voiceTraits.length) ? `Voice traits: ${profile.voiceTraits.join(', ')}` : '',
