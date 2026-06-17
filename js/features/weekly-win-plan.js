@@ -313,6 +313,7 @@
     // Final rich plan HTML is injected only in the finally{} after hideLoading().
 
     let fullPlan = '';
+    let planContent = null;
 
     try {
     const prompt = `You are an elite real estate business strategist and former top-producing agent who has scaled teams and personal brands. You create 2026 Business Plans that are simultaneously world-class strategic documents and deeply personal roadmaps. The final output must feel like something a serious real estate agent would proudly print, share with their team or spouse, and actually run their business from — complete with clear strategy, rigorous numbers, and a scaling framework — while being warm, motivating, and unmistakably built around this specific person's real life, hobbies, family, personality, and preferred style. NO EMOJIS.
@@ -357,10 +358,14 @@ Show the actual economics. How many conversations, appointments, listings, and b
 Strategic overview tailored to their style, challenges, and real life. Then a dedicated "Scaling Path" paragraph that maps their current reality to the next level (solo → 8-12 units, 15-25 with support, 25+ with team structure) and what that transition requires.
 
 ## Quarterly Milestones
-Four ambitious yet achievable quarterly targets. For each: 3-5 specific, measurable moves (mix of results and leading activities like "run X High-Impact Plays" or "add Y new partners"). Include both lagging and leading indicators.
+(Use exactly four subheadings — ### Q1, ### Q2, ### Q3, ### Q4 — each followed by 2-4 bullet points with specific transaction/listing/sphere targets for that quarter.)
+### Q1
+### Q2
+### Q3
+### Q4
 
 ## Weekly Rhythm & Scorecard
-Sustainable weekly operating system: prospecting touches, partner touches, database touches, personal brand activity. Weave in 1-2 natural references to their hobbies or life. End with 3 non-negotiables they will protect every single week.
+Sustainable weekly operating system Mon–Fri: prospecting touches, partner touches, database touches, personal brand activity. Saturdays and Sundays are rest, family, and recharge — optional light prep only, never open houses or networking blitzes on weekends. Weave in 1-2 natural references to their hobbies or life. End with 3 non-negotiables they will protect every single week (weekdays).
 
 ## Tactics That Actually Fit You
 10 highly specific, copy-paste-ready tactics. Every single one must feel custom-designed for their hobbies, personality, preferred activities, family situation, or challenges. Prioritize quality and relevance over quantity. This is a star section.
@@ -401,7 +406,7 @@ Make the entire plan feel like an elite, professional business document that a r
       ? `\n\nADDITIONAL USER FEEDBACK / REQUESTED EDITS FOR THIS VERSION (please specifically incorporate these changes while keeping the required structure and personal tone):\n${window.lastPlanFeedback.trim()}` 
       : '';
 
-    const planContent = await window.callGrokAPI(prompt + feedbackNote, {
+    planContent = await window.callGrokAPI(prompt + feedbackNote, {
         temperature: 0.7,
         max_tokens: 4500
     });
@@ -654,6 +659,9 @@ Make the entire plan feel like an elite, professional business document that a r
         // Save the generated business plan for persistence (so user can come back later)
         if (targetOutputId === 'plan-output' && planContainer && planContainer.innerHTML.trim().length > 100) {
             localStorage.setItem('savedBusinessPlan', planContainer.innerHTML);
+            if (typeof window.ToolBridges?.saveAnnualPlanContext === 'function' && planContent) {
+                window.ToolBridges.saveAnnualPlanContext(planContent, { fromApi: true });
+            }
         }
     }
 }
@@ -728,6 +736,10 @@ function restoreSavedBusinessPlan() {
         output.innerHTML = saved;
         output.classList.remove('hidden');
         output.style.display = 'block';
+
+        if (!window.ToolBridges?.loadAnnualPlanContext?.()) {
+            setTimeout(() => window.ToolBridges?.rebuildAnnualContextFromDom?.(), 100);
+        }
 
         // For legacy saved plans (that predate the built-in Clear button in the template),
         // ensure a visible Clear control exists at the top.
@@ -1013,6 +1025,10 @@ function buildUnifiedWeeklyPrompt() {
     .map(label => `- ${label}: ${WWP_FOCUS_PROMPT_GUIDE[label] || ''}`)
     .join('\n');
 
+  const annualBridge = (typeof window.ToolBridges?.getAnnualPlanPromptSlice === 'function')
+    ? window.ToolBridges.getAnnualPlanPromptSlice()
+    : '';
+
   return `You are an expert real estate sales coach who builds realistic weekly execution plans for a producing real estate agent (not a loan officer).
 
 User Profile:
@@ -1029,14 +1045,17 @@ User Profile:
 Emphasis this week (distribute blocks and tasks across these pipelines):
 ${focusGuideText}
 ${weaveHobbies ? 'Naturally weave in their hobbies where it makes sense for warmer sphere/past-client touches and community visibility.' : ''}
+${annualBridge}
+
+${typeof window.getWeekendPlanRules === 'function' ? window.getWeekendPlanRules() : ''}
 
 Create a practical, motivating 7-day (Monday through Sunday) execution plan that combines PROTECTED TIME BLOCKS with SPECIFIC TASKS inside each block.
 
 Rules:
 - This is for a REAL ESTATE AGENT. Tasks must be agent activities: sphere touches, past-client nurture, listing lead outreach, buyer lead follow-up, showings, open house prep/execution, CMA conversations, social content, pop-bys, lender partner coordination, negotiation prep. Do NOT assign loan-officer tasks (rate quotes, pre-approvals you run yourself, refi calls, etc.) — only "coordinate with lender partner" when relevant for buyers.
-- Respect their total weekly hours (${hours}).
+- Respect their total weekly hours (${hours}) — count only Mon–Fri toward the hours target; weekend blocks are optional and do not add to the total.
 - Use realistic time slots and ALWAYS include AM or PM (e.g. "9:00 AM - 9:45 AM"). Never output bare times without meridian.
-- 2-5 blocks per day depending on the day; lighter on Sunday.
+- 2-5 blocks per day Mon–Fri; Saturday and Sunday: 0–1 optional light block each, or empty/rest days. Never schedule open houses, networking events, or prospecting blitzes on weekends.
 - Each block gets 1-3 specific, actionable tasks with copy-paste-ready detail (who to contact, what to say, what outcome to aim for).
 - Include a short practical tip on each task.
 - Block "focus" must use one of: Sphere, Past Clients, Listing Leads, Buyer Leads, Open Houses, Social/Content, Partner Outreach.
@@ -1075,9 +1094,14 @@ function buildWeeklyFeedbackPrompt(feedback) {
   const { hours, weaveHobbies, focusAreas } = getWeeklyCustomizePrefs();
   const prefsContext = `Weekly hours target: ~${hours}. Focus areas: ${(focusAreas.length ? focusAreas : WWP_FOCUS_OPTIONS.map(([, l]) => l)).join(', ')}. Weave hobbies: ${weaveHobbies ? 'yes' : 'no'}.`;
 
+  const annualBridge = (typeof window.ToolBridges?.getAnnualPlanPromptSlice === 'function')
+    ? window.ToolBridges.getAnnualPlanPromptSlice()
+    : '';
+
   return `You are an expert real estate sales coach editing an existing Weekly Win Plan for a producing real estate agent (not a loan officer).
 
 ${prefsContext}
+${annualBridge}
 
 CURRENT PLAN (JSON — treat as the base; preserve structure and anything the user did not ask to change):
 ${JSON.stringify(planSnapshot, null, 2)}
@@ -1090,8 +1114,9 @@ Rules:
 - Tasks must stay agent-focused: sphere, past clients, listings, buyers, open houses, social, partner outreach — not loan-officer work.
 - Keep realistic times with AM/PM on every block.
 - Respect total weekly hours (~${hours}) unless feedback explicitly changes that.
-- If feedback is narrow (e.g. "more open house on Saturday"), change only what is needed; keep the rest of the week intact when possible.
-- Block "focus" must be one of: Sphere, Past Clients, Listing Leads, Buyer Leads, Open Houses, Social/Content, Partner Outreach.`;
+- If feedback is narrow, change only what is needed; keep the rest of the week intact when possible.
+- Block "focus" must be one of: Sphere, Past Clients, Listing Leads, Buyer Leads, Open Houses, Social/Content, Partner Outreach.
+- ${typeof window.getWeekendPlanRules === 'function' ? window.getWeekendPlanRules() : 'Keep Saturday and Sunday light — rest, family, optional prep only.'}`;
 }
 
 function updateWeeklyResultsHeader() {
@@ -1555,6 +1580,9 @@ async function generateWeeklyPlan(options = {}) {
         }
 
         data.days = normalizeDaysToV2(data.days);
+        if (typeof window.sanitizeWeekendDays === 'function') {
+          data.days = window.sanitizeWeekendDays(data.days);
+        }
         data.version = WEEKLY_PLAN_VERSION;
         currentWeeklyPlanMeta = {
           summary: data.summary || '',
@@ -1704,7 +1732,7 @@ function renderWeeklyTiles(days, container) {
 
     let html = '';
 
-    currentWeeklyDays.forEach((day) => {
+    currentWeeklyDays.forEach((day, dayIndex) => {
         const blocks = day.blocks || [];
         const blockCount = blocks.length;
         const taskCount = blocks.reduce((n, b) => n + (b.tasks || []).length, 0);
@@ -1743,12 +1771,18 @@ function renderWeeklyTiles(days, container) {
                             </div>
                             ${t.tip ? `<div class="mt-1.5 ml-5 text-xs text-gray-500 dark:text-gray-400"><span class="text-[#00A89D] font-semibold">Tip:</span> ${t.tip}</div>` : ''}
                             ${isCustom ? renderWeeklyCustomTaskTimeUI(day.day, blockIndex, taskIndex, t, customTimeInputs) : ''}
-                            <button onclick="if(typeof window.saveWeeklyTask==='function') window.saveWeeklyTask(this)"
-                                    data-day="${day.day}" data-task="${(t.task || '').replace(/"/g, '&quot;')}"
-                                    data-tip="${(t.tip || '').replace(/"/g, '&quot;')}"
-                                    class="mt-1.5 ml-5 text-[10px] px-2 py-0.5 rounded-full border border-gray-200 text-[#00A89D] hover:bg-[#00A89D] hover:text-white transition inline-flex items-center gap-1">
-                                <i class="far fa-bookmark text-[9px]"></i> Save
-                            </button>
+                            <div class="mt-1.5 ml-5 flex flex-wrap gap-2">
+                              <button onclick="if(typeof window.saveWeeklyTask==='function') window.saveWeeklyTask(this)"
+                                      data-day="${day.day}" data-task="${(t.task || '').replace(/"/g, '&quot;')}"
+                                      data-tip="${(t.tip || '').replace(/"/g, '&quot;')}"
+                                      class="text-[10px] px-2 py-0.5 rounded-full border border-gray-200 text-[#00A89D] hover:bg-[#00A89D] hover:text-white transition inline-flex items-center gap-1">
+                                  <i class="far fa-bookmark text-[9px]"></i> Save
+                              </button>
+                              <button type="button" class="weekly-bridge-social text-[10px] px-2 py-0.5 rounded-full border border-[#F15A29]/40 text-[#F15A29] hover:bg-[#F15A29] hover:text-white transition inline-flex items-center gap-1"
+                                      data-day-idx="${dayIndex}" data-block-idx="${blockIndex}" data-task-idx="${taskIndex}">
+                                  <i class="fas fa-share-alt text-[9px]"></i> → Social
+                              </button>
+                            </div>
                         </div>
                     </div>
                 `;
@@ -1806,6 +1840,15 @@ function renderWeeklyTiles(days, container) {
     });
 
     wireWeeklyTimeEditors(container);
+
+    container.querySelectorAll('.weekly-bridge-social').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const d = parseInt(btn.dataset.dayIdx, 10);
+        const b = parseInt(btn.dataset.blockIdx, 10);
+        const t = parseInt(btn.dataset.taskIdx, 10);
+        if (window.ToolBridges?.sendTaskToSocial) window.ToolBridges.sendTaskToSocial(d, b, t);
+      });
+    });
 }
 
 // =====================================================
@@ -2259,6 +2302,9 @@ function clearBusinessPlan() {
     }
 
     localStorage.removeItem('savedBusinessPlan');
+    localStorage.removeItem('realtor_savedBusinessPlanContext');
+    localStorage.removeItem('realtor_savedBusinessPlanMarkdown');
+    window.ToolBridges?.refreshAnnualBridgeUI?.();
     output.innerHTML = '';
     output.classList.add('hidden');
     output.style.display = 'none';
@@ -2490,8 +2536,8 @@ window.applyWeeklyPlanFeedbackAndRegenerate = function() {
   if (!input) return;
   const val = (input.value || '').trim();
   if (!val) {
-    if (window.showToast) window.showToast('Enter feedback first — e.g. "more open house prep on Saturday"', 'warning');
-    else alert('Enter feedback first — e.g. "more open house prep on Saturday"');
+    if (window.showToast) window.showToast('Enter feedback first — e.g. "keep Saturday/Sunday fully off"', 'warning');
+    else alert('Enter feedback first — e.g. "keep Saturday/Sunday fully off"');
     return;
   }
   if (!currentWeeklyDays || !currentWeeklyDays.length) {

@@ -597,6 +597,12 @@
         if (typeof window.updateWeeklyCustomizeDisplays === 'function') {
           try { window.updateWeeklyCustomizeDisplays(); } catch (e) {}
         }
+        if (typeof window.ToolBridges?.rebuildAnnualContextFromDom === 'function') {
+          window.ToolBridges.rebuildAnnualContextFromDom();
+        }
+        if (typeof window.ToolBridges?.refreshAnnualBridgeUI === 'function') {
+          window.ToolBridges.refreshAnnualBridgeUI();
+        }
         setTimeout(() => {
           const editBtn = document.getElementById('edit-setup-btn');
           if (editBtn && typeof window.openSetupWizard === 'function') {

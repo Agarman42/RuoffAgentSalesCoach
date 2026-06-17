@@ -6,7 +6,7 @@ const cors = require('cors');
 const axios = require('axios');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 // Enable CORS so your frontend can call this proxy
 app.use(cors());

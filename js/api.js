@@ -26,9 +26,12 @@
       return '/api/v1/chat/completions';
     }
 
-    // Local development: proxy runs on :3000
+    // Local development: use same host:port as this page (realtor proxy defaults to :3001; LO uses :3000)
     const hn = (typeof window !== 'undefined' ? (window.location.hostname || 'localhost') : 'localhost');
-    return `http://${hn}:3000/api/v1/chat/completions`;
+    const port = (typeof window !== 'undefined' && window.location && window.location.port)
+      ? window.location.port
+      : '3001';
+    return `http://${hn}:${port}/api/v1/chat/completions`;
   };
 
   /**

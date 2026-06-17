@@ -42,25 +42,26 @@ if [ ! -d "node_modules" ] || [ ! -f "node_modules/express/package.json" ] || [ 
     echo ""
 fi
 
-PORT=${PORT:-3000}
+PORT=${PORT:-3001}
 export PORT
-echo "[OK] Starting proxy server on http://localhost:${PORT}"
+echo "[OK] Starting Realtor proxy on http://localhost:${PORT}"
+echo "     (Loan Officer coach runs separately on http://localhost:3000)"
 echo ""
 echo "=================================================================="
 echo "  CRITICAL: PROXY FOR API + RECOMMENDED SERVE (BUT YOU CAN USE OTHER PORTS)"
 echo "=================================================================="
 echo ""
 echo "1. Keep THIS terminal window OPEN while using the app (this runs the proxy for API calls)."
-echo "2. Recommended: In your browser, go to:   http://localhost:3000"
+echo "2. Recommended: In your browser, go to:   http://localhost:${PORT}"
 echo "   (Do NOT double-click index.html or use file:/// path for best caching/compatibility!)"
 echo ""
 echo "   Why? The proxy serves the files + bypasses file:// restrictions"
 echo "   and aggressive browser caching on this huge single-file app."
 echo ""
 echo "   If you prefer your own server (e.g. on http://localhost:8080/ for live reload etc.):"
-echo "   - Run this proxy in one terminal (for the API on 3000)."
+echo "   - Run this proxy in one terminal (for the API on ${PORT})."
 echo "   - Run your dev server (e.g. live-server --port=8080) in another, pointing to this folder."
-echo "   - Open http://localhost:8080/  -- the JS will still call the API proxy on port 3000 (or your PORT)."
+echo "   - Open http://localhost:8080/  -- set window.CUSTOM_PROXY_URL to http://localhost:${PORT}/api/v1/chat/completions"
 echo "   - To use a different proxy port entirely: PORT=8080 bash start-proxy.sh (then set window.CUSTOM_PROXY_URL if needed)."
 echo ""
 echo "3. For development: After edits, in DevTools (F12) > Network tab,"

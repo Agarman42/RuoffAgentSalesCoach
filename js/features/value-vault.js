@@ -62,7 +62,7 @@
 
         const btn = createCopyButton('Copy Script');
         btn.onclick = () => copyToClipboard(text, btn);
-        wrapper.appendChild(btn);
+        appendCopySaveActions(wrapper, btn, 'Value Vault Script', text, 'value-vault');
       });
     }
 
@@ -81,7 +81,7 @@
 
         const btn = createCopyButton('Copy Response');
         btn.onclick = () => copyToClipboard(text, btn);
-        wrapper.appendChild(btn);
+        appendCopySaveActions(wrapper, btn, 'Value Vault Objection Response', text, 'value-vault');
       });
     }
 
@@ -102,9 +102,11 @@
         p.parentNode.insertBefore(wrapper, p);
         wrapper.appendChild(p);
 
+        const heading = p.previousElementSibling;
+        const subject = heading && heading.tagName === 'H4' ? heading.textContent.trim() : 'Email Template';
         const btn = createCopyButton('Copy Full Email');
         btn.onclick = () => copyToClipboard(fullText, btn);
-        wrapper.appendChild(btn);
+        appendCopySaveActions(wrapper, btn, `Value Vault: ${subject}`, fullText, 'value-vault');
       });
     }
 
@@ -122,7 +124,7 @@
 
           const btn = createCopyButton('Copy Script');
           btn.onclick = () => copyToClipboard(text, btn);
-          wrapper.appendChild(btn);
+          appendCopySaveActions(wrapper, btn, 'Value Vault Video Script', text, 'value-vault');
         }
       });
     }
@@ -134,10 +136,36 @@
 
   function createCopyButton(label = 'Copy') {
     const btn = document.createElement('button');
-    btn.className = 'vault-copy-btn absolute top-0 right-0 text-xs px-3 py-1 rounded-lg bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-600 dark:text-gray-300 hover:bg-[#00A89D] hover:text-white hover:border-[#00A89D] transition-all opacity-80 group-hover:opacity-100 flex items-center gap-1 shadow-sm';
+    btn.className = 'vault-copy-btn text-xs px-3 py-1 rounded-lg bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-600 dark:text-gray-300 hover:bg-[#00A89D] hover:text-white hover:border-[#00A89D] transition-all opacity-80 group-hover:opacity-100 flex items-center gap-1 shadow-sm';
     btn.innerHTML = `<i class="fas fa-copy mr-1"></i>${label}`;
     btn.type = 'button';
     return btn;
+  }
+
+  function appendCopySaveActions(wrapper, copyBtn, saveTitle, saveContent, saveType) {
+    const bar = document.createElement('div');
+    bar.className = 'absolute top-0 right-0 flex items-center gap-1.5 vault-action-bar';
+    bar.appendChild(copyBtn);
+    if (window.SaveRibbon && typeof window.SaveRibbon.createButton === 'function') {
+      bar.appendChild(window.SaveRibbon.createButton({
+        title: saveTitle,
+        content: saveContent,
+        type: saveType || 'value-vault',
+        label: 'Save'
+      }));
+    } else if (typeof window.toggleSaveIdea === 'function') {
+      const saveBtn = document.createElement('button');
+      saveBtn.type = 'button';
+      saveBtn.className = 'text-xs px-3 py-1 rounded-lg border border-[#00A89D] text-[#00A89D] hover:bg-[#00A89D] hover:text-white transition-all flex items-center gap-1 shadow-sm';
+      saveBtn.innerHTML = '<i class="far fa-bookmark"></i><span>Save</span>';
+      saveBtn.title = 'Save to My Saved Items';
+      saveBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        window.toggleSaveIdea(saveTitle, saveContent, saveBtn, saveType || 'value-vault');
+      });
+      bar.appendChild(saveBtn);
+    }
+    wrapper.appendChild(bar);
   }
 
   // =====================================================
@@ -353,7 +381,7 @@
       card.innerHTML = `
         <div class="flex justify-between items-start gap-2">
           <div>
-            <div class="text-[10px] uppercase tracking-wider text-[#00A89D] font-semibold mb-0.5">${item.category || 'Resource'}</div>
+            <div class="text-[10px] uppercase tracking-wider text-[#F15A29] font-semibold mb-0.5">${item.category || 'Resource'}</div>
             <div class="font-semibold text-gray-800 dark:text-gray-100 pr-6">${item.title}</div>
           </div>
           <button class="text-gray-400 hover:text-red-500 transition" title="Remove">
@@ -383,7 +411,7 @@
     // Helper to create a heart button
     function createHeartButton(itemData) {
       const btn = document.createElement('button');
-      btn.className = 'absolute top-2 right-2 text-gray-300 hover:text-[#00A89D] transition z-10';
+      btn.className = 'absolute top-2 right-2 text-gray-300 hover:text-[#F15A29] transition z-10';
       btn.innerHTML = '<i class="far fa-heart text-lg"></i>';
 
       btn.addEventListener('click', (e) => {
@@ -396,7 +424,7 @@
           btn.innerHTML = '<i class="far fa-heart text-lg"></i>';
         } else {
           addToFavorites(itemData);
-          btn.innerHTML = '<i class="fas fa-heart text-lg text-[#00A89D]"></i>';
+          btn.innerHTML = '<i class="fas fa-heart text-lg text-[#F15A29]"></i>';
           // Also save to central My Saved Items
           if (typeof window.toggleSaveIdea === 'function') {
             window.toggleSaveIdea(`${itemData.category}: ${itemData.title}`, itemData.content, btn, 'value-vault');
@@ -522,8 +550,8 @@
           <button class="absolute top-5 right-5 text-3xl leading-none text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 close-idea-btn">&times;</button>
 
           <div class="flex items-center gap-3 mb-5">
-            <div class="w-9 h-9 rounded-xl bg-[#00A89D]/10 flex items-center justify-center">
-              <i class="fas fa-lightbulb text-[#00A89D] text-xl"></i>
+            <div class="w-9 h-9 rounded-xl bg-[#F15A29]/10 flex items-center justify-center">
+              <i class="fas fa-lightbulb text-[#F15A29] text-xl"></i>
             </div>
             <h3 class="text-2xl font-bold text-[#002B5C] dark:text-white">Idea of the Day</h3>
           </div>
@@ -574,7 +602,7 @@
 
     contentDiv.innerHTML = `
       <div class="mb-2">
-        <span class="inline-block px-3 py-0.5 text-xs font-semibold rounded-full bg-[#00A89D]/10 text-[#00A89D]">
+        <span class="inline-block px-3 py-0.5 text-xs font-semibold rounded-full bg-[#F15A29]/10 text-[#F15A29]">
           ${currentIdea.category}
         </span>
       </div>
@@ -693,31 +721,31 @@
 PRE-CALL
 - Block time for your weekly “Power Hour” (Thursday recommended)
 - Pull list of clients who closed 7 days ago
-- Have their closing docs and any notes ready
+- Have their loan details and any notes ready
 
 OPENING THE CALL
 - Greet enthusiastically and ask if they have 2–3 minutes
-- Congratulate them on the new home / successful closing
-- Thank them for trusting you with their home transaction
+- Congratulate them on the new home/loan
+- Thank them for trusting you with their mortgage
 - Ask permission to share a few important things
 
 EDUCATION TOPICS
-- Explain first home payment and how escrows work (taxes & insurance)
+- Explain first payment and how escrows work (taxes & insurance)
 - Warn about receiving separate tax and insurance bills (don’t double pay)
 - Mention property tax exemptions for owner-occupied homes
-- Prepare them for market updates and next-move conversations (or referrals to your network)
-- Tell them to reach out first before responding to any real estate offers or needs
-- Mention home value update or market report (home value insights)
+- Prepare them for refinance/junk mail solicitations
+- Tell them to call you first before responding to any offers
+- Mention myHomeIQ / HomeBot monthly report (home value + mortgage insights)
 
 FEEDBACK & RELATIONSHIP
 - Ask: “How do you feel we did overall?”
 - Ask: “What’s one thing we could have done better?”
 - Request Google/online testimonial
-- Ask for referral: “When real estate comes up, would you mention us?”
+- Ask for referral: “When mortgages come up, would you mention us?”
 
 SALES ANCHOR (FUTURE BUSINESS)
-- Set expectation for Annual Home Review / Equity Snapshot touch (around closing anniversary)
-- Position it as a “homeownership check-up”
+- Set expectation for Annual Mortgage Review call (around home anniversary)
+- Position it as a “mortgage efficiency check-up”
 - Leave the door open: “Please reach out anytime you need anything”
 
 AFTER THE CALL
@@ -746,8 +774,53 @@ AFTER THE CALL
     });
   }
 
+  function savePostClosingChecklist(btnEl) {
+    const checklistText = `7-Day Post-Closing Call Checklist
+
+PRE-CALL
+- Block time for your weekly "Power Hour" (Thursday recommended)
+- Pull list of clients who closed 7 days ago
+- Have their loan details and any notes ready
+
+OPENING THE CALL
+- Greet enthusiastically and ask if they have 2–3 minutes
+- Congratulate them on the new home/loan
+- Thank them for trusting you with their mortgage
+- Ask permission to share a few important things
+
+EDUCATION TOPICS
+- Explain first payment and how escrows work (taxes & insurance)
+- Warn about receiving separate tax and insurance bills (don't double pay)
+- Mention property tax exemptions for owner-occupied homes
+- Prepare them for refinance/junk mail solicitations
+- Tell them to call you first before responding to any offers
+- Mention myHomeIQ / HomeBot monthly report (home value + mortgage insights)
+
+FEEDBACK & RELATIONSHIP
+- Ask: "How do you feel we did overall?"
+- Ask: "What's one thing we could have done better?"
+- Request Google/online testimonial
+- Ask for referral: "When mortgages come up, would you mention us?"
+
+SALES ANCHOR (FUTURE BUSINESS)
+- Set expectation for Annual Mortgage Review call (around home anniversary)
+- Position it as a "mortgage efficiency check-up"
+- Leave the door open: "Please reach out anytime you need anything"
+
+AFTER THE CALL
+- Log the call and notes in your CRM
+- Send the Google review link if they agreed
+- Add them to your annual review calendar`;
+
+    if (typeof window.toggleSaveIdea === 'function') {
+      window.toggleSaveIdea('7-Day Post-Closing Call Checklist', checklistText, btnEl, 'postclosing');
+      if (typeof window.showSavedFeedback === 'function') window.showSavedFeedback('Saved to My Saved Items');
+    }
+  }
+
   // Make it globally available
   window.copyPostClosingChecklist = copyPostClosingChecklist;
+  window.savePostClosingChecklist = savePostClosingChecklist;
 
   // =====================================================
   // EVENT PLANNING CHECKLIST COPY FUNCTION
@@ -843,16 +916,16 @@ DAY OF
       { title: "National Ice Cream Day Drop", desc: "Drop off ice cream gift cards or small cups to past clients.", cost: "$200–350" }
     ],
     low_partner: [
-      { title: "Office Lunch & Learn (Small)", desc: "Bring lunch to a fellow agent’s office for a 25–30 min market chat (co-host with lender partner for financing tips if desired).", cost: "$300–400" },
-      { title: "Breakfast Roundtable", desc: "Early morning coffee + market update for 6–10 agents (invite lender partner to join for joint value).", cost: "$200–350" },
-      { title: "Agent Coffee Cart Drop", desc: "Surprise a few agent offices with coffee and muffins (classy co-brand with your preferred lender).", cost: "$200–300" },
-      { title: "Joint Open House Support", desc: "Offer to bring snacks and resources to their open houses; coordinate with lender partner for buyer materials.", cost: "$250–350" },
-      { title: "Agent Desk Drop", desc: "Drop off branded notepads and market stats at top agent offices.", cost: "$200–300" },
-      { title: "Agent Thank You Gift Drop", desc: "Drop off small branded gifts (pens, notepads) with a note for strong co-broke partners.", cost: "$250–350" },
-      { title: "Casual Coffee Chat Series", desc: "Invite 3–4 agents for informal coffee and market talk (co-host opportunity with lender partner).", cost: "$200–300" },
-      { title: "Agent Desk Pop-By", desc: "Surprise visits with bagels and market stats for your network.", cost: "$200–350" },
-      { title: "Small Joint Client Event", desc: "Co-host a tiny client appreciation with fellow agents and/or your lender partner (split costs).", cost: "$300–400" },
-      { title: "Agent Holiday Card Drop", desc: "Hand-deliver personalized holiday cards to top partners in your agent network.", cost: "$150–250" }
+      { title: "Office Lunch & Learn (Small)", desc: "Bring lunch to a realtor’s office for a 25–30 min talk.", cost: "$300–400" },
+      { title: "Breakfast Roundtable", desc: "Early morning coffee + market update for 6–10 agents.", cost: "$200–350" },
+      { title: "Realtor Coffee Cart Drop", desc: "Surprise a few realtor offices with coffee and muffins.", cost: "$200–300" },
+      { title: "Joint Open House Support", desc: "Offer to bring snacks and pre-approval flyers to their open houses.", cost: "$250–350" },
+      { title: "Realtor Desk Drop", desc: "Drop off branded notepads and market stats at top realtor offices.", cost: "$200–300" },
+      { title: "Realtor Thank You Gift Drop", desc: "Drop off small branded gifts (pens, notepads) with a note.", cost: "$250–350" },
+      { title: "Casual Coffee Chat Series", desc: "Invite 3–4 realtors for informal coffee and market talk.", cost: "$200–300" },
+      { title: "Realtor Desk Pop-By", desc: "Surprise visits with bagels and market stats.", cost: "$200–350" },
+      { title: "Small Joint Client Event", desc: "Co-host a tiny client appreciation with one realtor.", cost: "$300–400" },
+      { title: "Realtor Holiday Card Drop", desc: "Hand-deliver personalized holiday cards to top partners.", cost: "$150–250" }
     ],
     low_community: [
       { title: "Food or Clothing Drive", desc: "Place collection boxes at your office and a few partner offices.", cost: "$200–300" },
@@ -861,8 +934,8 @@ DAY OF
       { title: "Community Shred Day", desc: "Partner with a shred company for a free community event.", cost: "$150–250" },
       { title: "Local 5K Water Station", desc: "Sponsor water and hand out branded items at a race.", cost: "$200–300" },
       { title: "Neighborhood Clean-Up", desc: "Organize a small clean-up day with coffee and donuts.", cost: "$200–350" },
-      { title: "Community Food Drive with Partners", desc: "Co-host a food collection with fellow agents and/or your preferred lender partner (joint branding and split effort).", cost: "$200–300" },
-      { title: "Senior Center Visit", desc: "Bring treats and homeownership education materials to seniors.", cost: "$150–250" },
+      { title: "Food Drive with Realtor Partner", desc: "Co-host a food collection with one realtor office.", cost: "$200–300" },
+      { title: "Senior Center Visit", desc: "Bring treats and mortgage education materials to seniors.", cost: "$150–250" },
       { title: "Library Resource Table", desc: "Set up a table at the local library with homebuyer info.", cost: "$100–200" },
       { title: "School Supply Pop-Up", desc: "Quick drive-thru supply giveaway in your parking lot.", cost: "$200–300" }
     ],
@@ -870,12 +943,12 @@ DAY OF
       { title: "Shredding Day", desc: "Partner with a shred company (often free) and offer coffee/donuts.", cost: "$200–350" },
       { title: "Community Event Booth", desc: "Set up a table at a local festival or 5K.", cost: "$250–400" },
       { title: "First-Time Homebuyer Info Night", desc: "Small casual evening at a coffee shop.", cost: "$200–350" },
-      { title: "Open House Support", desc: "Bring snacks and resources to a co-broke or your own open house.", cost: "$150–250" },
-      { title: "Agent Office Pop-By", desc: "Drop off market stats and cards at fellow agent offices (for networking).", cost: "$100–200" },
+      { title: "Open House Support", desc: "Bring snacks and flyers to a realtor’s open house.", cost: "$150–250" },
+      { title: "Realtor Office Pop-By", desc: "Drop off market stats and business cards at offices.", cost: "$100–200" },
       { title: "Community Resource Table", desc: "Set up at a farmer’s market or community day.", cost: "$200–300" },
       { title: "First-Time Buyer Coffee Chat", desc: "Casual 30-min Q&A at a local café.", cost: "$150–250" },
       { title: "New Neighbor Welcome", desc: "Drop welcome packets in new neighborhoods.", cost: "$200–300" },
-      { title: "Agent Lunch Drop", desc: "Bring lunch to a fellow agent's office for a quick catch-up or co-broke chat.", cost: "$200–300" },
+      { title: "Realtor Lunch Drop", desc: "Bring lunch to a realtor office and chat.", cost: "$200–300" },
       { title: "Homebuyer Info Table", desc: "Set up at a community event or church fair.", cost: "$150–250" }
     ],
 
@@ -892,23 +965,23 @@ DAY OF
       { title: "Client Appreciation Concert Night", desc: "Private box or small group at a local show.", cost: "$750–1,000" }
     ],
     medium_partner: [
-      { title: "Happy Hour Education", desc: "Casual venue + 20-min talk on “Winning Offers in 2026” (co-host with lender partner for financing segment; split costs).", cost: "$600–900" },
-      { title: "Quarterly Mastermind", desc: "Dinner + roundtable for your top 12–18 agent and professional partners (include lender ally for joint value).", cost: "$700–1,000" },
-      { title: "Agent Appreciation Lunch", desc: "Nice lunch for 15–20 agents with market updates (co-sponsor with lender partner).", cost: "$650–950" },
-      { title: "Agent Appreciation Golf Outing", desc: "Private golf day for top producing agents in your network (invite lender partner to co-host a hole or prize).", cost: "$800–1,000" },
-      { title: "Agent Wine Tasting", desc: "Private tasting with market discussion (classy co-host with lender partner).", cost: "$650–900" },
-      { title: "Partner Appreciation Dinner", desc: "Nice dinner for your top 10–15 referral and professional sources (co-host opportunity with lender).", cost: "$700–950" },
-      { title: "Agent Education Breakfast", desc: "Early morning market update with breakfast (partner with lender for financing insights).", cost: "$550–800" },
-      { title: "Joint Client Appreciation Event", desc: "Co-host a small client event with 2–3 agents and your preferred lender partner (split marketing expenses and branding).", cost: "$700–950" },
-      { title: "Agent Appreciation Cruise", desc: "Short evening cruise for top partners (co-sponsor with lender partner for added appeal).", cost: "$800–1,000" },
-      { title: "Partner Appreciation Happy Hour", desc: "Relaxed evening recognizing top referral and professional partners (lender co-sponsorship welcome).", cost: "$600–850" }
+      { title: "Happy Hour Education", desc: "Casual venue + 20-min talk on “Winning Offers in 2026”.", cost: "$600–900" },
+      { title: "Quarterly Mastermind", desc: "Dinner + roundtable for your top 12–18 realtor partners.", cost: "$700–1,000" },
+      { title: "Realtor Appreciation Lunch", desc: "Nice lunch for 15–20 agents with market updates.", cost: "$650–950" },
+      { title: "Realtor Appreciation Golf Outing", desc: "Private golf day for top producing agents.", cost: "$800–1,000" },
+      { title: "Realtor Wine Tasting", desc: "Private tasting with market discussion.", cost: "$650–900" },
+      { title: "Partner Appreciation Dinner", desc: "Nice dinner for your top 10–15 referral sources.", cost: "$700–950" },
+      { title: "Realtor Education Breakfast", desc: "Early morning market update with breakfast.", cost: "$550–800" },
+      { title: "Joint Client Appreciation Event", desc: "Co-host a small client event with 2–3 realtors.", cost: "$700–950" },
+      { title: "Realtor Appreciation Cruise", desc: "Short evening cruise for top partners.", cost: "$800–1,000" },
+      { title: "Partner Appreciation Happy Hour", desc: "Relaxed evening recognizing top referral partners.", cost: "$600–850" }
     ],
     medium_community: [
       { title: "Charity 5K Team + Pasta Dinner", desc: "Sponsor a team and host a pre-race dinner.", cost: "$650–950" },
-      { title: "Big Back-to-School Drive", desc: "Partner with fellow agents and a local school for a big drop-off event (co-brand with lender partner for community impact).", cost: "$550–850" },
-      { title: "Community Shred + Resource Day", desc: "Combine shredding with homebuyer resources (co-host with lender partner).", cost: "$600–900" },
+      { title: "Big Back-to-School Drive", desc: "Partner with realtors and a local school for a big drop-off event.", cost: "$550–850" },
+      { title: "Community Shred + Resource Day", desc: "Combine shredding with homebuyer resources.", cost: "$600–900" },
       { title: "Charity Golf Outing Team", desc: "Sponsor a team at a local charity golf event.", cost: "$700–950" },
-      { title: "Community Food Drive with Partners", desc: "Large collection with multiple agent offices (invite lender partner to co-sponsor).", cost: "$500–800" },
+      { title: "Community Food Drive with Partners", desc: "Large collection with multiple realtor offices.", cost: "$500–800" },
       { title: "Holiday Toy Drive Event", desc: "Big toy collection with a small celebration.", cost: "$600–850" },
       { title: "Community 5K Water Station", desc: "Big presence with branded items and water.", cost: "$550–800" },
       { title: "School Supply Drive Event", desc: "Large supply collection with school partnership.", cost: "$500–750" },
@@ -916,16 +989,16 @@ DAY OF
       { title: "Charity 5K Title Sponsor", desc: "Bigger sponsorship with logo on shirts and banner.", cost: "$800–1,000" }
     ],
     medium_leads: [
-      { title: "First-Time Buyer Seminar", desc: "Evening seminar (in-person or virtual) with light refreshments (co-host with lender partner for financing segment; split expenses).", cost: "$600–900" },
-      { title: "Open House Support Event", desc: "Host a joint open house with 2–3 agents with food & education (coordinate marketing support with lender partner).", cost: "$550–850" },
-      { title: "Homebuyer Happy Hour", desc: "Casual evening event focused on first-time buyers (co-host with preferred lender for added value).", cost: "$650–950" },
-      { title: "First-Time Buyer Breakfast", desc: "Early morning seminar with coffee and education (lender partner co-host for financing Q&A).", cost: "$550–800" },
-      { title: "New Construction Tour", desc: "Bus or carpool tour of new construction communities (partner with lender for buyer qualification support).", cost: "$700–950" },
-      { title: "Homebuyer Resource Night", desc: "Evening with agents, lenders, inspectors, and title companies (your go-to lender partner featured).", cost: "$600–850" },
-      { title: "First-Time Buyer Workshop Series", desc: "Two-part series (credit + process) (co-host with lender partner).", cost: "$650–900" },
-      { title: "Joint Buyer Event with Agents", desc: "Co-hosted event with 3–4 agents and lender partner for full buyer journey coverage.", cost: "$600–850" },
-      { title: "First-Time Buyer Pizza Night", desc: "Casual evening seminar with pizza and Q&A (lender co-host for smooth financing discussion).", cost: "$550–800" },
-      { title: "Homebuyer Expo Table", desc: "Large presence at a local home show or expo (joint booth opportunity with lender partner).", cost: "$600–850" }
+      { title: "First-Time Buyer Seminar", desc: "Evening seminar (in-person or virtual) with light refreshments.", cost: "$600–900" },
+      { title: "Open House Support Event", desc: "Host a joint open house with 2–3 realtors with food & education.", cost: "$550–850" },
+      { title: "Homebuyer Happy Hour", desc: "Casual evening event focused on first-time buyers.", cost: "$650–950" },
+      { title: "First-Time Buyer Breakfast", desc: "Early morning seminar with coffee and education.", cost: "$550–800" },
+      { title: "New Construction Tour", desc: "Bus or carpool tour of new construction communities.", cost: "$700–950" },
+      { title: "Homebuyer Resource Night", desc: "Evening with lenders, inspectors, and title companies.", cost: "$600–850" },
+      { title: "First-Time Buyer Workshop Series", desc: "Two-part series (credit + process).", cost: "$650–900" },
+      { title: "Joint Buyer Event with Realtors", desc: "Co-hosted event with 3–4 realtors.", cost: "$600–850" },
+      { title: "First-Time Buyer Pizza Night", desc: "Casual evening seminar with pizza and Q&A.", cost: "$550–800" },
+      { title: "Homebuyer Expo Table", desc: "Large presence at a local home show or expo.", cost: "$600–850" }
     ],
 
     premium_client: [
@@ -942,15 +1015,15 @@ DAY OF
     ],
     premium_partner: [
       { title: "Premium Mastermind Dinner", desc: "Nice dinner + high-value strategy session for top agents.", cost: "$1,200–2,000" },
-      { title: "Sporting Event Suite", desc: "Private suite at a game for your best agent and professional partners (co-host opportunity with lender partner).", cost: "$1,500+" },
+      { title: "Sporting Event Suite", desc: "Private suite at a game for your best realtor partners.", cost: "$1,500+" },
       { title: "High-End Golf Outing", desc: "Private golf day for top producing agents.", cost: "$1,500+" },
-      { title: "Agent Network Appreciation Cruise", desc: "Private sunset cruise for top agent and professional partners (co-host with lender partner).", cost: "$1,800+" },
-      { title: "Luxury Mastermind Retreat", desc: "Half-day or full-day high-end experience for your network.", cost: "$2,000+" },
-      { title: "Private Wine Tasting for Agent Network", desc: "Upscale tasting with market discussion (classy co-host with lender partner).", cost: "$1,200–1,800" },
-      { title: "Agent Network Appreciation Concert", desc: "Private box or small group at a show for top partners.", cost: "$1,500+" },
-      { title: "Premium Partner Dinner Series", desc: "Quarterly high-end dinners for top professional partners (include lender allies).", cost: "$1,800+" },
-      { title: "Sporting Event Suite + Dinner", desc: "Game + private dinner for top agents and partners.", cost: "$2,000+" },
-      { title: "Luxury Golf Scramble", desc: "Private tournament for top agents and co-broke partners.", cost: "$2,000+" }
+      { title: "Realtor Appreciation Cruise", desc: "Private sunset cruise for top referral partners.", cost: "$1,800+" },
+      { title: "Luxury Mastermind Retreat", desc: "Half-day or full-day high-end experience.", cost: "$2,000+" },
+      { title: "Private Wine Tasting for Realtors", desc: "Upscale tasting with market discussion.", cost: "$1,200–1,800" },
+      { title: "Realtor Appreciation Concert", desc: "Private box or small group at a show.", cost: "$1,500+" },
+      { title: "Premium Partner Dinner Series", desc: "Quarterly high-end dinners for top partners.", cost: "$1,800+" },
+      { title: "Sporting Event Suite + Dinner", desc: "Game + private dinner for top agents.", cost: "$2,000+" },
+      { title: "Luxury Golf Scramble", desc: "Private tournament for top realtors.", cost: "$2,000+" }
     ],
     premium_community: [
       { title: "Major Charity 5K Activation", desc: "Big sponsorship + booth, shirts, and team dinner.", cost: "$1,200–2,000" },
@@ -966,12 +1039,12 @@ DAY OF
     ],
     premium_leads: [
       { title: "Large Buyer Seminar Series", desc: "2–3 part series (in-person or virtual) with strong follow-up.", cost: "$1,000–1,800" },
-      { title: "Big Multi-Partner Networking Night", desc: "Joint happy hour or dinner with several agents, lenders and vendors.", cost: "$1,200+" },
+      { title: "Big Multi-Partner Networking Night", desc: "Joint happy hour or dinner with several realtors and vendors.", cost: "$1,200+" },
       { title: "First-Time Buyer Conference Style Event", desc: "Half-day event with multiple speakers and vendors.", cost: "$1,500+" },
       { title: "Large New Construction Tour", desc: "Bus tour of multiple new communities with lunch.", cost: "$1,500–2,500" },
-      { title: "Premium Buyer Seminar with Partners", desc: "High-end evening seminar with top agents and your lender partner.", cost: "$1,200–1,800" },
+      { title: "Premium Buyer Seminar with Partners", desc: "High-end evening seminar with top realtors.", cost: "$1,200–1,800" },
       { title: "Large Homebuyer Resource Night", desc: "Big evening with lenders, inspectors, title, etc.", cost: "$1,000–1,600" },
-      { title: "Multi-Partner First-Time Buyer Expo", desc: "Large event with several agents, lenders and vendors.", cost: "$1,500+" },
+      { title: "Multi-Partner First-Time Buyer Expo", desc: "Large event with several realtors and vendors.", cost: "$1,500+" },
       { title: "Premium Buyer Breakfast Series", desc: "Quarterly high-end breakfast seminars.", cost: "$1,200–1,800" },
       { title: "Large New Home Tour Event", desc: "Private tour of new construction with partners.", cost: "$1,500–2,000" },
       { title: "Big Buyer Appreciation Night", desc: "Large networking night for potential buyers.", cost: "$1,200–1,800" }
@@ -1094,15 +1167,15 @@ DAY OF
       // Rich fallback with actual content (matching static modals)
       const contentMap = {
         'client-appreciation': `
-          <div class="mb-3"><span class="inline-block px-3 py-1 text-xs font-bold rounded-full bg-[#00A89D]/10 text-[#00A89D]">CLIENT APPRECIATION</span></div>
+          <div class="mb-3"><span class="inline-block px-3 py-1 text-xs font-bold rounded-full bg-[#F15A29]/10 text-[#F15A29]">CLIENT APPRECIATION</span></div>
           <h3 class="text-2xl font-bold mb-2">Client Appreciation Events</h3>
           <p class="text-base text-gray-600 dark:text-gray-300">Turn past clients into lifelong raving fans who actively send you referrals.</p>
           <div class="mt-4 p-4 bg-[#00A89D]/5 border border-[#00A89D]/20 rounded-2xl">
             <div class="font-semibold text-[#00A89D] text-sm mb-1">Why This Works So Well</div>
             <p class="text-sm">These events feel like a genuine thank-you. Clients bring guests (+1), creating natural lead flow while you stay top-of-mind positively.</p>
           </div>
-          <div class="mt-4 p-4 bg-[#00A89D]/5 border-l-4 border-[#00A89D] rounded-r-2xl">
-            <div class="font-semibold text-sm mb-1 text-[#00A89D]">Pro Tips</div>
+          <div class="mt-4 p-4 bg-[#F15A29]/5 border-l-4 border-[#F15A29] rounded-r-2xl">
+            <div class="font-semibold text-sm mb-1 text-[#F15A29]">Pro Tips</div>
             <ul class="text-sm space-y-1 mt-1">
               <li>Always allow +1 guests</li>
               <li>Take lots of photos for social proof</li>
@@ -1110,12 +1183,12 @@ DAY OF
             </ul>
           </div>`,
         'partner-mastermind': `
-          <div class="mb-3"><span class="inline-block px-3 py-1 text-xs font-bold rounded-full bg-[#00A89D]/10 text-[#00A89D]">AGENT NETWORK MASTERMIND</span></div>
-          <h3 class="text-2xl font-bold mb-2">Agent Network & Professional Masterminds</h3>
-          <p class="text-base text-gray-600 dark:text-gray-300">Host or co-host education roundtables with fellow agents and your lender partner to position yourself as the connector and local expert in your network.</p>
-          <div class="mt-4 p-4 bg-[#00A89D]/5 border border-[#00A89D]/20 rounded-2xl">
-            <div class="font-semibold text-[#00A89D] text-sm mb-1">Why This Format Wins</div>
-            <p class="text-sm">Fellow agents and pros crave market insights and networking. These events build loyalty in your co-broke and referral network and create great content.</p>
+          <div class="mb-3"><span class="inline-block px-3 py-1 text-xs font-bold rounded-full bg-[#00A89D]/10 text-[#00A89D]">PARTNER MASTERMIND</span></div>
+          <h3 class="text-2xl font-bold mb-2">Realtor & Partner Masterminds</h3>
+          <p class="text-base text-gray-600 dark:text-gray-300">Become the indispensable local expert that top agents actively refer to.</p>
+          <div class="mt-4 p-4 bg-[#F15A29]/5 border border-[#F15A29]/20 rounded-2xl">
+            <div class="font-semibold text-[#F15A29] text-sm mb-1">Why This Format Wins</div>
+            <p class="text-sm">Realtors crave education & networking. You become the trusted expert they refer to avoid looking uninformed.</p>
           </div>
           <div class="mt-4 p-4 bg-[#00A89D]/5 border-l-4 border-[#00A89D] rounded-r-2xl">
             <div class="font-semibold text-sm mb-1 text-[#00A89D]">Execution Tips</div>
@@ -1142,8 +1215,8 @@ DAY OF
               <div class="bg-gray-50 dark:bg-gray-700 px-3 py-1.5 rounded">Drives & Local Events</div>
             </div>
           </div>
-          <div class="mt-4 p-4 bg-[#00A89D]/5 border-l-4 border-[#00A89D] rounded-r-2xl">
-            <div class="font-semibold text-sm mb-1 text-[#00A89D]">Pro Tips</div>
+          <div class="mt-4 p-4 bg-[#F15A29]/5 border-l-4 border-[#F15A29] rounded-r-2xl">
+            <div class="font-semibold text-sm mb-1 text-[#F15A29]">Pro Tips</div>
             <ul class="text-sm space-y-1 mt-1">
               <li>Be genuinely helpful — don’t lead with business</li>
               <li>Take photos (with permission) for social proof</li>
@@ -1167,10 +1240,10 @@ DAY OF
               <div class="bg-gray-50 dark:bg-gray-700 px-3 py-1.5 rounded">Back-to-school drives with schools</div>
             </div>
           </div>
-          <div class="mt-4 p-4 bg-[#00A89D]/5 border-l-4 border-[#00A89D] rounded-r-2xl">
-            <div class="font-semibold text-sm mb-1 text-[#00A89D]">Pro Tips</div>
+          <div class="mt-4 p-4 bg-[#F15A29]/5 border-l-4 border-[#F15A29] rounded-r-2xl">
+            <div class="font-semibold text-sm mb-1 text-[#F15A29]">Pro Tips</div>
             <ul class="text-sm space-y-1 mt-1">
-              <li>Co-host with 1–2 fellow agents or your preferred lender partner — share cost, spotlight, and value (e.g. financing segment)</li>
+              <li>Partner with 1–2 realtors — share cost & spotlight</li>
               <li>Take lots of photos and post them</li>
               <li>Use the event as content for weeks afterward</li>
             </ul>
