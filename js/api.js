@@ -1,6 +1,6 @@
 /**
  * js/api.js
- * Centralized Grok / xAI API client for the Realtor Sales Coach.
+ * Centralized Grok / xAI API client for the Agent Sales Coach.
  *
  * Phase 0 refactor goals:
  * - Single place for all API calls
@@ -78,7 +78,7 @@
     const msg = [
       '🔑 Enable Smart AI Tools',
       '',
-      'This realtor coach uses advanced AI to power the listing descriptions, scripts, blogs, and other generators.',
+      'This agent coach uses advanced AI to power the listing descriptions, scripts, blogs, and other generators.',
       'Paste your access key below to unlock them.',
       '',
       'Keys are stored only in your browser and used exclusively for this tool. In hosted versions the key is provided automatically.',
@@ -90,19 +90,10 @@
 
     if (key && key.trim().startsWith('xai-')) {
       setGrokApiKey(key.trim());
-      // Use the new toast if available, otherwise native alert for first-time setup
-      if (window.showToast) {
-        window.showToast('✅ API key saved! You can change it anytime in the future.', 'success');
-      } else {
-        alert('✅ API key saved successfully. You can change it later via the browser console if needed.');
-      }
+      window.notifyUser('✅ API key saved! You can change it anytime in the future.', 'success');
       return getGrokApiKey();
     } else if (key) {
-      if (window.showToast) {
-        window.showToast('Invalid key format. It should start with "xai-".', 'error');
-      } else {
-        alert('Key must start with "xai-". Please try again.');
-      }
+      window.notifyUser('Invalid key format. It should start with "xai-".', 'error');
       return null;
     }
     return null;
@@ -264,7 +255,7 @@
       return {status: resp.status, ok: resp.ok};
     } catch (e) {
       console.error('[Proxy Test] Failed to connect:', e.message);
-      alert('Proxy test failed: ' + e.message + '\n\nMake sure proxy is running on the expected port (default 3000). If serving HTML on 8080, API still needs proxy on 3000 (or set window.CUSTOM_PROXY_URL).');
+      window.notifyUser('Proxy test failed: ' + e.message + '\n\nMake sure proxy is running on the expected port (default 3000). If serving HTML on 8080, API still needs proxy on 3000 (or set window.CUSTOM_PROXY_URL).', 'error', 5000);
       return {error: e.message};
     }
   };

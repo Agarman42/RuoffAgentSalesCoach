@@ -58,7 +58,7 @@
     if (eff.goals) parts.push(`Current focus/goals: ${eff.goals}`);
     if (eff.challenges) parts.push(`Key client challenges you solve: ${eff.challenges}`);
 
-    const base = 'Warm, authentic, relationship-first realtor who posts like a real person — never salesy. Heavy on personal, local, and engagement content (70-80% non-business).';
+    const base = 'Warm, authentic, relationship-first agent who posts like a real person — never salesy. Heavy on personal, local, and engagement content (70-80% non-business).';
     return parts.length ? `${base} ${parts.join('. ')}.` : base;
   }
 
@@ -137,9 +137,9 @@ async function generateSocialPost() {
       loadingEl.style.display = 'flex';
     }
 
-    let prompt = `You are creating social media content for a specific realtor.
+    let prompt = `You are creating social media content for a specific real estate agent.
 
-REALTOR PROFILE & VOICE:
+AGENT PROFILE & VOICE:
 ${personalization}
 ${localContext}
 
@@ -152,7 +152,7 @@ Create THREE distinct, ready-to-post social media captions (Instagram/Facebook/L
 Requirements for EACH caption:
 - Use the exact voice, personality, tone, and local flavor described above — make it feel like this specific person wrote it.
 - Warm, authentic, relationship-focused first. Never salesy or pushy.
-- Engaging and conversational — like texting a friend who happens to be a great realtor.
+- Engaging and conversational — like texting a friend who happens to be a great agent.
 - Include relevant emojis naturally (not spammy).
 - End with a subtle, human CTA (question, "Comment below", "DM me if this is you", "Tag a friend who needs this", etc.).
 - Add 6–10 relevant hashtags at the very end (mix broad + local + niche).
@@ -268,7 +268,7 @@ function copySpecificPost(index) {
                 }, 1800);
             }
         }).catch(() => {
-            alert('Copy failed — try manually selecting the text.');
+            window.notifyUser('Copy failed — try manually selecting the text.', 'error', 5000);
         });
     }
 }
@@ -379,7 +379,7 @@ function showSocialPostCreator() {
 function createOverviewSheet(year) {
     const data = [
         [`Your ${year} Social Media Success Plan`, "", "", "", "", "", "", ""],
-        ["Built for Realtors — Consistency Made Simple", "", "", "", "", "", "", ""],
+        ["Built for Agents — Consistency Made Simple", "", "", "", "", "", "", ""],
         [],
         ["Core Strategy", "", "", "", "", "", "", ""],
         ["75% Personal/Engagement/Community → Build authentic relationships", "", "", "", "", "", "", ""],
@@ -456,7 +456,7 @@ function createMonthSheet(month, year, monthIndex, weekStart) {
         const fullDateKey = `${month.name} ${day.date}`;
         const holidayNote = holidays[fullDateKey] || '';
 
-        let hashtags = '#RealtorLife #LocalRealEstate #YourCityHere';
+        let hashtags = '#AgentLife #LocalRealEstate #YourCityHere';
         if (day.weekday === 'Mon') hashtags += ' #MotivationMonday';
         if (day.weekday === 'Tue') hashtags += ' #TipTuesday';
         if (day.weekday === 'Wed') hashtags += ' #WinsWednesday';
@@ -530,7 +530,7 @@ function createMonthSheet(month, year, monthIndex, weekStart) {
 // Your createTipsSheet (kept as-is — it's solid)
 function createTipsSheet() {
     const data = [
-        ["Social Media Success Tips for Realtors", "", "", "", "", "", "", ""],
+        ["Social Media Success Tips for Agents", "", "", "", "", "", "", ""],
         [],
         ["Key Principle: ~75% personal/community/engagement — people connect with YOU first.", "", "", "", "", "", "", ""],
         ["~25% business/educational — provide genuine value.", "", "", "", "", "", "", ""],
@@ -644,7 +644,7 @@ async function generateMonthlyPlan() {
     // Dynamic days in month (handles 28/29/30/31 correctly, including leap years)
     const daysInMonth = new Date(year, month, 0).getDate();  // month is 1-based in select, but Date expects 0-based for month
 
-    const fullPrompt = `You are the world's best social media coach for realtors. Generate a full month content calendar for ${monthName} ${year} (exactly ${daysInMonth} days) for a realtor primarily in ${localArea}.
+    const fullPrompt = `You are the world's best social media coach for real estate agents. Generate a full month content calendar for ${monthName} ${year} (exactly ${daysInMonth} days) for an agent primarily in ${localArea}.
 
 Core philosophy: 70% relationship-building (personal, local, fun, engaging) and 30% real estate value. Make people WANT to see posts — be entertaining, human, and trust-building.
 
@@ -652,7 +652,7 @@ Weave in these themes naturally: ${themes.length ? themes.join(', ') : 'balanced
 
 Custom instructions: ${customPrompt || 'None — use best judgment'}.
 
-REALTOR PROFILE & VOICE (make the overview + every single post idea feel like it was written by *this exact realtor* — use their personality, voice traits, tone, hobbies, challenges, and target partners for authentic, personal, non-generic content):
+AGENT PROFILE & VOICE (make the overview + every single post idea feel like it was written by *this exact agent* — use their personality, voice traits, tone, hobbies, challenges, and target partners for authentic, personal, non-generic content):
 ${personalization}
 ${eff.localArea ? `Primary market: ${eff.localArea}.` : ''}
 
@@ -752,7 +752,7 @@ Generate the COMPLETE table now with all ${daysInMonth} days.`;
         // Centralized API call (Phase 0) - supports system message
         const rawPlan = await window.callGrokAPI(null, {
             messages: [
-                { role: 'system', content: 'You are an expert social media strategist for realtors following the 70/30 relationship rule.' },
+                { role: 'system', content: 'You are an expert social media strategist for real estate agents following the 70/30 relationship rule.' },
                 { role: 'user', content: fullPrompt }
             ],
             temperature: 0.7,
@@ -954,7 +954,7 @@ function saveCalendarPost(postId, day, pIdx, btnEl) {
 
 function saveFullSocialCalendar(monthName, btnEl) {
     const plan = document.getElementById('printable-plan');
-    if (!plan) return alert('Generate a calendar first.');
+    if (!plan) { window.notifyUser('Generate a calendar first.', 'warning', 3200); return; }
     const title = `${monthName || 'Monthly'} Social Media Calendar (Full Plan)`;
     const content = plan.innerHTML;
     if (typeof window.toggleSaveIdea === 'function') {
@@ -1181,9 +1181,9 @@ themeIds.forEach(id => {
         let helperText = "e.g., Describe what you'd like the post to say";
         let placeholder = "e.g., Tell me your idea and I'll craft it";
 
-        if (val.includes('myth') || val.includes('pre-qual') || val.includes('buydown') || val.includes('credit') || val.includes('pmi') || val.includes('lenders really') || val.includes('red flags')) {
-          helperText = "e.g., Explain a common misconception or how a program actually works";
-          placeholder = "e.g., The truth about PMI — it’s not as scary as most buyers think";
+        if (val.includes('myth') || val.includes('pre-qual') || val.includes('earnest') || val.includes('inspection') || val.includes('appraisal') || val.includes('credit') || val.includes('pre-approved') || val.includes('red flags')) {
+          helperText = "e.g., Explain a common misconception or how part of the buying process actually works";
+          placeholder = "e.g., Earnest money isn’t extra cost — here’s what it actually does for buyers";
         } else if (val.includes('market') || val.includes('inventory') || val.includes('rates trending') || val.includes('fed') || val.includes('home prices')) {
           helperText = "e.g., Local stats, rate trends, or inventory insight for your area";
           placeholder = "e.g., Inventory is up 14% this month — here’s what it means for buyers";
@@ -1198,10 +1198,10 @@ themeIds.forEach(id => {
           placeholder = "e.g., Helped a self-employed buyer get pre-qualified fast for their dream home";
         } else if (val.includes('poll') || val.includes('this or that') || val.includes('tag a friend') || val.includes('dream home') || val.includes('fixer-upper')) {
           helperText = "e.g., A fun poll or engagement prompt to drive comments";
-          placeholder = "e.g., Beach house or mountain cabin? Vote below — I’ll tell you which loans work best for both";
-        } else if (val.includes('realtor') || val.includes('agent partner') || val.includes('co-branded') || val.includes('support my realtor') || val.includes('co-broke') || val.includes('collaboration')) {
-          helperText = "e.g., How you help your referral partners win";
-          placeholder = "e.g., 4 things I do for every one of my agent partners’ buyers";
+          placeholder = "e.g., Beach house or mountain cabin? Vote below — I’ll tell you which lifestyle trade-offs actually matter";
+        } else if (val.includes('realtor') || val.includes('agent partner') || val.includes('co-branded') || val.includes('lender partner') || val.includes('co-broke') || val.includes('collaboration')) {
+          helperText = "e.g., How your go-to partners make transactions smoother";
+          placeholder = "e.g., 4 things my favorite lender partner does that make my buyers’ offers stronger";
         } else if (val.includes('motivational') || val.includes('dream home is worth') || val.includes('builds wealth') || val.includes('small steps')) {
           helperText = "e.g., An encouraging or mindset-focused message";
           placeholder = "e.g., The keys you hand over today will be the biggest wealth-building move of their life";

@@ -57,13 +57,13 @@
 
     return {
       ...local,
-      name: central.name || local.name || "Realtor",
+      name: central.name || local.name || "Agent",
       email: central.email || '',
       // Unit goal (number of loans) — this is what the Weekly Win Plan cares about for "Monthly Target"
       monthlyUnits: central.monthlyUnits || local.monthlyGoal || local.monthlyUnits || 8,
       // Dollar volume goal (for future use)
       monthlyVolume: central.monthlyGoal || '',
-      focus: central.focus || local.focus || '',
+      focus: central.focusLabel || central.focus || local.focus || '',
       hours: central.hours || local.hours || '',
       hobbies: central.hobbies || local.hobbies || [],
       hobbiesOther: central.hobbiesOther || local.hobbiesOther || '',
@@ -110,7 +110,7 @@
         </div>
         <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-2xl p-4 min-w-0 col-span-2">
           <div class="flex items-center gap-2 text-[#00A89D] mb-1"><i class="fas fa-bullseye text-sm"></i> <span class="text-xs font-bold tracking-wider">PRIMARY FOCUS</span></div>
-          <div class="font-semibold text-gray-900 dark:text-white text-[15px] break-words leading-tight">${p.focus || eff.focus || '—'}</div>
+          <div class="font-semibold text-gray-900 dark:text-white text-[15px] break-words leading-tight">${p.focusLabel || p.focus || eff.focus || '—'}</div>
         </div>
         <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-2xl p-4 min-w-0 col-span-2">
           <div class="flex items-center gap-2 text-[#00A89D] mb-1"><i class="fas fa-microphone text-sm"></i> <span class="text-xs font-bold tracking-wider">PERSONALITY / VOICE</span></div>
@@ -863,7 +863,7 @@ function renderWeeklyCustomTaskTimeUI(dayName, blockIndex, taskIndex, task, cust
     </div>`;
 }
 
-// Distinct realtor focus pipelines — sphere and past clients are separate on purpose
+// Distinct agent focus pipelines — sphere and past clients are separate on purpose
 const WWP_FOCUS_OPTIONS = [
   ['wwp-emphasis-sphere', 'Sphere of influence'],
   ['wwp-emphasis-past', 'Past clients'],
@@ -982,7 +982,7 @@ function updateWeeklyCustomizeDisplays() {
   const focusEl = document.getElementById('wwp-focus-display');
   if (goalEl) goalEl.textContent = p.monthlyUnits || p.monthlyGoal || 8;
   if (hoursEl) hoursEl.textContent = p.hours || '15–20';
-  if (focusEl) focusEl.textContent = p.focus || 'Balanced';
+  if (focusEl) focusEl.textContent = p.focusLabel || p.focus || 'Balanced';
   updateWeeklyLiveSummary();
 }
 
@@ -1035,7 +1035,7 @@ User Profile:
 - Name: ${p.name || eff.name || ''}
 - Email: ${p.email || ''}
 - Monthly transaction goal: ${p.monthlyUnits || p.monthlyGoal || eff.monthlyUnits || 8}
-- Business focus: ${p.focus || eff.focus || ''}
+- Business focus: ${p.focusLabel || p.focus || eff.focus || ''}
 - Weekly prospecting hours available: ${p.hours || eff.hours || ''}
 - Hobbies/Passions: ${[...(p.hobbies || []), p.hobbiesOther].filter(Boolean).join(', ') || [...(eff.hobbies || []), eff.hobbiesOther].filter(Boolean).join(', ') || 'none specified'}
 - Preferred prospecting activities: ${(p.activities || p.preferredActivities || eff.preferredActivities || []).join(', ') || 'balanced mix'}
@@ -1131,7 +1131,7 @@ function updateWeeklyResultsHeader() {
 // ICS export (from former Prospecting Time Blocks)
 function exportWeeklyPlanToICS() {
   if (!currentWeeklyDays || !currentWeeklyDays.length) {
-    alert('No plan available to export.');
+    window.notifyUser('No plan available to export.', 'warning', 3200);
     return;
   }
   const ics = generateWeeklyICS(currentWeeklyDays);
@@ -1914,7 +1914,7 @@ function updatePlanProgress(days, checkedTasks = []) {
 
 function copyWeeklyPlan() {
     if (!currentWeeklyDays || !currentWeeklyDays.length) {
-        alert('No weekly plan to copy yet.');
+        window.notifyUser('No weekly plan to copy yet.', 'warning', 3200);
         return;
     }
 
@@ -2124,9 +2124,9 @@ function copyPlanFormatted() {
 
     try {
         document.execCommand('copy');
-        alert('Formatted plan copied! Paste into Word.');
+        window.notifyUser('Formatted plan copied! Paste into Word.', 'success', 3200);
     } catch (err) {
-        alert('Copy failed — select text manually.');
+        window.notifyUser('Copy failed — select text manually.', 'error', 5000);
     }
 
     window.getSelection().removeAllRanges();
@@ -2281,13 +2281,13 @@ function saveFullPlanToVault() {
                 if (typeof window.showToast === 'function') window.showToast('Full plan saved to My Saved Items (fallback)');
             } else {
                 if (window.showToast) window.showToast('Already saved in your vault.');
-                else alert('Already saved in your vault.');
+                else window.notifyUser('Already saved in your vault.', 'success', 3200);
             }
         }
     } catch (err) {
         console.error('[saveFullPlanToVault] failed:', err);
         if (window.showToast) window.showToast('Could not save plan — see console.', 'error');
-        else alert('Could not save plan. Check console for details.');
+        else window.notifyUser('Could not save plan. Check console for details.', 'error', 5000);
     }
 }
 window.saveFullPlanToVault = saveFullPlanToVault;
@@ -2312,7 +2312,7 @@ function clearBusinessPlan() {
 
 // Setup & Persistence
 let userSetup = JSON.parse(localStorage.getItem('winPlanSetup')) || {
-    name: "Realtor",
+    name: "Agent",
     email: "",
     monthlyGoal: 8,
     focus: "Balanced",
@@ -2337,7 +2337,7 @@ let currentWeeklyDays = null;
 
 function updateSetupDisplays() {
     const effective = getEffectiveSetup();
-    const name = (effective.name || '').trim() || "Realtor";
+    const name = (effective.name || '').trim() || "Agent";
 
     const titleEl = document.getElementById('personalized-title');
     if (titleEl) titleEl.textContent = `${name}'s Weekly Win Plan`;
@@ -2398,7 +2398,7 @@ function syncWeeklyPreferencesToUserSetup() {
     const lastMonthEl = document.getElementById('setup-last-month');
     const hobbiesOtherEl = document.getElementById('setup-hobbies-other');
 
-    if (nameEl) userSetup.name = nameEl.value.trim() || "Realtor";
+    if (nameEl) userSetup.name = nameEl.value.trim() || "Agent";
     if (goalEl) userSetup.monthlyGoal = parseInt(goalEl.value) || 8;
     if (hoursEl) userSetup.hours = hoursEl.value;
     if (focusEl) userSetup.focus = focusEl.value;
@@ -2537,12 +2537,12 @@ window.applyWeeklyPlanFeedbackAndRegenerate = function() {
   const val = (input.value || '').trim();
   if (!val) {
     if (window.showToast) window.showToast('Enter feedback first — e.g. "keep Saturday/Sunday fully off"', 'warning');
-    else alert('Enter feedback first — e.g. "keep Saturday/Sunday fully off"');
+    else window.notifyUser('Enter feedback first — e.g. "keep Saturday/Sunday fully off"', 'warning', 3200);
     return;
   }
   if (!currentWeeklyDays || !currentWeeklyDays.length) {
     if (window.showToast) window.showToast('Generate a plan first, then refine with feedback.', 'warning');
-    else alert('Generate a plan first, then refine with feedback.');
+    else window.notifyUser('Generate a plan first, then refine with feedback.', 'warning', 3200);
     return;
   }
   generateWeeklyPlan({ feedback: val });
@@ -2557,7 +2557,7 @@ window.applyPlanFeedbackAndRegenerate = function() {
   const val = (input.value || '').trim();
   if (!val) {
     if (window.showToast) window.showToast('Enter some feedback first (e.g. "more focus on social and golf").');
-    else alert('Enter some feedback first.');
+    else window.notifyUser('Enter some feedback first.', 'warning', 3200);
     return;
   }
   window.lastPlanFeedback = val;
@@ -2779,7 +2779,7 @@ window.savePlanBaseline = function() {
   if (typeof window.showToast === 'function') {
     window.showToast('Form state saved as your Baseline. Use Load to restore anytime.');
   } else {
-    alert('Saved as My Baseline!');
+    window.notifyUser('Saved as My Baseline!', 'success', 3200);
   }
 };
 
@@ -2788,7 +2788,7 @@ window.loadPlanBaseline = function() {
   const raw = localStorage.getItem('planBaseline');
   if (!raw) {
     if (typeof window.showToast === 'function') window.showToast('No baseline saved yet — use the Save button first.');
-    else alert('No baseline saved yet. Fill the form and click "Save as My Baseline".');
+    else window.notifyUser('No baseline saved yet. Fill the form and click "Save as My Baseline".', 'success', 3200);
     return;
   }
   const state = JSON.parse(raw);

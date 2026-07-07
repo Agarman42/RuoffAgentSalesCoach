@@ -53,7 +53,7 @@
     if (eff.localArea) parts.push(`Primary market: ${eff.localArea}`);
     if (eff.targetPartners && eff.targetPartners.length) parts.push(`Key referral partners: ${eff.targetPartners.join(', ')}`);
 
-    const base = 'Warm, authentic, relationship-first realtor who speaks like a trusted advisor.';
+    const base = 'Warm, authentic, relationship-first agent who speaks like a trusted advisor.';
     return parts.length ? `${base} ${parts.join('. ')}.` : base;
   }
 
@@ -119,14 +119,14 @@
       icon: "fa-bolt",
       color: "#00A89D",
       scenarios: [
-        { value: "Rates are too high right now", label: "Rates are too high right now", contextTip: "Helpful details: How long have they been looking? Do they have a target monthly payment? Any upcoming life events (baby, job change, lease ending)?" },
+        { value: "Prices feel too high right now", label: "Prices feel too high right now", contextTip: "Helpful details: How long have they been looking? Do they have a target monthly payment? Any upcoming life events (baby, job change, lease ending)?" },
         { value: "We're going to wait for rates to drop", label: "We're going to wait for rates to drop", contextTip: "Helpful details: How long have they been looking? Do they have a specific target monthly payment they're trying to stay under? Any upcoming deadlines (lease ending, job relocation, baby due)?" },
         { value: "I want to wait until after the election / things settle", label: "Wait until after the election / things settle", contextTip: "Useful context: What specific uncertainty are they worried about (rates, economy, job market)? How long do they expect to wait?" },
-        { value: "I'm happy with my current lender", label: "I'm happy with my current lender (realtor)", contextTip: "Helpful details: How long have you worked with this realtor? Have you closed any transactions together before? Do you know why they're happy with their current lender?" },
-        { value: "I already have a lender / I'm working with someone else", label: "I already have a lender", contextTip: "Useful context: How did they get connected with their current lender? Have they signed anything yet, or are they still early in the process?" },
-        { value: "My credit isn't good enough / I'm worried about getting approved", label: "Credit isn't good enough / worried about approval", contextTip: "Helpful details: Do they know their approximate credit score? Have they been turned down before? Are there any recent changes to their credit (new job, paid off debt)?" },
-        { value: "I don't have enough for a down payment", label: "Don't have enough for down payment", contextTip: "Great context: Are they open to down payment assistance programs, gifts from family, or seller concessions? What's their rough target purchase price?" },
-        { value: "I'm just shopping around / getting information", label: "Just shopping around / getting info", contextTip: "Helpful details: How far along are they (just browsing vs. under contract)? Have they spoken with any other lenders yet? What's their biggest concern right now?" }
+        { value: "A friend or family member is a realtor and we feel obligated to use them", label: "Friend/family member is a realtor", contextTip: "Helpful context: How close are they to this person? Are they feeling pressure or genuine loyalty? What would they want most — relationship harmony or the best representation?" },
+        { value: "Your commission feels too high / can you discount your fee?", label: "Commission feels too high", contextTip: "Useful details: What are they comparing against (another agent quote, online discount broker)? What value do they care about most — marketing, negotiation, communication, speed?" },
+        { value: "We want to sell FSBO and skip the agent", label: "Want to sell FSBO", contextTip: "Helpful details: Why FSBO (save money, control, bad past experience)? Do they understand net proceeds vs. list price? Any timeline pressure?" },
+        { value: "I'm not sure I'm ready to commit to an agent yet", label: "Not ready to commit to an agent", contextTip: "Helpful details: What would need to happen for them to feel ready? Are they early-stage browsing or actively touring? Any past bad agent experience?" },
+        { value: "We found a home online and want to work directly with the listing agent", label: "Want to work directly with listing agent", contextTip: "Useful context: Do they understand dual agency or who represents whom? How strong is their offer strategy? Any financing or inspection concerns?" }
       ]
     },
     "buyer-conversations": {
@@ -177,7 +177,7 @@
         { value: "Welcome a new real estate agent to the market or office", label: "Welcome new agent to market/office", contextTip: "Helpful context: How new are they to the business? Do they have any background (previous career, family in real estate)? What kind of support would be most valuable (market intel, co-broke tips, lender intros)?" },
         { value: "Support a fellow agent who's having a slow month", label: "Support fellow agent having slow month", contextTip: "Useful details: How well do you know them? Have you worked or co-broke'd together before? Would they appreciate a lead, co-marketing idea, market intel, or just a supportive conversation?" },
         { value: "Ask another agent to introduce you to their sphere or for a referral", label: "Ask agent for sphere intro or referral", contextTip: "Helpful context: How strong is your current relationship with this agent? Have you done any co-broke deals or joint events together? What value (leads, expertise, co-marketing) can you offer in return?" },
-        { value: "Offer to co-host a first-time buyer seminar", label: "Co-host first-time buyer event", contextTip: "Useful details: Has this realtor done any educational events before? Do they have a specific target audience (first-time buyers, move-up, investors)?" }
+        { value: "Offer to co-host a first-time buyer seminar", label: "Co-host first-time buyer event", contextTip: "Useful details: Has this partner done any educational events before? Do they have a specific target audience (first-time buyers, move-up, investors)?" }
       ]
     },
     "post-closing-surveys": {
@@ -198,18 +198,18 @@
       icon: "fa-heart",
       color: "#00A89D",
       scenarios: [
-        { value: "Follow up after sending a buyer qualification packet or realtor resources", label: "Follow up after buyer resources / qualification share", contextTip: "Helpful details: How long ago did you send the qualification overview or resources to the realtor/buyer? Did the realtor or buyer respond? Any specific questions about process, lenders, or next steps?" },
-        { value: "Respond to an Experience.com or Google review", label: "Respond to review/survey", contextTip: "Very helpful: Was the review positive or critical? Did it come from a buyer/client or a realtor/partner? What specific part of the experience did they mention?" },
+        { value: "Follow up after sending a buyer qualification packet or buyer resources", label: "Follow up after buyer resources / qualification share", contextTip: "Helpful details: How long ago did you send the qualification overview or resources to the buyer? Did they respond? Any specific questions about process, lenders, or next steps?" },
+        { value: "Respond to an Experience.com or Google review", label: "Respond to review/survey", contextTip: "Very helpful: Was the review positive or critical? Did it come from a buyer/client or a referral partner (lender, title, co-broke)? What specific part of the experience did they mention?" },
         { value: "Thank a client for completing a post-closing survey or review", label: "Thank client for completing survey/review", contextTip: "Nice touch: What did they specifically say in the review that stood out? Was there anything particularly stressful about their transaction that you helped with?" },
         { value: "Thank a past client for sending a referral", label: "Thank past client for a referral", contextTip: "Great context: How did the referral turn out? Did the new client end up closing? Any specific things the referring client might appreciate being acknowledged for (their intro, their sphere trust)?" },
         { value: "Offer value to another agent (no ask)", label: "Offer value to another agent (no ask)", contextTip: "Useful details: What kind of value are you thinking of offering (hot buyer lead in their area, market update, co-marketing idea, introduction to a lender)? Have you done anything like this with them before?" },
         { value: "Thank another agent after a smooth co-broke closing", label: "Thank agent after smooth co-broke", contextTip: "Nice touch: What made the collaboration particularly smooth or memorable? Was there anything the other agent did that you especially appreciated (communication, flexibility, bringing a strong buyer)?" },
         { value: "Birthday, closing anniversary, or home anniversary check-in", label: "Birthday or anniversary check-in", contextTip: "Helpful details: How long ago did you close their purchase? Do you have any personal details about them (kids' names, hobbies, pets, life events) that would make the note feel more genuine?" },
-        { value: "Reinforce 'I'm your realtor for life'", label: "Reinforce 'realtor for life'", contextTip: "Good context: How long ago did you help them purchase their home? Have they referred anyone to you yet? Any life events coming up (new baby, job change, growing family) that might mean a future move?" },
+        { value: "Reinforce 'I'm your agent for life'", label: "Reinforce 'agent for life'", contextTip: "Good context: How long ago did you help them purchase their home? Have they referred anyone to you yet? Any life events coming up (new baby, job change, growing family) that might mean a future move?" },
         { value: "Reach out for an annual home & equity check-in or move-up review", label: "Annual home & equity / move-up review", contextTip: "Helpful details: When did they close their current home? Any life events or equity growth that might signal a future move-up, investment, or downsizing conversation?" },
         { value: "Help a past client who is relocating", label: "Help past client relocating", contextTip: "Useful context: Where are they moving to? Do they need a referral to a lender in the new area, or are they keeping the current home as a rental?" },
         { value: "Congratulate another agent on a new listing or sale", label: "Congratulate agent on win", contextTip: "Nice touch: Do you know any details about the transaction (price, days on market, any challenges)? Have you worked or co-broke'd with this agent before? Great way to stay top-of-mind." },
-        { value: "Check in after a big rate news day", label: "Check in after rate news", contextTip: "Helpful context: How did rates move (up or down significantly)? Do you have any clients or realtors who were on the fence and might be affected?" }
+        { value: "Check in after major market or rate news", label: "Check in after market/rate news", contextTip: "Helpful context: What changed in your local market (inventory, pricing, or financing conditions)? Do you have any clients or partners who were on the fence and might need a quick update?" }
       ]
     },
     "special-situations": {
@@ -220,7 +220,7 @@
         { value: "Client is moving out of state", label: "Client moving out of state", contextTip: "Helpful details: Are they selling their current home or keeping it as a rental? Do they need a lender referral in the new state, or are they financing the new purchase while keeping the old one?" },
         { value: "Client is buying a second home or vacation property", label: "Buying second home / vacation property", contextTip: "Useful context: Is this purely for personal use or do they plan to rent it out part-time? Do they have strong income/credit, or is this stretching them a bit?" },
         { value: "Client is going through a divorce", label: "Going through divorce", contextTip: "Sensitive context: How far along is the divorce process? Are both parties still on the loan, or is one person trying to buy the other out? Is an attorney involved?" },
-        { value: "Client is inheriting property", label: "Inheriting property", contextTip: "Helpful details: Are they keeping the property or selling it? Is this a cash-out refinance situation or are they taking title and financing improvements?" },
+        { value: "Client is inheriting property", label: "Inheriting property", contextTip: "Helpful details: Are they keeping the property or selling it? Are they taking title and planning to live there, rent it, or finance improvements?" },
         { value: "Client has non-traditional income (self-employed, gig, etc.)", label: "Non-traditional / self-employed income", contextTip: "Very useful: How long have they been self-employed? Do they have 2 years of tax returns? Are they using bank statement or asset-based programs?" },
         { value: "Client has a recent credit event (bankruptcy, foreclosure)", label: "Recent credit event", contextTip: "Important context: How long ago was the credit event? Have they been rebuilding credit? Are they working with a credit repair company or housing counselor?" },
         { value: "Client is a veteran using VA benefits", label: "Veteran using VA benefits", contextTip: "Helpful details: Is this their first VA loan? Do they have their Certificate of Eligibility yet? Are they aware of the funding fee and how it can be waived?" },
@@ -246,7 +246,7 @@ async function generateSalesScript() {
     const scriptElements = Array.from(elemChecks).map(cb => (cb.value || '').trim()).filter(Boolean);
 
     if (!scenario) {
-        alert('Please select or type a scenario');
+        window.notifyUser('Please select or type a scenario', 'warning', 3200);
         return;
     }
 
@@ -313,9 +313,9 @@ async function generateSalesScript() {
 
     const personalization = buildSalesPersonalization();
 
-    const prompt = `You are an expert real estate communication coach helping realtors build better relationships.
+    const prompt = `You are an expert real estate communication coach helping agents build better relationships.
 
-REALTOR PROFILE:
+AGENT PROFILE:
 ${personalization}
 
 Generate exactly 4 varied, natural scripts for this situation:
@@ -331,7 +331,7 @@ Requirements for each script:
 - Use open-ended questions
 - Include a soft next step
 - End with a gentle call-to-action
-- Tone: Match the realtor's natural voice and personality from the profile above
+- Tone: Match the agent's natural voice and personality from the profile above
 - Make it sound like this specific person wrote it
 
 CRITICAL FORMATTING:
@@ -479,7 +479,7 @@ Focus on building connection and trust — not closing the deal.`;
 function copySingleScript(scriptId, buttonEl) {
     const scriptEl = document.getElementById(scriptId);
     if (!scriptEl || !buttonEl) {
-        alert('Script or button not found!');
+        window.notifyUser('Script or button not found!', 'error', 5000);
         return;
     }
 
@@ -505,9 +505,9 @@ function copySingleScript(scriptId, buttonEl) {
     }).catch(() => {
         // Fallback
         navigator.clipboard.writeText(plainText).then(() => {
-            alert('Copied as plain text (rich formatting not supported)');
+            window.notifyUser('Copied as plain text (rich formatting not supported)', 'success', 3200);
         }).catch(() => {
-            alert('Copy failed — please select and copy manually');
+            window.notifyUser('Copy failed — please select and copy manually', 'error', 5000);
         });
     });
 }
@@ -635,20 +635,20 @@ window.showContextTipsModal = function() {
             </div>
             <div class="p-6 overflow-y-auto max-h-[65vh] space-y-6 text-sm">
                 <div>
-                    <strong class="text-[#00A89D]">For Rate Objections / Waiting Situations</strong>
+                    <strong class="text-[#00A89D]">For Market Timing / Wait-and-See Objections</strong>
                     <ul class="mt-2 list-disc pl-5 text-gray-600 dark:text-gray-400 space-y-1">
                         <li>How long have they been looking?</li>
-                        <li>Have they been pre-approved yet?</li>
-                        <li>Is there a specific monthly payment they're trying to hit?</li>
+                        <li>Are they pre-approved or still exploring options?</li>
+                        <li>What monthly payment or price range are they trying to stay within?</li>
                         <li>Any upcoming life events (baby, job change, lease ending)?</li>
                     </ul>
                 </div>
                 <div>
-                    <strong class="text-[#00A89D]">For Realtor Pushback Situations</strong>
+                    <strong class="text-[#00A89D]">For Partner / Referral Pushback</strong>
                     <ul class="mt-2 list-disc pl-5 text-gray-600 dark:text-gray-400 space-y-1">
-                        <li>How long have you worked with this realtor?</li>
-                        <li>Have you closed any deals together before?</li>
-                        <li>Do they have a specific pain point with their current lender?</li>
+                        <li>Who is the partner (lender, title rep, builder, fellow agent)?</li>
+                        <li>How long have you known them and have you closed a file together?</li>
+                        <li>What value could you offer first (CMA, open house support, co-branded asset)?</li>
                         <li>Any co-marketing or events you've done together?</li>
                     </ul>
                 </div>
@@ -656,7 +656,7 @@ window.showContextTipsModal = function() {
                     <strong class="text-[#00A89D]">For Review / Survey Responses</strong>
                     <ul class="mt-2 list-disc pl-5 text-gray-600 dark:text-gray-400 space-y-1">
                         <li>What did the review actually say? (positive or negative?)</li>
-                        <li>Was this a buyer/client or a realtor/partner review?</li>
+                        <li>Was this a buyer/client or a referral partner review?</li>
                         <li>Any specific part of the experience you want to highlight or address?</li>
                     </ul>
                 </div>
@@ -1045,7 +1045,7 @@ window.showContextTipsModal = function() {
   window.generateSalesScript = generateSalesScript;
   window.copySingleScript = copySingleScript;
   window.saveSalesScript = saveSalesScript;
-  window.toggleAccordion = toggleAccordion;
+  // toggleAccordion is defined in js/main.js (loaded immediately before this file)
 
   // Initialize premium UI
   if (document.readyState === 'loading') {

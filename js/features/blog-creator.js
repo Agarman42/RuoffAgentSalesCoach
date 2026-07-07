@@ -8,7 +8,7 @@
  * - PDF.js document upload + text extraction (processBlogFile)
  * - generateBlog with reference document injection
  * - Blog tips modal (open/close)
- * - Copy with formatting, jump to publisher, download as .doc
+ * - Copy with formatting, download as .doc
  * - All related state (blogUploadedFileText) and listeners
  *
  * Self-initializes. Exposes public API on window.
@@ -16,17 +16,6 @@
 
 (function () {
   'use strict';
-
-  // Realtor tool — no Ruoff LO blog publishing portal
-  const BLOG_ENABLE_RUOFF_PUBLISH = false;
-
-  function getRuoffPublishButtonHtml() {
-    if (!BLOG_ENABLE_RUOFF_PUBLISH) return '';
-    return `
-        <button id="jump-publish-btn" class="bg-[#00A89D] text-white px-8 py-4 rounded-2xl font-semibold text-lg shadow-md hover:bg-[#008F85] transition-all flex items-center justify-center gap-2 flex-1">
-            <i class="fas fa-external-link-alt"></i> Publish on Site
-        </button>`;
-  }
 
   function getBlogFeedbackHtml() {
     return `
@@ -44,12 +33,6 @@
 
   function patchRestoredBlogOutput(html) {
     let patched = html || '';
-    if (BLOG_ENABLE_RUOFF_PUBLISH && !patched.includes('id="jump-publish-btn"')) {
-      patched = patched.replace(
-        /(<button id="download-blog-btn"[\s\S]*?<\/button>)/,
-        `$1${getRuoffPublishButtonHtml()}`
-      );
-    }
     if (!patched.includes('id="blog-feedback"')) {
       patched += getBlogFeedbackHtml();
     }
@@ -175,7 +158,7 @@
   // ORIGINAL BLOG CREATOR CODE (moved verbatim)
   // =====================================================
 
-// ==================== REALTOR BLOG DOCUMENT UPLOAD ====================
+// ==================== AGENT BLOG DOCUMENT UPLOAD ====================
 let blogUploadedFileText = '';
 let lastBlogBundle = null; // { blogMarkdown, captionText, googlePostText, reelScriptText, topicInput }
 
@@ -287,12 +270,19 @@ async function generateBlog(feedback = '') {
     const fileContext = blogUploadedFileText || '';
 
     if (!topicInput) {
-        alert('Please select or type a blog topic');
+        window.notifyUser('Please select or type a blog topic', 'warning', 3200);
         return;
     }
 
     const output = document.getElementById('blog-output');
     const loadingEl = document.getElementById('global-loading');
+
+    if (!output) {
+      console.error('[blog-creator] #blog-output container missing from DOM');
+      window.hideLoading?.();
+      window.notifyUser('Blog output area not found. Please refresh the page.', 'error', 4000);
+      return;
+    }
 
     // Use centralized force for consistent premium progress modal
     const loadingTitle = feedback ? 'Refining Your Blog Post...' : 'Building Your Authority Blog Post...';
@@ -359,7 +349,7 @@ if (loadingEl) loadingEl.innerHTML = blogLoadingContent;
     const richProfile = getEffectiveSetup();
     const personalization = buildBlogPersonalization(richProfile);
 
-    const systemPrompt = `You are an expert real estate content writer creating high-quality, GEO-optimized, authority-building content for real estate agents. Write in the exact voice and style of this specific realtor: ${personalization}
+    const systemPrompt = `You are an expert real estate content writer creating high-quality, GEO-optimized, authority-building content for real estate agents. Write in the exact voice and style of this specific agent: ${personalization}
 
 Key Requirements:
 - Length: Exactly aim for the middle of ${lengthGuide} range (e.g., ~1,750 words for 1,500–2,000). Do not generate shorter—expand with more detailed explanations, additional examples, sub-sections, or relevant anecdotes to reach the word count while keeping it engaging and reader-focused. 
@@ -381,7 +371,7 @@ ${tone.toLowerCase().includes('hilarious') ? '- HILARIOUS MODE: Make it laugh-ou
 - SEO/GEO: Reader-first writing, natural keywords, local relevance where it fits the topic
 - Avoid: Any "trigger terms" that could lead to fair housing or compliance issues
 - Do not start the blog with Imagine this or Picture this. 
-- Voice: Match the realtor's personality and voice traits above — helpful, trustworthy, conversational, and authentic — never salesy.
+- Voice: Match the agent's personality and voice traits above — helpful, trustworthy, conversational, and authentic — never salesy.
 - Language: Check the "Additional instructions" / additional context field. If the user requests a different language there (e.g. "Prepare the full blog in Spanish", "Generate in French", "in German", "en español"), produce the **entire output** — the blog post, the social media caption, the Google Business post, **and** the Reel script — fully in that requested language. Translate everything naturally and accurately while preserving the exact required structure, headings, SEO intent, and professional tone.
 
 After the blog post, add a clear separator (---) followed by a short, clearly labeled social media caption (e.g., **Suggested Social Media Caption:**). Keep the caption 100–200 characters, engaging, and include 4–6 relevant hashtags. **Do NOT include any character count at the end — output clean caption text only.**
@@ -422,7 +412,7 @@ let finalPrompt = systemPrompt;
 
     if (feedback) {
         if (!lastBlogBundle) {
-            alert('Generate a blog first, then use feedback to refine it.');
+            window.notifyUser('Generate a blog first, then use feedback to refine it.', 'warning', 3200);
             window.hideLoading?.();
             return;
         }
@@ -489,8 +479,7 @@ Return the FULL updated output in this order: blog markdown first, then **Sugges
         <button id="download-blog-btn" class="bg-[#002B5C] text-white px-8 py-4 rounded-2xl font-semibold text-lg shadow-md hover:bg-[#001429] transition-all flex items-center justify-center gap-2 flex-1">
             <i class="fas fa-download"></i> Download .doc
         </button>
-        ${getRuoffPublishButtonHtml()}
-        <button onclick="if(typeof window.saveBlogToVault==='function') window.saveBlogToVault(); else alert('Save ready after refresh');" class="bg-[#002B5C] text-white px-8 py-4 rounded-2xl font-semibold text-lg shadow-md hover:bg-[#001429] transition-all flex items-center justify-center gap-2 flex-1">
+        <button onclick="if(typeof window.saveBlogToVault==='function') window.saveBlogToVault(); else window.saveNotReady();" class="bg-[#002B5C] text-white px-8 py-4 rounded-2xl font-semibold text-lg shadow-md hover:bg-[#001429] transition-all flex items-center justify-center gap-2 flex-1">
             <i class="fas fa-bookmark"></i> Save Bundle to Vault
         </button>
         <button onclick="if(window.clearSavedBlog){window.clearSavedBlog();}" class="bg-red-500 text-white px-8 py-4 rounded-2xl font-semibold text-lg shadow-md hover:bg-red-600 transition-all flex items-center justify-center gap-2 flex-1">
@@ -569,9 +558,6 @@ Return the FULL updated output in this order: blog markdown first, then **Sugges
         document.getElementById('download-blog-btn').onclick = downloadBlogWord;
         document.getElementById('copy-caption-btn').onclick = copySocialCaption;
         document.getElementById('copy-google-btn').onclick = copyGooglePostWithFormatting;
-        const jumpPublishBtn = document.getElementById('jump-publish-btn');
-        if (jumpPublishBtn) jumpPublishBtn.onclick = copyBlogAndJumpToPublisher;
-
         const copyReelBtn = document.getElementById('copy-reel-btn');
         if (copyReelBtn) {
             copyReelBtn.onclick = () => {
@@ -579,7 +565,7 @@ Return the FULL updated output in this order: blog markdown first, then **Sugges
                 if (!reelEl) return;
                 const text = reelEl.innerText || reelEl.textContent || '';
                 navigator.clipboard.writeText(text.trim()).then(() => {
-                    alert('Reel script & video idea copied!');
+                    window.notifyUser('Reel script & video idea copied!', 'success', 3200);
                 }).catch(() => {
                     // fallback
                     const range = document.createRange();
@@ -589,7 +575,7 @@ Return the FULL updated output in this order: blog markdown first, then **Sugges
                     sel.addRange(range);
                     document.execCommand('copy');
                     sel.removeAllRanges();
-                    alert('Reel script & video idea copied!');
+                    window.notifyUser('Reel script & video idea copied!', 'success', 3200);
                 });
             };
         }
@@ -607,7 +593,7 @@ Return the FULL updated output in this order: blog markdown first, then **Sugges
         if (refineBtn) {
             refineBtn.onclick = () => {
                 const fb = document.getElementById('blog-feedback')?.value.trim() || '';
-                if (!fb) { alert('Please enter feedback or specific edits first!'); return; }
+                if (!fb) { window.notifyUser('Please enter feedback or specific edits first!', 'warning', 3200); return; }
                 generateBlog(fb);
             };
         }
@@ -663,7 +649,7 @@ Return the FULL updated output in this order: blog markdown first, then **Sugges
 function copyBlogWithFormatting() {
     const blogContent = document.querySelector('#blog-output .prose');
     if (!blogContent) {
-        alert('No blog content to copy!');
+        window.notifyUser('No blog content to copy!', 'warning', 3200);
         return;
     }
     const html = blogContent.innerHTML;
@@ -675,26 +661,17 @@ function copyBlogWithFormatting() {
     });
 
     navigator.clipboard.write([clipboardItem]).then(() => {
-        alert('Blog copied with formatting!');
+        window.notifyUser('Blog copied with formatting!', 'success', 3200);
     }).catch(err => {
         console.error('Rich copy failed:', err);
         navigator.clipboard.writeText(plainText).then(() => {
-            alert('Copied as plain text (rich formatting not supported in this browser)');
+            window.notifyUser('Copied as plain text (rich formatting not supported in this browser)', 'success', 3200);
         });
     });
 }
-function copyBlogAndJumpToPublisher() {
-    copyBlogWithFormatting();   // Runs the exact same rich copy + shows your alert
-
-    // Tiny delay so the clipboard finishes before we open the tab (feels instant)
-    setTimeout(() => {
-        window.open('https://sales.ruoff.com/blog', '_blank');
-    }, 250);
-}
-
 window.saveBlogAsset = function(assetType, btnEl) {
     if (typeof window.toggleSaveIdea !== 'function') {
-        alert('Saved Items system not ready yet.');
+        window.notifyUser('Saved Items system not ready yet.', 'success', 3200);
         return;
     }
     const output = document.getElementById('blog-output');
@@ -709,7 +686,7 @@ window.saveBlogAsset = function(assetType, btnEl) {
     const node = document.getElementById(cfg.el);
     const text = node ? (node.innerText || node.textContent || '').trim() : '';
     if (!text) {
-        alert(`No ${cfg.label.toLowerCase()} to save yet.`);
+        window.notifyUser(`No ${cfg.label.toLowerCase()} to save yet.`, 'warning', 3200);
         return;
     }
     const title = `Blog Asset — ${cfg.label}: ${blogTitle.substring(0, 50)}`;
@@ -721,12 +698,12 @@ window.saveBlogAsset = function(assetType, btnEl) {
 
 window.saveBlogToVault = function() {
     if (typeof window.toggleSaveIdea !== 'function') {
-        alert('Saved Items system not ready yet.');
+        window.notifyUser('Saved Items system not ready yet.', 'success', 3200);
         return;
     }
     const output = document.getElementById('blog-output');
     if (!output || !output.innerHTML.trim()) {
-        alert('Generate a blog first.');
+        window.notifyUser('Generate a blog first.', 'warning', 3200);
         return;
     }
 
@@ -816,7 +793,7 @@ window.saveBlogToVault = function() {
     if (window.showToast) {
         window.showToast('Full blog bundle saved to My Saved Items', 'success');
     } else {
-        alert('Saved to My Saved Items');
+        window.notifyUser('Saved to My Saved Items', 'success', 3200);
     }
 };
 
@@ -843,14 +820,11 @@ function attachBlogOutputListeners() {
   if (capBtn) capBtn.onclick = copySocialCaption;
   const googBtn = document.getElementById('copy-google-btn');
   if (googBtn) googBtn.onclick = copyGooglePostWithFormatting;
-  const jumpBtn = document.getElementById('jump-publish-btn');
-  if (jumpBtn) jumpBtn.onclick = copyBlogAndJumpToPublisher;
-
   const refineBtn = document.getElementById('blog-refine-btn');
   if (refineBtn) {
     refineBtn.onclick = () => {
       const fb = document.getElementById('blog-feedback')?.value.trim() || '';
-      if (!fb) { alert('Please enter feedback or specific edits first!'); return; }
+      if (!fb) { window.notifyUser('Please enter feedback or specific edits first!', 'warning', 3200); return; }
       generateBlog(fb);
     };
   }
@@ -862,7 +836,7 @@ function attachBlogOutputListeners() {
       if (!reelEl) return;
       const text = reelEl.innerText || reelEl.textContent || '';
       navigator.clipboard.writeText(text.trim()).then(() => {
-        alert('Reel script & video idea copied!');
+        window.notifyUser('Reel script & video idea copied!', 'success', 3200);
       }).catch(() => {
         const range = document.createRange();
         range.selectNodeContents(reelEl);
@@ -871,7 +845,7 @@ function attachBlogOutputListeners() {
         sel.addRange(range);
         document.execCommand('copy');
         sel.removeAllRanges();
-        alert('Reel script & video idea copied!');
+        window.notifyUser('Reel script & video idea copied!', 'success', 3200);
       });
     };
   }
@@ -881,11 +855,11 @@ function attachBlogOutputListeners() {
 function downloadBlogWord() {
     const blogEl = document.querySelector('#blog-output .prose');
     if (!blogEl) {
-        alert('No blog content to download!');
+        window.notifyUser('No blog content to download!', 'warning', 3200);
         return;
     }
 
-    const header = `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Mortgage Blog Post</title><style>
+    const header = `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Real Estate Blog Post</title><style>
         body {font-family: Calibri, Arial, sans-serif; margin: 60px; line-height: 1.6; color: #000; background: white;}
         h1 {color: #002B5C; text-align: center; font-size: 32px; margin-bottom: 40px;}
         h2 {color: #00A89D; border-bottom: 2px solid #00A89D; padding-bottom: 8px; font-size: 24px; margin-top: 40px;}
@@ -907,21 +881,21 @@ function downloadBlogWord() {
     a.href = url;
 
     const titleEl = blogEl.querySelector('h1');
-    const filename = titleEl ? titleEl.innerText.replace(/[^a-z0-9]/gi, '_').toLowerCase() + '_blog.doc' : 'realtor_blog.doc';
+    const filename = titleEl ? titleEl.innerText.replace(/[^a-z0-9]/gi, '_').toLowerCase() + '_blog.doc' : 'agent_blog.doc';
     a.download = filename;
     a.click();
     URL.revokeObjectURL(url);
-    alert('Blog downloaded as Word doc! Open in Word for best formatting.');
+    window.notifyUser('Blog downloaded as Word doc! Open in Word for best formatting.', 'success', 3200);
 }
 
 // === Missing helper: Copy the suggested social caption ===
 window.copySocialCaption = function copySocialCaption() {
     const captionEl = document.getElementById('social-caption');
-    if (!captionEl) return alert('No social caption to copy!');
+    if (!captionEl) { window.notifyUser('No social caption to copy!', 'warning', 3200); return; }
 
     const text = captionEl.innerText || captionEl.textContent || '';
     navigator.clipboard.writeText(text.trim()).then(() => {
-        alert('Social caption copied!');
+        window.notifyUser('Social caption copied!', 'success', 3200);
     }).catch(() => {
         // Fallback
         const range = document.createRange();
@@ -931,14 +905,14 @@ window.copySocialCaption = function copySocialCaption() {
         sel.addRange(range);
         document.execCommand('copy');
         sel.removeAllRanges();
-        alert('Social caption copied!');
+        window.notifyUser('Social caption copied!', 'success', 3200);
     });
 };
 
 // === Missing helper: Copy the suggested Google post with formatting ===
 window.copyGooglePostWithFormatting = function copyGooglePostWithFormatting() {
     const googleEl = document.getElementById('google-post');
-    if (!googleEl) return alert('No Google post to copy!');
+    if (!googleEl) { window.notifyUser('No Google post to copy!', 'warning', 3200); return; }
 
     const html = googleEl.innerHTML;
     const plainText = googleEl.innerText || '';
@@ -950,17 +924,17 @@ window.copyGooglePostWithFormatting = function copyGooglePostWithFormatting() {
             'text/plain': new Blob([plainText], { type: 'text/plain' })
         });
         navigator.clipboard.write([clipboardItem]).then(() => {
-            alert('Google post copied with formatting!');
+            window.notifyUser('Google post copied with formatting!', 'success', 3200);
         }).catch(() => {
             // Fallback to plain text
             navigator.clipboard.writeText(plainText).then(() => {
-                alert('Google post copied (plain text).');
+                window.notifyUser('Google post copied (plain text).', 'success', 3200);
             });
         });
     } catch (e) {
         // Very old browser fallback
         navigator.clipboard.writeText(plainText).then(() => {
-            alert('Google post copied.');
+            window.notifyUser('Google post copied.', 'success', 3200);
         });
     }
 };
@@ -972,7 +946,6 @@ window.copyGooglePostWithFormatting = function copyGooglePostWithFormatting() {
   window.generateBlog = generateBlog;
   window.processBlogFile = processBlogFile;
   window.copyBlogWithFormatting = copyBlogWithFormatting;
-  window.copyBlogAndJumpToPublisher = copyBlogAndJumpToPublisher;
   window.downloadBlogWord = downloadBlogWord;
   window.copySocialCaption = copySocialCaption;
   window.copyGooglePostWithFormatting = copyGooglePostWithFormatting;

@@ -19,7 +19,7 @@
   // =====================================================
   // BASE SYSTEM + PROFILE (defined early so initial chatHistory can use it)
   // =====================================================
-  const BASE_SYSTEM_PROMPT = `You are the ultimate AI Sales Coach for realtors. This app is packed with powerful AI tools designed to help realtors win more listings and buyers, build stronger relationships, and grow their business.
+  const BASE_SYSTEM_PROMPT = `You are the ultimate AI Sales Coach for real estate agents. This app is packed with powerful AI tools designed to help agents win more listings and buyers, build stronger relationships, and grow their business.
 When asked what the tool does or about its features, ALWAYS highlight the AI TOOLS first — they are the coolest and most valuable part:
 • Listing Description Generator – Instant professional, emotional, and social-ready descriptions in multiple lengths
 • Open House Script & Strategy – Full kit: setup checklist, opening scripts, talking points, objections, lead capture, and social angles
@@ -152,42 +152,11 @@ function smartRouteChat(message) {
         'what is this tool', 'what does this tool do', 'what can this tool do', 'features',
         'tell me about this app', 'how does this help', 'what are the tools', 'ai tools',
         'help me with', 'sales script', 'marketing idea', 'motivation', 'weekly plan',
-        'win plan', 'equity scanner', 'social media planner', 'chat assistant',
+        'win plan', 'social media planner', 'chat assistant',
         'how do i use', 'what sections', 'navigate', 'dashboard'
     ];
     if (blockPhrases.some(phrase => lower.includes(phrase))) {
         return false; // Stay in chat
-    }
-
-    // === PRIMARY: Must have at least one strict underwriting keyword ===
-    const primaryKeywords = [
-        'guideline', 'guidelines', 'financing', 'pre-approval', 'qualification', 'scenario', 
-        'dti', 'credit', 'self-employed', 'conventional', 'fha', 'va', 'jumbo', 'buydown', 'cash out'
-    ];
-    const hasPrimary = primaryKeywords.some(kw => lower.includes(kw));
-
-    if (!hasPrimary) return false;
-
-    // === SECONDARY: Loan/underwriting context terms (optional but boosts accuracy) ===
-    const secondaryKeywords = [
-        'dti', 'debt to income', 'credit score', 'fico', 'ltv', 'cltv', 'self-employed',
-        'bankruptcy', 'foreclosure', 'fha', 'va', 'conventional', 'jumbo',
-        'non-qm', 'buydown', 'cash out'
-    ];
-    const hasSecondary = secondaryKeywords.some(kw => lower.includes(kw));
-
-    // === QUESTION STRUCTURE: Boost if it's phrased as a question ===
-    const isQuestion = lower.includes('?') || 
-                       lower.includes('what is') || 
-                       lower.includes('can i') || 
-                       lower.includes('qualify') || 
-                       lower.includes('eligible');
-
-    // === ROUTE ONLY IF STRONG SIGNAL ===
-    if (hasPrimary && (hasSecondary || isQuestion)) {
-        // For realtor version: specialized financing questions detected — keep in chat and let user use dedicated tools (listing, open house, consultation, prospecting)
-        console.log('[ai-chat] Specialized buyer/financing question detected — staying in chat for seamless experience. User can switch to dedicated tools.');
-        return false; // Routed
     }
 
     // Default: Stay in general chat
@@ -307,7 +276,7 @@ function saveChatMessage(btn) {
 </div>`;
     window.toggleSaveIdea('AI Coach Response', content, null, 'coach');
     if (window.showToast) window.showToast('Saved to My Saved Items!', 'success');
-    else alert('Saved!');
+    else window.notifyUser('Saved!', 'success', 3200);
   }
 }
 
@@ -347,7 +316,7 @@ function clearChat() {
   // Show fresh welcome
   setTimeout(() => {
     if (messagesDiv) {
-      addMessage('assistant', "Hi! I'm your AI Realtor Coach — profile-aware and connected to every tool in this coach. What are we winning at today?", false);
+      addMessage('assistant', "Hi! I'm your AI Agent Coach — profile-aware and connected to every tool in this coach. What are we winning at today?", false);
     }
   }, 50);
 }
@@ -359,7 +328,7 @@ function setupChatSuggestions() {
   const prompts = [
     "Give me 3 social post ideas this week that match my personality and hobbies",
     "Help me handle a 'rates are too high' objection with a warm script",
-    "Brainstorm a high-impact pop-by or client appreciation idea for realtors",
+    "Brainstorm a high-impact pop-by or client appreciation idea for my sphere",
     "What's a good 7-day post-closing touch sequence for a first-time buyer?",
     "Motivate me — I'm feeling in a slump this week",
     "Turn one of my hobbies into 2 evergreen content angles for social or blog",
@@ -410,7 +379,7 @@ function setupChatSuggestions() {
     // If no messages yet (fresh), show a warm personalized welcome
     const messagesDiv = document.getElementById('chat-messages');
     if (messagesDiv && messagesDiv.children.length === 0) {
-      const welcome = "Hi! I'm your AI Realtor Coach. I know your profile, your tools, and your goals. What are we winning at today?";
+      const welcome = "Hi! I'm your AI Agent Coach. I know your profile, your tools, and your goals. What are we winning at today?";
       addMessage('assistant', welcome, false);
     }
 
