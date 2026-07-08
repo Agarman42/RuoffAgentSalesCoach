@@ -4149,6 +4149,9 @@ async function generateNewsletter(feedback = '') {
                 '- Personal photo URL: "' + personalPhotoUrl + '"',
                 '- Personal video URL: "' + personalVideoUrl + '"',
                 '- Section direction & extra instructions:\n' + getCombinedSpecificTopicsForPrompt(selections),
+                ...(typeof window.buildGenerationRulesPromptBlock === 'function'
+                    ? window.buildGenerationRulesPromptBlock('newsletter')
+                    : []),
                 '',
                 ...buildNewsletterLengthPromptBlock(),
                 '',
@@ -4532,6 +4535,10 @@ html = applyUncheckedNewsletterSectionFilters(html, postSelections);
 
             if (typeof confetti === 'function') {
                 confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } });
+            }
+
+            if (!feedback) {
+                window._nlNextStepsId = `nl_${Date.now().toString(36)}`;
             }
         }
 

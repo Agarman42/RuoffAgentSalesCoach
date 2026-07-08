@@ -173,6 +173,10 @@ Option 2:
 Option 3:
 [full caption text including emojis and hashtags]`;
 
+    if (typeof window.buildGenerationRulesPromptBlock === 'function') {
+      prompt += '\n' + window.buildGenerationRulesPromptBlock('social').join('\n');
+    }
+
     try {
         // Centralized API call (Phase 0) - no more hardcoded key
         const fullResponse = await window.callGrokAPI(prompt, {
@@ -194,8 +198,21 @@ Option 3:
             return part.replace(/^Option \d+:\s*/i, '').trim();
         });
 
-        // Render three premium separate cards with individual copy + save buttons
-        output.innerHTML = posts.map((post, index) => `
+        // Render header + three premium separate cards with individual copy + save buttons
+        output.innerHTML = `
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8 pb-6 border-b border-gray-200 dark:border-gray-700">
+                <div>
+                    <div class="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-[#F15A29] text-white text-xs font-bold tracking-[2px] mb-2">
+                        <i class="fas fa-check-circle"></i> 3 OPTIONS READY
+                    </div>
+                    <h3 class="text-2xl font-bold text-[#002B5C] dark:text-white m-0">Pick your favorite — then publish</h3>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 mt-1 m-0">Each option has a different hook and energy.</p>
+                </div>
+                <button type="button" id="social-next-steps-btn" class="bg-white dark:bg-gray-900 border-2 border-[#00A89D] text-[#00A89D] px-6 py-3 rounded-2xl font-semibold flex items-center gap-2 hover:bg-[#00A89D]/10 transition self-start">
+                    <i class="fas fa-list-check"></i> Next Steps
+                </button>
+            </div>
+        ` + posts.map((post, index) => `
             <div class="bg-white dark:bg-gray-800 rounded-3xl shadow-xl p-8 mb-8 border border-gray-200 dark:border-gray-700 hover:border-[#00A89D]/50 transition-all">
                 <div class="prose prose-lg dark:prose-invert max-w-none mb-6">
                     ${marked.parse(post)}
@@ -222,6 +239,15 @@ Option 3:
         output.dataset.post0 = posts[0];
         output.dataset.post1 = posts[1];
         output.dataset.post2 = posts[2];
+
+        window._socialNextStepsId = `social_${Date.now().toString(36)}`;
+
+        const nextStepsBtn = document.getElementById('social-next-steps-btn');
+        if (nextStepsBtn) {
+          nextStepsBtn.onclick = () => {
+            if (typeof window.openSocialNextSteps === 'function') window.openSocialNextSteps();
+          };
+        }
 
         output.classList.remove('hidden');
 
