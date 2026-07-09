@@ -242,7 +242,11 @@ window.removeBlogUploadedFile = function() {
     document.getElementById('blog-remove-file-btn').classList.add('hidden');
 };
 
+let _blogGenerating = false;
+
 async function generateBlog(feedback = '') {
+    if (_blogGenerating) return;
+    _blogGenerating = true;
     console.log('%c[blog-creator] generateBlog() called', feedback ? 'with feedback' : 'fresh', 'color:#00A89D');
 
     // Ensure latest local area is persisted before generation
@@ -290,6 +294,7 @@ async function generateBlog(feedback = '') {
     const fileContext = blogUploadedFileText || '';
 
     if (!topicInput) {
+        _blogGenerating = false;
         window.notifyUser('Please select or type a blog topic', 'warning', 3200);
         return;
     }
@@ -298,6 +303,7 @@ async function generateBlog(feedback = '') {
     const loadingEl = document.getElementById('global-loading');
 
     if (!output) {
+      _blogGenerating = false;
       console.error('[blog-creator] #blog-output container missing from DOM');
       window.hideLoading?.();
       window.notifyUser('Blog output area not found. Please refresh the page.', 'error', 4000);
@@ -436,6 +442,7 @@ let finalPrompt = systemPrompt;
 
     if (feedback) {
         if (!lastBlogBundle) {
+            _blogGenerating = false;
             window.notifyUser('Generate a blog first, then use feedback to refine it.', 'warning', 3200);
             window.hideLoading?.();
             return;
@@ -678,6 +685,7 @@ Return the FULL updated output in this order: blog markdown first, then **Sugges
         `;
         output.classList.remove('hidden');
     } finally {
+        _blogGenerating = false;
         if (loadingEl) {
             if (loadingEl.dataset.originalContent) {
                 loadingEl.innerHTML = loadingEl.dataset.originalContent;
