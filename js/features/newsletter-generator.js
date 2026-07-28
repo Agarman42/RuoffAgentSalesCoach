@@ -2722,6 +2722,29 @@ function applyNewsletterColorBundle(html) {
     return applyFn(html, bundle);
 }
 
+function hideNewsletterEmptyPreview() {
+    const empty = document.getElementById('nl-empty-state');
+    if (empty) {
+        empty.classList.add('hidden');
+        empty.setAttribute('aria-hidden', 'true');
+        empty.style.setProperty('display', 'none', 'important');
+    }
+    try {
+        if (window.CoachPolish && typeof window.CoachPolish.hideEmpty === 'function') {
+            window.CoachPolish.hideEmpty('nl-empty-state');
+        }
+    } catch (e) { /* ignore */ }
+}
+
+function showNewsletterReviewHandoff() {
+    const panel = document.getElementById('nl-review-handoff');
+    if (!panel) return;
+    panel.classList.remove('hidden');
+    try {
+        panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } catch (e) { /* ignore */ }
+}
+
 function refreshNewsletterColorScheme() {
     const rawEl = document.getElementById('nl-html-raw');
     let html = (rawEl?.value || '').trim() || (lastGeneratedHTML || '').trim();
@@ -3082,9 +3105,10 @@ function setNewsletterPreviewHTML(html) {
     if (iframe) {
         applyNewsletterPreviewIframeIsolation(iframe);
         iframe.srcdoc = hardenNewsletterPreviewHtml(html);
-        return;
+    } else {
+        mountNewsletterPreviewIframe(previewEl, html);
     }
-    mountNewsletterPreviewIframe(previewEl, html);
+    hideNewsletterEmptyPreview();
 }
 
 function wireNewsletterFeedbackFocusGuard() {
@@ -4717,7 +4741,20 @@ html = applyUncheckedNewsletterSectionFilters(html, postSelections);
         const output = document.getElementById('newsletter-output');
         if (output) {
             output.classList.remove('hidden');
-            output.scrollIntoView({ behavior: 'smooth' });
+            hideNewsletterEmptyPreview();
+            // Unhide "ready" handoff AFTER output is visible, then scroll there
+            if (!feedback) {
+                showNewsletterReviewHandoff();
+            }
+            // Always land on the ready section (wizard and full form)
+            requestAnimationFrame(() => {
+                const ready = document.getElementById('nl-review-handoff') || output;
+                try {
+                    ready.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                } catch (e) {
+                    try { output.scrollIntoView({ behavior: 'smooth', block: 'start' }); } catch (e2) {}
+                }
+            });
             // Add a visible Clear button (premium pill style) so user can discard the persisted last version
             if (!output.querySelector('.nl-clear-btn')) {
               const clr = document.createElement('button');
@@ -4874,6 +4911,8 @@ function copyForOutlook() {
   // PUBLIC API EXPOSURE (for onclick handlers and cross-feature calls)
   // =====================================================
   window.generateNewsletter = generateNewsletter;
+  window.showNewsletterReviewHandoff = showNewsletterReviewHandoff;
+  window.hideNewsletterEmptyPreview = hideNewsletterEmptyPreview;
   window.downloadNewsletterHTML = downloadNewsletterHTML;
   window.copyForOutlook = copyForOutlook;
   window.getCleanOutlookHTML = getCleanOutlookHTML;
